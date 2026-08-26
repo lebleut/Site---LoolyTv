@@ -30,7 +30,6 @@ export async function HomeSections() {
           </div>
           <div className={styles.heroVisual}>
             <div className={styles.sun} aria-hidden="true" />
-            <div className={styles.heroBadge}>Bientôt<br /><strong>sur Android</strong></div>
             <Image src="/mascot/looly-new.png" alt="Looly, le cheval à bascule qui accueille les enfants" width={620} height={620} priority className={styles.mascot} />
           </div>
         </div>

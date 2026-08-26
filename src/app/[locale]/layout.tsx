@@ -1,22 +1,22 @@
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { Nunito, Source_Sans_3 } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
-const nunito = Nunito({
+const fredoka = Fredoka({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-nunito",
+  variable: "--font-fredoka",
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
+const nunito = Nunito({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-source-sans",
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -98,7 +98,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={dir}>
-      <body className={`${nunito.variable} ${sourceSans.variable}`}>
+      <body className={`${fredoka.variable} ${nunito.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <a className="skip-link" href="#main">
             {t("skip")}

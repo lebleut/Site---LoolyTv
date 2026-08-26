@@ -1,0 +1,137 @@
+.hero {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: center;
+  padding: 2rem 0 3rem;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.heroCopy {
+  animation: rise-in 0.7s ease both;
+}
+
+.kicker {
+  margin: 0 0 0.75rem;
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5.2rem);
+  color: var(--color-accent);
+  letter-spacing: -0.04em;
+}
+
+.lead {
+  margin: 1rem 0 1.75rem;
+  max-width: 34rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--color-muted);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  animation: rise-in 0.85s ease 0.1s both;
+}
+
+.mascot {
+  width: min(100%, 28rem);
+  height: auto;
+  animation: floaty 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 18px 30px rgba(11, 87, 208, 0.22));
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 1.75rem;
+}
+
+.featureList h3,
+.parentList h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.featureList p,
+.parentList p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.inlineMascot {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inlineMascot img {
+  opacity: 0.95;
+}
+
+.parentsBand {
+  background: linear-gradient(
+    180deg,
+    rgba(43, 187, 173, 0.12) 0%,
+    rgba(92, 176, 255, 0.12) 100%
+  );
+  border-block: 1px solid rgba(197, 214, 232, 0.8);
+}
+
+.parentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+}
+
+.waitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.waitMascot {
+  margin-top: 1rem;
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+  .heroGrid,
+  .waitGrid,
+  .featureList,
+  .parentList {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 1.5rem;
+  }
+
+  .brand {
+    font-size: clamp(2.6rem, 12vw, 3.6rem);
+  }
+}

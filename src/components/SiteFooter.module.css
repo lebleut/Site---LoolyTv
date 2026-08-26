@@ -1,0 +1,46 @@
+.footer {
+  margin-top: 2rem;
+  padding: 2.5rem 0 3rem;
+  border-top: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.inner {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+}
+
+.tag {
+  margin: 0.35rem 0 0;
+  color: var(--color-muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+}
+
+.links a {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.links a:hover {
+  color: var(--color-accent);
+}
+
+.copy {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}

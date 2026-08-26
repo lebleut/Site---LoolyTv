@@ -17,8 +17,8 @@
   --shadow-soft: 0 14px 35px rgba(36, 59, 58, .12);
   --radius: 1.25rem;
   --radius-sm: .75rem;
-  --font-display: var(--font-nunito), "Nunito", system-ui, sans-serif;
-  --font-body: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
+  --font-display: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+  --font-body: var(--font-nunito), "Nunito", system-ui, sans-serif;
   --header-h: 4.5rem;
   --max: 70rem;
 }

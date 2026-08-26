@@ -30,8 +30,7 @@ export async function HomeSections() {
           </div>
           <div className={styles.heroVisual}>
             <div className={styles.sun} aria-hidden="true" />
-            <div className={styles.heroBadge}>Bientôt<br /><strong>sur Android</strong></div>
-            <Image src="/mascot/looly-welcome.png" alt="Looly, le cheval à bascule qui accueille les enfants" width={620} height={620} priority className={styles.mascot} />
+            <Image src="/mascot/looly-new.png" alt="Looly, le cheval à bascule qui accueille les enfants" width={620} height={620} priority className={styles.mascot} />
           </div>
         </div>
         <div className={styles.wave} aria-hidden="true" />
@@ -43,7 +42,7 @@ export async function HomeSections() {
           <ul className={styles.featureList}>
             {FEATURE_KEYS.map((key, index) => <li className={`${styles.featureCard} ${styles[`card${index % 4}`]}`} key={key}><span className={styles.featureIcon} aria-hidden="true">{FEATURE_ICONS[index]}</span><h3>{tf(`items.${key}.title`)}</h3><p>{tf(`items.${key}.body`)}</p></li>)}
           </ul>
-          <div className={styles.inlineMascot}><Image src="/mascot/looly-idle.png" alt="" width={160} height={160} aria-hidden /></div>
+          <div className={styles.inlineMascot}><Image src="/mascot/looly-new.png" alt="" width={160} height={160} aria-hidden /></div>
         </div>
       </section>
 
@@ -56,7 +55,7 @@ export async function HomeSections() {
 
       <section id="waitlist" className={`section ${styles.waitSection}`}>
         <div className={`container ${styles.waitGrid}`}>
-          <div className="section-head"><p className={styles.eyebrow}>Le départ approche</p><h2>{tw("title")}</h2><p>{tw("subtitle")}</p><Image src="/mascot/looly-celebrate.png" alt="" width={220} height={220} className={styles.waitMascot} aria-hidden /></div>
+          <div className="section-head"><p className={styles.eyebrow}>Le départ approche</p><h2>{tw("title")}</h2><p>{tw("subtitle")}</p><Image src="/mascot/looly-new.png" alt="" width={220} height={220} className={styles.waitMascot} aria-hidden /></div>
           <WaitlistForm />
         </div>
       </section>

@@ -1,0 +1,14 @@
+---
+description: Project language
+alwaysApply: true
+globs:
+  - "**/*"
+---
+
+The project language is English.
+
+Even if the conversation is in French, always generate:
+- code in English;
+- comments in English;
+- UI labels in English;
+- documentation in English.

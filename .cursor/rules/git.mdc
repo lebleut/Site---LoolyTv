@@ -1,0 +1,15 @@
+---
+description: Git commit conventions
+alwaysApply: true
+globs:
+  - "**/*"
+---
+Don't make git commits if not asked in the prompt
+in the end of each oparation of changes, suggest a git commit message
+
+Git commit messages must:
+- be short;
+- in English;
+- contain only one concise sentence;
+- not include bullet points;
+- not include very detailed explanations.

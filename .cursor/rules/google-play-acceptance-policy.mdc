@@ -1,0 +1,15 @@
+---
+description: Google play acceptance policy
+alwaysApply: true
+globs:
+  - "**/*"
+---
+
+À chaque nouvelle fonctionnalité ou modification, vérifie brièvement sa conformité générale avec les Google Play Policies, en particulier pour les données, permissions, enfants, publicités, SDK tiers, sécurité et backend.
+
+Évite les analyses approfondies inutiles afin de limiter la consommation de tokens.
+Si aucun problème évident : indique simplement que c'est OK.
+Si un risque est détecté : donne un court rapport avec le problème, la policy concernée et le niveau de risque.
+Ne modifie jamais le code pour corriger un problème sans ma confirmation explicite.
+En cas de doute, signale-le et attends ma confirmation.
+Aussi garde un oeil sue notre documents legal "Privacy", "Terms" et "Data deletion" si jamais on ajoute des fonctionnalités qui peuvent les changer (user accounts, ads, ...) et proposer de le faire et mettre à jour explecitement la section "Last updated" dans les 3 pages legales

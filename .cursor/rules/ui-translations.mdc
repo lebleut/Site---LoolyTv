@@ -1,0 +1,18 @@
+---
+description: Keep UI strings translated in all app locales
+alwaysApply: true
+---
+
+# UI translations (en / fr / ar / es)
+
+When you add or change user-visible strings in the Android app:
+
+1. Add the key in `app/src/main/res/values/strings.xml` (English source of truth).
+2. Add the **same key** in:
+   - `app/src/main/res/values-fr/strings.xml`
+   - `app/src/main/res/values-ar/strings.xml`
+   - `app/src/main/res/values-es/strings.xml`
+3. Never leave a new key only in `values/` — missing locale keys fall back to English and look broken (especially for ar/es).
+4. Prefer `stringResource(R.string.…)` over hardcoded English in Compose/Kotlin UI.
+5. Topic **labels** come from the API (`/v1/topics?lang=`) via `TopicLabelStore` — do not hardcode topic names in `strings.xml`. Still localize filter chrome around topics (e.g. “Main topic”, “Subtopic”).
+6. Before finishing UI work, spot-check that filter dialogs, search results, and library cards show localized sort/meta/topic chrome in all four languages.

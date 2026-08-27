@@ -19,12 +19,12 @@ export async function Waitlist() {
           </div>
 
           <Image
-            src="/mascot/looly-new.png"
+            src="/brand/mascot-celebrate.png"
             alt=""
             aria-hidden="true"
-            width={260}
-            height={260}
-            sizes="210px"
+            width={420}
+            height={420}
+            sizes="(max-width: 900px) 42vw, 210px"
             className={styles.mascot}
           />
         </div>

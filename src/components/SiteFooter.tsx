@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link as LocaleLink } from "@/i18n/navigation";
 import styles from "./SiteFooter.module.css";
@@ -11,7 +12,17 @@ export async function SiteFooter() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.about}>
-          <p className={styles.brand}>LoolyTv</p>
+          <p className={styles.brand}>
+            <Image
+              src="/brand/mark.png"
+              alt=""
+              aria-hidden="true"
+              width={40}
+              height={40}
+              className={styles.brandMark}
+            />
+            LoolyTv
+          </p>
           <p className={styles.tag}>{t("tagline")}</p>
         </div>
 

@@ -56,13 +56,17 @@ export async function generateMetadata({ params }: Props) {
       title: t("title"),
       description: t("description"),
       siteName: "LoolyTv",
-      images: [{ url: "/mascot/looly-welcome.png", width: 512, height: 512, alt: "Looly mascot" }],
+      images: [{ url: "/brand/og.jpg", width: 1200, height: 675, alt: "LoolyTv mascot" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/mascot/looly-welcome.png"],
+      images: ["/brand/og.jpg"],
+    },
+    icons: {
+      icon: [{ url: "/brand/icon.png", type: "image/png", sizes: "512x512" }],
+      apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
     },
     robots: { index: true, follow: true },
   };
@@ -88,7 +92,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         name: "LoolyTv",
         url: SITE_URL,
         email: "jamel@salinnovation.com",
-        logo: `${SITE_URL}/mascot/looly-idle.png`,
+        logo: `${SITE_URL}/brand/icon.png`,
       },
       {
         "@type": "SoftwareApplication",

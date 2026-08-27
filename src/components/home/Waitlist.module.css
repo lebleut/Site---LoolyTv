@@ -28,9 +28,10 @@
 
 .mascot {
   display: block;
-  width: 13rem;
+  width: min(100%, 15rem);
   height: auto;
   margin-block-start: 0.5rem;
+  filter: drop-shadow(0 14px 16px rgba(30, 42, 74, 0.14));
   animation: floaty 5.5s ease-in-out infinite;
 }
 

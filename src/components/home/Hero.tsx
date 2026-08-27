@@ -7,8 +7,16 @@ export async function Hero() {
 
   return (
     <section className={styles.hero} aria-labelledby="hero-brand">
-      <span className={styles.blobA} aria-hidden="true" />
-      <span className={styles.blobB} aria-hidden="true" />
+      <Image
+        src="/brand/hero-bg.jpg"
+        alt=""
+        aria-hidden="true"
+        fill
+        priority
+        sizes="100vw"
+        className={styles.bg}
+      />
+      <span className={styles.veil} aria-hidden="true" />
 
       <div className={`container ${styles.grid}`}>
         <div className={styles.copy}>
@@ -50,12 +58,12 @@ export async function Hero() {
           <span className={styles.sun} aria-hidden="true" />
 
           <Image
-            src="/mascot/looly-new.png"
+            src="/brand/mascot-hero.png"
             alt={t("mascotAlt")}
             width={620}
             height={620}
             priority
-            sizes="(max-width: 900px) 80vw, 40vw"
+            sizes="(max-width: 900px) 70vw, 38vw"
             className={styles.mascot}
           />
 

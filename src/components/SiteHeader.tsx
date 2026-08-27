@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -19,10 +20,15 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} onClick={close}>
+          <Image
+            src="/brand/mark.png"
+            alt=""
+            aria-hidden="true"
+            width={40}
+            height={40}
+            className={styles.brandMark}
+          />
           <span>LoolyTv</span>
-          <span className={styles.brandSpark} aria-hidden="true">
-            ✦
-          </span>
         </Link>
 
         <button

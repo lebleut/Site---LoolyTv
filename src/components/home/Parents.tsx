@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/Reveal";
 import styles from "./Parents.module.css";
@@ -46,6 +47,17 @@ export async function Parents() {
           </div>
 
           <p className={styles.note}>{t("note")}</p>
+
+          <div className={styles.scene}>
+            <Image
+              src="/brand/family-scene.jpg"
+              alt={t("sceneAlt")}
+              width={1400}
+              height={900}
+              sizes="(max-width: 900px) 92vw, 42vw"
+              className={styles.sceneImg}
+            />
+          </div>
         </div>
 
         <ul className={styles.list}>

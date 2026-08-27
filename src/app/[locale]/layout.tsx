@@ -56,13 +56,13 @@ export async function generateMetadata({ params }: Props) {
       title: t("title"),
       description: t("description"),
       siteName: "LoolyTv",
-      images: [{ url: "/brand/og.jpg", width: 1200, height: 675, alt: "LoolyTv mascot" }],
+      images: [{ url: "/brand/og.jpg?v=20260827", width: 1200, height: 675, alt: "LoolyTv mascot" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/brand/og.jpg"],
+      images: ["/brand/og.jpg?v=20260827"],
     },
     icons: {
       icon: [{ url: "/brand/icon.png", type: "image/png", sizes: "512x512" }],

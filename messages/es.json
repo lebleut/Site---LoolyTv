@@ -130,7 +130,17 @@
     "submitting": "Enviando…",
     "success": "¡Gracias! Te responderemos pronto.",
     "error": "No se pudo enviar. Prueba otra vez o escribe a jamel@salinnovation.com.",
-    "consent": "Soy padre/madre o tutor y acepto ser contactado sobre este mensaje."
+    "consent": "Soy padre/madre o tutor y acepto ser contactado sobre este mensaje.",
+    "errors": {
+      "nameRequired": "Por favor, escribe tu nombre.",
+      "emailRequired": "Por favor, escribe tu correo electrónico.",
+      "emailInvalid": "Por favor, escribe un correo válido (ejemplo: nombre@email.com).",
+      "messageRequired": "Por favor, escribe tu mensaje.",
+      "messageTooShort": "Tu mensaje es demasiado corto (al menos 3 caracteres).",
+      "consentRequired": "Por favor, confirma que eres padre/madre o tutor.",
+      "invalidPayload": "Algunos campos no son válidos. Revisa el formulario e inténtalo de nuevo.",
+      "network": "No se pudo enviar (error de red o del servidor). Inténtalo de nuevo o escribe a jamel@salinnovation.com."
+    }
   },
   "footer": {
     "tagline": "TV infantil curada para familias — próximamente.",

@@ -16,3 +16,10 @@
 .note a {
   font-weight: 700;
 }
+
+.fieldError {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-error);
+}

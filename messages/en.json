@@ -130,7 +130,17 @@
     "submitting": "Sending…",
     "success": "Thanks! We’ll get back to you soon.",
     "error": "Could not send. Please try again or email jamel@salinnovation.com.",
-    "consent": "I am a parent or guardian and agree to be contacted about this message."
+    "consent": "I am a parent or guardian and agree to be contacted about this message.",
+    "errors": {
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address (example: name@email.com).",
+      "messageRequired": "Please write your message.",
+      "messageTooShort": "Your message is too short (at least 3 characters).",
+      "consentRequired": "Please confirm you are a parent or guardian.",
+      "invalidPayload": "Some fields are invalid. Please check the form and try again.",
+      "network": "Could not send (network or server error). Please try again or email jamel@salinnovation.com."
+    }
   },
   "footer": {
     "tagline": "Curated kids TV for families — coming soon.",

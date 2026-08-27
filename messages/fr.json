@@ -130,7 +130,17 @@
     "submitting": "Envoi…",
     "success": "Merci ! Nous vous répondrons bientôt.",
     "error": "Envoi impossible. Réessayez ou écrivez à jamel@salinnovation.com.",
-    "consent": "Je suis parent ou tuteur et j’accepte d’être contacté au sujet de ce message."
+    "consent": "Je suis parent ou tuteur et j’accepte d’être contacté au sujet de ce message.",
+    "errors": {
+      "nameRequired": "Veuillez saisir votre nom.",
+      "emailRequired": "Veuillez saisir votre adresse e-mail.",
+      "emailInvalid": "Veuillez saisir une adresse e-mail valide (exemple : nom@email.com).",
+      "messageRequired": "Veuillez écrire votre message.",
+      "messageTooShort": "Votre message est trop court (au moins 3 caractères).",
+      "consentRequired": "Veuillez confirmer que vous êtes parent ou tuteur.",
+      "invalidPayload": "Certains champs sont invalides. Vérifiez le formulaire et réessayez.",
+      "network": "Envoi impossible (erreur réseau ou serveur). Réessayez ou écrivez à jamel@salinnovation.com."
+    }
   },
   "footer": {
     "tagline": "TV kids curatée pour les familles — bientôt.",

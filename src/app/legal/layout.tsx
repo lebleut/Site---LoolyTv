@@ -1,18 +1,18 @@
 import Link from "next/link";
-import { Nunito, Source_Sans_3 } from "next/font/google";
+import { Baloo_2, Nunito_Sans } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 import styles from "./legal.module.css";
 
-const nunito = Nunito({
+const baloo = Baloo_2({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-nunito",
+  variable: "--font-baloo",
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-source-sans",
+  variable: "--font-nunito-sans",
   display: "swap",
 });
 
@@ -27,8 +27,8 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${nunito.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`${baloo.variable} ${nunitoSans.variable}`}>
+      <body>
         <div className={styles.shell}>
           <nav className={styles.nav} aria-label="Legal">
             <Link href="/en">Back to LoolyTv</Link>

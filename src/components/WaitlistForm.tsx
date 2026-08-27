@@ -8,6 +8,7 @@ import styles from "./Forms.module.css";
 
 export function WaitlistForm() {
   const t = useTranslations("waitlist");
+  const tFooter = useTranslations("footer");
   const locale = useLocale();
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
   const [busy, setBusy] = useState(false);
@@ -89,7 +90,7 @@ export function WaitlistForm() {
       </button>
       <p className={styles.note}>
         {t("privacyNote")}{" "}
-        <Link href="/legal/privacy">Privacy Policy</Link>
+        <Link href="/legal/privacy">{tFooter("privacy")}</Link>
       </p>
       {status !== "idle" ? (
         <p className={`form-status ${status}`} role="status">

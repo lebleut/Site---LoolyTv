@@ -1,0 +1,50 @@
+.band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(140deg, #fff1ec 0%, #fff7e2 52%, #eef0ff 100%);
+  border-radius: clamp(2rem, 6vw, 4rem);
+  margin-inline: clamp(0rem, 2vw, 1.5rem);
+}
+
+.glow {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  inset-block-start: -10rem;
+  inset-inline-end: -8rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 201, 60, 0.45), transparent 68%);
+  pointer-events: none;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.mascot {
+  display: block;
+  width: 13rem;
+  height: auto;
+  margin-block-start: 0.5rem;
+  animation: floaty 5.5s ease-in-out infinite;
+}
+
+.formSlot :global(form) {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mascot {
+    width: 10rem;
+    margin-inline: auto;
+  }
+}

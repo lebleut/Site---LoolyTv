@@ -1,22 +1,28 @@
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { Fredoka, Nunito } from "next/font/google";
+import { Baloo_2, Cairo, Nunito_Sans } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
-const fredoka = Fredoka({
+const baloo = Baloo_2({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-fredoka",
+  variable: "--font-baloo",
   display: "swap",
 });
 
-const nunito = Nunito({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-nunito",
+  variable: "--font-nunito-sans",
+  display: "swap",
+});
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
   display: "swap",
 });
 
@@ -68,7 +74,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
   const messages = await getMessages();
   const t = await getTranslations("nav");
-  const dir = locale === "ar" ? "rtl" : "ltr";
+  const isArabic = locale === "ar";
+  const dir = isArabic ? "rtl" : "ltr";
+  const fontVars = isArabic
+    ? cairo.variable
+    : `${baloo.variable} ${nunitoSans.variable}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -96,9 +106,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     ],
   };
 
+  // Font variables must sit on the same element as :root, otherwise the var()
+  // references inside --font-display / --font-body resolve as invalid.
   return (
-    <html lang={locale} dir={dir}>
-      <body className={`${fredoka.variable} ${nunito.variable}`}>
+    <html lang={locale} dir={dir} className={fontVars}>
+      <body>
         <NextIntlClientProvider messages={messages}>
           <a className="skip-link" href="#main">
             {t("skip")}

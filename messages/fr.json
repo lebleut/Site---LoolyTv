@@ -6,6 +6,7 @@
   "nav": {
     "home": "Accueil",
     "features": "Fonctionnalités",
+    "how": "Comment ça marche",
     "parents": "Parents",
     "waitlist": "Pré-test",
     "contact": "Contact",
@@ -18,11 +19,20 @@
     "tagline": "Quelque chose de chouette arrive bientôt…",
     "lead": "Un catalogue kids calme et curaté pour Android téléphone et TV — sans le labyrinthe YouTube ouvert. La date de sortie ? Encore secrète.",
     "ctaWaitlist": "Rejoindre les pré-testeurs",
-    "ctaFeatures": "Découvrir l’app"
+    "ctaFeatures": "Découvrir l’app",
+    "trust": "Une aventure pensée pour toute la famille",
+    "mascotAlt": "Looly, le cheval à bascule qui accueille les enfants",
+    "chipKids": "Made for Kids",
+    "chipAds": "Sans pub",
+    "chipDevices": "Mobile + TV"
   },
   "features": {
+    "eyebrow": "L’univers Looly",
     "title": "Pensée pour les petits curieux",
     "subtitle": "Ce que les parents demandent — au même endroit.",
+    "prev": "Fonctionnalité précédente",
+    "next": "Fonctionnalité suivante",
+    "goToSlide": "Aller à la fonctionnalité {number}",
     "items": {
       "catalog": {
         "title": "Catalogue Made for Kids curaté",
@@ -50,9 +60,30 @@
       }
     }
   },
+  "howItWorks": {
+    "eyebrow": "Premiers pas",
+    "title": "Prêt en trois étapes",
+    "subtitle": "Pas de configuration interminable — quelques minutes avec votre enfant et c’est parti.",
+    "steps": {
+      "install": {
+        "title": "Installez LoolyTv",
+        "body": "Téléchargez l’app sur votre téléphone ou TV Android, puis connectez-vous avec un compte Google parent."
+      },
+      "pick": {
+        "title": "Choisissez les playlists ensemble",
+        "body": "Parcourez le catalogue curaté par thème, âge et langue, puis enregistrez les favoris dans la bibliothèque familiale."
+      },
+      "play": {
+        "title": "Lancez « Tout lire »",
+        "body": "Un geste mélange la bibliothèque. Les enfants restent dans ce que vous avez choisi — rien d’autre."
+      }
+    }
+  },
   "parents": {
+    "eyebrow": "Pour les grands",
     "title": "Les parents restent aux commandes",
     "subtitle": "Sécurité familiale dès la conception.",
+    "note": "Une bulle numérique plus sereine, où les enfants explorent et où les parents respirent.",
     "items": {
       "google": {
         "title": "Connexion Google parent",
@@ -73,6 +104,7 @@
     }
   },
   "waitlist": {
+    "eyebrow": "Le départ approche",
     "title": "Soyez parmi les 100 premiers pré-testeurs",
     "subtitle": "Google Play nous demande de tester avec de vraies familles. Rejoignez la liste — et optez pour être prévenu au lancement.",
     "name": "Nom (optionnel)",

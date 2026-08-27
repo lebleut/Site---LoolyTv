@@ -1,0 +1,246 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.25rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6.5rem);
+  background: linear-gradient(148deg, #e9f6ff 0%, #f2f0ff 45%, #fff2ec 100%);
+  border-end-start-radius: clamp(2rem, 6vw, 4.5rem);
+  border-end-end-radius: clamp(2rem, 6vw, 4.5rem);
+}
+
+.blobA,
+.blobB {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.blobA {
+  width: 16rem;
+  height: 16rem;
+  inset-block-start: -5rem;
+  inset-inline-start: -4rem;
+  background: radial-gradient(circle at 35% 35%, var(--color-sky-soft), transparent 70%);
+}
+
+.blobB {
+  width: 22rem;
+  height: 22rem;
+  inset-block-end: -8rem;
+  inset-inline-end: -6rem;
+  background: radial-gradient(circle at 50% 50%, var(--color-red-soft), transparent 70%);
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.copy {
+  animation: rise-in 0.8s ease both;
+}
+
+.brand {
+  margin: 0;
+  font-size: clamp(3.4rem, 9vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--color-red);
+}
+
+.dot {
+  color: var(--color-accent);
+}
+
+.lead {
+  margin: 1.25rem 0 2rem;
+  max-width: 34rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--color-muted);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+:global([dir="rtl"]) .arrow {
+  transform: scaleX(-1);
+}
+
+.ctaRow a:hover .arrow {
+  transform: translateX(3px);
+}
+
+:global([dir="rtl"]) .ctaRow a:hover .arrow {
+  transform: scaleX(-1) translateX(3px);
+}
+
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.6rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+.trustDots {
+  display: inline-flex;
+}
+
+.trustDots i {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface);
+  margin-inline-end: -0.5rem;
+}
+
+.trustDots i:nth-child(1) {
+  background: var(--color-yellow);
+}
+
+.trustDots i:nth-child(2) {
+  background: var(--color-sky);
+}
+
+.trustDots i:nth-child(3) {
+  background: var(--color-red);
+}
+
+/* ---------- Visual ---------- */
+
+.visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26rem;
+  animation: rise-in 1s ease 0.1s both;
+}
+
+.sun {
+  position: absolute;
+  width: min(24rem, 78%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 40%, #ffe08a, var(--color-yellow) 62%, transparent 72%);
+  opacity: 0.5;
+}
+
+.mascot {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 32rem);
+  height: auto;
+  filter: drop-shadow(0 24px 22px rgba(30, 42, 74, 0.18));
+  animation: floaty 5.2s ease-in-out infinite;
+}
+
+.chip {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  animation: drift 6s ease-in-out infinite;
+}
+
+.chipKids {
+  inset-block-start: 8%;
+  inset-inline-start: 0;
+  color: var(--color-red-dark);
+  animation-delay: 0.2s;
+}
+
+.chipAds {
+  inset-block-start: 42%;
+  inset-inline-end: -0.5rem;
+  color: var(--color-green);
+  animation-delay: 1.4s;
+}
+
+.chipDevices {
+  inset-block-end: 10%;
+  inset-inline-start: 6%;
+  color: var(--color-accent);
+  animation-delay: 2.6s;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .visual {
+    order: -1;
+    min-height: 0;
+  }
+
+  .mascot {
+    width: min(70%, 19rem);
+  }
+
+  .sun {
+    width: min(19rem, 62%);
+  }
+
+  .lead {
+    margin-inline: auto;
+  }
+
+  .ctaRow,
+  .trust {
+    justify-content: center;
+  }
+
+  .chipKids {
+    inset-inline-start: -0.5rem;
+  }
+
+  .chipDevices {
+    inset-inline-start: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .mascot {
+    width: min(78%, 15rem);
+  }
+
+  .ctaRow {
+    width: 100%;
+  }
+
+  .ctaRow a {
+    flex: 1 1 14rem;
+  }
+
+  .chip {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.65rem;
+  }
+}

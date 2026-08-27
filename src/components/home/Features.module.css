@@ -1,0 +1,185 @@
+.head {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.track {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0.75rem 0.35rem 1.25rem;
+  flex: 1;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 min(84%, 20rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.6rem 1.5rem 1.75rem;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--tone);
+  box-shadow: 0 20px 38px rgba(30, 42, 74, 0.13);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.35rem;
+  border-radius: 1rem;
+  background: var(--tone-soft);
+  color: var(--tone);
+}
+
+.icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tone0 {
+  --tone: var(--color-red);
+  --tone-soft: var(--color-red-soft);
+}
+
+.tone1 {
+  --tone: var(--color-accent);
+  --tone-soft: var(--color-accent-soft);
+}
+
+.tone2 {
+  --tone: var(--color-green);
+  --tone-soft: var(--color-green-soft);
+}
+
+.tone3 {
+  --tone: #b07d00;
+  --tone-soft: var(--color-yellow-soft);
+}
+
+.tone4 {
+  --tone: #1c8fb5;
+  --tone-soft: var(--color-sky-soft);
+}
+
+/* ---------- Controls ---------- */
+
+.arrow {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.arrow:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.arrow svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:global([dir="rtl"]) .arrow svg {
+  transform: scaleX(-1);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.dot,
+.dotOn {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: width 0.22s ease, background 0.22s ease;
+}
+
+.dotOn {
+  width: 1.9rem;
+  background: var(--color-accent);
+}
+
+@media (max-width: 720px) {
+  .arrow {
+    display: none;
+  }
+}
+
+@media (min-width: 721px) {
+  .card {
+    flex-basis: calc((100% - 1.25rem) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    flex-basis: calc((100% - 2.5rem) / 3);
+  }
+}

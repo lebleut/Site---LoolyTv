@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "features": "Features",
+    "how": "How it works",
     "parents": "For parents",
     "waitlist": "Pre-test",
     "contact": "Contact",
@@ -18,11 +19,20 @@
     "tagline": "Something fun is almost ready…",
     "lead": "A calm, curated kids catalog for Android phone and TV — no open YouTube rabbit holes. Launch date? Still a secret.",
     "ctaWaitlist": "Join the pre-tester list",
-    "ctaFeatures": "See what’s inside"
+    "ctaFeatures": "See what’s inside",
+    "trust": "Made with care for the whole family",
+    "mascotAlt": "Looly, the rocking horse who welcomes little viewers",
+    "chipKids": "Made for Kids",
+    "chipAds": "No ads",
+    "chipDevices": "Phone + TV"
   },
   "features": {
+    "eyebrow": "Inside Looly",
     "title": "Built for curious little viewers",
     "subtitle": "Everything parents asked for — in one friendly place.",
+    "prev": "Previous feature",
+    "next": "Next feature",
+    "goToSlide": "Go to feature {number}",
     "items": {
       "catalog": {
         "title": "Curated Made for Kids catalog",
@@ -50,9 +60,30 @@
       }
     }
   },
+  "howItWorks": {
+    "eyebrow": "Getting started",
+    "title": "Up and running in three steps",
+    "subtitle": "No setup marathon — a few minutes with your child and you’re done.",
+    "steps": {
+      "install": {
+        "title": "Install LoolyTv",
+        "body": "Get the app on your Android phone or TV, then sign in with a parent Google account."
+      },
+      "pick": {
+        "title": "Pick playlists together",
+        "body": "Browse the curated catalog by topic, age and language, and save favourites to your family library."
+      },
+      "play": {
+        "title": "Hit play all",
+        "body": "One tap shuffles the library. Kids stay inside what you chose — nothing else."
+      }
+    }
+  },
   "parents": {
+    "eyebrow": "For grown-ups",
     "title": "Parents stay in the driver’s seat",
     "subtitle": "Family-safe by design — not as an afterthought.",
+    "note": "A calmer digital bubble: kids explore freely, parents breathe easy.",
     "items": {
       "google": {
         "title": "Parent Google sign-in",
@@ -73,6 +104,7 @@
     }
   },
   "waitlist": {
+    "eyebrow": "Launch is close",
     "title": "Be among the first 100 pre-testers",
     "subtitle": "Google Play asks us to test with real families before launch. Join the list — and opt in to hear when LoolyTv goes live.",
     "name": "Name (optional)",

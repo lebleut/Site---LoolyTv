@@ -1,4 +1,4 @@
-// File: /vercel/share/v0-project/src/app/[locale]/page.tsx
+// File: E:\React Projects\My TV - MVP\Site - LoolyTv\src\app\[locale]\page.tsx
 import * as entry from '../../../../src/app/[locale]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

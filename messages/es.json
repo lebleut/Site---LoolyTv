@@ -6,6 +6,7 @@
   "nav": {
     "home": "Inicio",
     "features": "Funciones",
+    "how": "Cómo funciona",
     "parents": "Padres",
     "waitlist": "Pre-test",
     "contact": "Contacto",
@@ -18,11 +19,20 @@
     "tagline": "Algo divertido está casi listo…",
     "lead": "Un catálogo infantil tranquilo y curado para Android móvil y TV — sin el laberinto abierto de YouTube. ¿Fecha de lanzamiento? Todavía es un secreto.",
     "ctaWaitlist": "Unirme a la lista de pre-test",
-    "ctaFeatures": "Ver qué incluye"
+    "ctaFeatures": "Ver qué incluye",
+    "trust": "Una aventura pensada para toda la familia",
+    "mascotAlt": "Looly, el caballito balancín que da la bienvenida a los peques",
+    "chipKids": "Made for Kids",
+    "chipAds": "Sin anuncios",
+    "chipDevices": "Móvil + TV"
   },
   "features": {
+    "eyebrow": "El universo Looly",
     "title": "Hecha para peques curiosos",
     "subtitle": "Lo que piden las familias — en un solo lugar.",
+    "prev": "Función anterior",
+    "next": "Función siguiente",
+    "goToSlide": "Ir a la función {number}",
     "items": {
       "catalog": {
         "title": "Catálogo Made for Kids curado",
@@ -50,9 +60,30 @@
       }
     }
   },
+  "howItWorks": {
+    "eyebrow": "Primeros pasos",
+    "title": "Listo en tres pasos",
+    "subtitle": "Sin configuraciones eternas — unos minutos con tu peque y ya está.",
+    "steps": {
+      "install": {
+        "title": "Instala LoolyTv",
+        "body": "Descarga la app en tu móvil o TV Android e inicia sesión con una cuenta de Google de padre o madre."
+      },
+      "pick": {
+        "title": "Elegid las listas juntos",
+        "body": "Explora el catálogo curado por tema, edad e idioma y guarda las favoritas en la biblioteca familiar."
+      },
+      "play": {
+        "title": "Pulsa «Reproducir todo»",
+        "body": "Un toque mezcla la biblioteca. Los peques se quedan dentro de lo que elegiste — nada más."
+      }
+    }
+  },
   "parents": {
+    "eyebrow": "Para los mayores",
     "title": "Los padres al volante",
     "subtitle": "Seguridad familiar desde el diseño.",
+    "note": "Una burbuja digital más tranquila: los peques exploran y los padres respiran.",
     "items": {
       "google": {
         "title": "Inicio de sesión Google del padre",
@@ -73,6 +104,7 @@
     }
   },
   "waitlist": {
+    "eyebrow": "El lanzamiento se acerca",
     "title": "Sé de los primeros 100 pre-testers",
     "subtitle": "Google Play nos pide probar con familias reales. Únete — y elige recibir aviso en el lanzamiento.",
     "name": "Nombre (opcional)",

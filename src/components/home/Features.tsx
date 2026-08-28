@@ -18,43 +18,37 @@ type FeatureKey = (typeof FEATURE_KEYS)[number];
 
 const FEATURE_IMAGES: Record<
   FeatureKey,
-  { src: string; fit: "cover" | "contain"; width: number; height: number }
+  { src: string; width: number; height: number }
 > = {
   catalog: {
-    src: "/brand/mascot.png",
-    fit: "contain",
-    width: 640,
-    height: 640,
+    src: "/brand/features/curated.jpeg",
+    width: 1200,
+    height: 900,
   },
   library: {
-    src: "/brand/family-scene.jpg",
-    fit: "cover",
-    width: 1400,
+    src: "/brand/features/sync.jpeg",
+    width: 1200,
     height: 900,
   },
   playall: {
-    src: "/brand/mascot-celebrate.png",
-    fit: "contain",
-    width: 640,
-    height: 640,
+    src: "/brand/features/mix.jpeg",
+    width: 1200,
+    height: 900,
   },
   topics: {
-    src: "/brand/mascot-hero.png",
-    fit: "contain",
-    width: 800,
-    height: 800,
+    src: "/brand/features/filters.jpeg",
+    width: 1200,
+    height: 900,
   },
   devices: {
-    src: "/brand/parents.jpg",
-    fit: "cover",
+    src: "/brand/features/devices.jpeg",
     width: 1200,
     height: 900,
   },
   ads: {
-    src: "/brand/hero-bg.jpg",
-    fit: "cover",
+    src: "/brand/features/noads.jpeg",
     width: 1200,
-    height: 800,
+    height: 900,
   },
 };
 
@@ -167,22 +161,14 @@ export function Features() {
                   }}
                   className={`${styles.card} ${styles[`tone${index % 5}`]}`}
                 >
-                  <div
-                    className={`${styles.media} ${
-                      image.fit === "contain" ? styles.mediaSoft : ""
-                    }`}
-                  >
+                  <div className={styles.media}>
                     <Image
                       src={image.src}
                       alt={t(`items.${key}.imageAlt`)}
                       width={image.width}
                       height={image.height}
                       sizes="(max-width: 720px) 84vw, (max-width: 1024px) 42vw, 28vw"
-                      className={
-                        image.fit === "contain"
-                          ? styles.mediaContain
-                          : styles.mediaCover
-                      }
+                      className={styles.mediaCover}
                     />
                   </div>
                   <div className={styles.copy}>

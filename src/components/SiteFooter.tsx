@@ -14,7 +14,7 @@ export async function SiteFooter() {
         <div className={styles.about}>
           <p className={styles.brand}>
             <Image
-              src="/brand/mark.png"
+              src="/brand/logo.png"
               alt=""
               aria-hidden="true"
               width={40}

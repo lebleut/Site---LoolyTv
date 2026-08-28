@@ -43,9 +43,6 @@ export async function HowItWorks() {
             <li key={key} className={styles.step}>
               <Reveal delay={index * 120}>
                 <div className={styles.card}>
-                  <span className={styles.number} aria-hidden="true">
-                    {index + 1}
-                  </span>
                   <span className={styles.icon} aria-hidden="true">
                     <svg viewBox="0 0 24 24">{ICONS[key]}</svg>
                   </span>

@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: Props) {
       images: ["/brand/og.jpg?v=20260827"],
     },
     icons: {
-      icon: [{ url: "/brand/icon.png", type: "image/png", sizes: "512x512" }],
+      icon: [{ url: "/brand/logo.png", type: "image/png", sizes: "192x192" }],
       apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
     },
     robots: { index: true, follow: true },
@@ -92,7 +92,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         name: "LoolyTv",
         url: SITE_URL,
         email: "loolytv@salinnovation.com",
-        logo: `${SITE_URL}/brand/icon.png`,
+        logo: `${SITE_URL}/brand/logo.png`,
       },
       {
         "@type": "SoftwareApplication",

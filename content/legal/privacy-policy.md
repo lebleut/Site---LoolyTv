@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** August 26, 2026
+**Last updated:** August 28, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -98,7 +98,7 @@ On LoolyTv.com, parents or guardians may voluntarily submit:
 - **Pre-tester waitlist:** email address, optional name, language preference, and choices to join Google Play closed testing and/or receive a one-time notice when the app launches
 - **Contact form:** name, email, optional subject, and message text
 
-These forms are intended for adults (parents/guardians), not for children. We do not use this information for advertising. We store submissions so our team can invite testers, answer support questions, and send the launch notice only if you opted in.
+These forms are intended for adults (parents/guardians), not for children. We do not use this information for advertising. We store submissions so our team can invite testers, answer support questions, and send the launch notice only if you opted in. After a successful waitlist signup, we may send a short **confirmation / thank-you email** from **loolytv@salinnovation.com** (via our email delivery provider) acknowledging your registration.
 
 ## How we use information
 
@@ -116,6 +116,7 @@ These forms are intended for adults (parents/guardians), not for children. We do
 We do not sell personal information. We may share limited data with:
 
 - Infrastructure providers that host our API and database (under contract)
+- Our email delivery provider (to send waitlist confirmation and other transactional messages you requested)
 - Google for Sign-In, YouTube playback, and catalog metadata
 - Authorities when required by law
 

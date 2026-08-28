@@ -77,4 +77,4 @@ We may update these Terms. The “Last updated” date will change when we do. C
 
 ## 12. Contact
 
-Questions about these Terms: **jamel@salinnovation.com**
+Questions about these Terms: **loolytv@salinnovation.com**

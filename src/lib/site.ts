@@ -4,4 +4,4 @@ export const SITE_URL =
 export const API_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "https://api.loolytv.com";
 
-export const SUPPORT_EMAIL = "jamel@salinnovation.com";
+export const SUPPORT_EMAIL = "loolytv@salinnovation.com";

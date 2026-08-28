@@ -15,7 +15,7 @@ Deleting your LoolyTv account removes from our servers:
 ### How
 
 1. In the App: **Options → Account → Delete account**, or
-2. Email **jamel@salinnovation.com** with subject “Delete LoolyTv account” and the Google email used to sign in.
+2. Email **loolytv@salinnovation.com** with subject “Delete LoolyTv account” and the Google email used to sign in.
 
 After account deletion, sign-in will create a new empty account if you register again with the same Google user.
 
@@ -41,7 +41,7 @@ Use the form on this page (when opened from [https://loolytv.com/legal/data-dele
 
 #### Option C — Email
 
-Email **jamel@salinnovation.com** with:
+Email **loolytv@salinnovation.com** with:
 
 - Subject: Data deletion request
 - Your installation ID (from Options → About)
@@ -57,4 +57,4 @@ In the App: **Options → About → Installation ID**.
 
 ## Contact
 
-**jamel@salinnovation.com**
+**loolytv@salinnovation.com**

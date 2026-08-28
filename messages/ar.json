@@ -129,7 +129,7 @@
     "submit": "إرسال",
     "submitting": "جارٍ الإرسال…",
     "success": "شكرًا! سنرد قريبًا.",
-    "error": "تعذّر الإرسال. أعد المحاولة أو راسل jamel@salinnovation.com.",
+    "error": "تعذّر الإرسال. أعد المحاولة أو راسل loolytv@salinnovation.com.",
     "consent": "أنا والد/ة أو وصي وأوافق على التواصل بشأن هذه الرسالة.",
     "errors": {
       "nameRequired": "يرجى إدخال اسمك.",
@@ -139,7 +139,7 @@
       "messageTooShort": "رسالتك قصيرة جدًا (3 أحرف على الأقل).",
       "consentRequired": "يرجى تأكيد أنك والد/ة أو وصي.",
       "invalidPayload": "بعض الحقول غير صالحة. راجع النموذج وحاول مجددًا.",
-      "network": "تعذّر الإرسال (خطأ في الشبكة أو الخادم). أعد المحاولة أو راسل jamel@salinnovation.com."
+      "network": "تعذّر الإرسال (خطأ في الشبكة أو الخادم). أعد المحاولة أو راسل loolytv@salinnovation.com."
     }
   },
   "footer": {

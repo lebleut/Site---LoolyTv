@@ -6,7 +6,7 @@ This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”)
 
 ## Who we are
 
-LoolyTv provides a curated catalog of YouTube content intended for children. Contact: **jamel@salinnovation.com** (replace with your public contact email before publishing).
+LoolyTv provides a curated catalog of YouTube content intended for children. Contact: **loolytv@salinnovation.com** (replace with your public contact email before publishing).
 
 ## Children and Families
 
@@ -141,7 +141,7 @@ Paths:
 
 1. **Options → Account** in the App (sign out / delete account), or
 2. Visit our public data-deletion page at [https://loolytv.com/legal/data-deletion](https://loolytv.com/legal/data-deletion), or
-3. Email **jamel@salinnovation.com** (include your waitlist/contact email if you want website form data removed)
+3. Email **loolytv@salinnovation.com** (include your waitlist/contact email if you want website form data removed)
 
 We will delete account and associated cloud records we can locate, except where retention is required for security, fraud prevention, or legal compliance.
 
@@ -159,4 +159,4 @@ We may update this Privacy Policy. The “Last updated” date will change when 
 
 ## Contact
 
-Questions about privacy: **jamel@salinnovation.com**
+Questions about privacy: **loolytv@salinnovation.com**

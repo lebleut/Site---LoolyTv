@@ -91,7 +91,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         "@type": "Organization",
         name: "LoolyTv",
         url: SITE_URL,
-        email: "jamel@salinnovation.com",
+        email: "loolytv@salinnovation.com",
         logo: `${SITE_URL}/brand/icon.png`,
       },
       {

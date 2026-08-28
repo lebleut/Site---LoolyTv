@@ -8,9 +8,9 @@ export async function HomeSections() {
   return (
     <>
       <Hero />
-      <Features />
       <HowItWorks />
       <Parents />
+      <Features />
       <Waitlist />
     </>
   );

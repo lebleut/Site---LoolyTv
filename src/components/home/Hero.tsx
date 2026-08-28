@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { HeroVideo } from "./HeroVideo";
 import styles from "./Hero.module.css";
 
 export async function Hero() {
@@ -30,16 +31,7 @@ export async function Hero() {
             <span className={styles.dot}>.</span>
           </h1>
 
-          <div className={styles.videoWrap}>
-            <video
-              className={styles.video}
-              src="/brand/calm-parent.mp4"
-              controls
-              playsInline
-              preload="metadata"
-              aria-label={t("videoLabel")}
-            />
-          </div>
+          <HeroVideo />
 
           <p className={styles.lead}>{t("lead")}</p>
 

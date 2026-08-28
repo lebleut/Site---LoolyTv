@@ -37,27 +37,33 @@
     "items": {
       "catalog": {
         "title": "Curated Made for Kids catalog",
-        "body": "Search and browse playlists our team reviews — not the open web."
+        "body": "Search and browse playlists our team reviews — not the open web.",
+        "imageAlt": "Looly mascot welcoming kids to a curated catalog"
       },
       "library": {
         "title": "Family library that syncs",
-        "body": "Save playlists once; they follow you across phones and Android TV."
+        "body": "Save playlists once; they follow you across phones and Android TV.",
+        "imageAlt": "Family watching together on the couch"
       },
       "playall": {
         "title": "Play all & smart mix",
-        "body": "One tap to shuffle the library with optional duration caps."
+        "body": "One tap to shuffle the library with optional duration caps.",
+        "imageAlt": "Looly celebrating ready-to-play moments"
       },
       "topics": {
         "title": "Topics, age & language filters",
-        "body": "Find the right vibe fast — by topic, age band, language, and more."
+        "body": "Find the right vibe fast — by topic, age band, language, and more.",
+        "imageAlt": "Looly helping parents pick the right topics"
       },
       "devices": {
         "title": "Phone + Android TV",
-        "body": "Remote-friendly TV UI and a cozy phone experience."
+        "body": "Remote-friendly TV UI and a cozy phone experience.",
+        "imageAlt": "Parent and child using LoolyTv at home"
       },
       "ads": {
         "title": "No ads in the app",
-        "body": "We don’t show advertising inside LoolyTv."
+        "body": "We don’t show advertising inside LoolyTv.",
+        "imageAlt": "Calm LoolyTv atmosphere without ads"
       }
     }
   },

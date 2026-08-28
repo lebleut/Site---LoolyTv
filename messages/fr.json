@@ -37,27 +37,33 @@
     "items": {
       "catalog": {
         "title": "Catalogue Made for Kids curaté",
-        "body": "Recherchez dans des playlists que notre équipe vérifie — pas le web ouvert."
+        "body": "Recherchez dans des playlists que notre équipe vérifie — pas le web ouvert.",
+        "imageAlt": "La mascotte Looly accueille les enfants dans un catalogue curaté"
       },
       "library": {
         "title": "Bibliothèque familiale synchronisée",
-        "body": "Enregistrez une fois ; ça suit téléphone et Android TV."
+        "body": "Enregistrez une fois ; ça suit téléphone et Android TV.",
+        "imageAlt": "Famille regardant ensemble sur le canapé"
       },
       "playall": {
         "title": "Tout lire & mix intelligent",
-        "body": "Un geste pour mélanger la bibliothèque, avec plafond de durée optionnel."
+        "body": "Un geste pour mélanger la bibliothèque, avec plafond de durée optionnel.",
+        "imageAlt": "Looly qui célèbre un moment prêt à jouer"
       },
       "topics": {
         "title": "Topics, âge et langues",
-        "body": "Filtrez vite par thème, tranche d’âge, langue, et plus."
+        "body": "Filtrez vite par thème, tranche d’âge, langue, et plus.",
+        "imageAlt": "Looly qui aide les parents à choisir les bons thèmes"
       },
       "devices": {
         "title": "Téléphone + Android TV",
-        "body": "UI télécommande pour la TV, expérience confortable sur mobile."
+        "body": "UI télécommande pour la TV, expérience confortable sur mobile.",
+        "imageAlt": "Parent et enfant utilisant LoolyTv à la maison"
       },
       "ads": {
         "title": "Sans pubs dans l’app",
-        "body": "LoolyTv n’affiche pas de publicité dans l’application."
+        "body": "LoolyTv n’affiche pas de publicité dans l’application.",
+        "imageAlt": "Ambiance calme LoolyTv sans publicité"
       }
     }
   },

@@ -28,12 +28,12 @@
 }
 
 .card {
-  flex: 0 0 min(84%, 20rem);
+  flex: 0 0 min(86%, 22rem);
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  padding: 1.6rem 1.5rem 1.75rem;
+  overflow: hidden;
+  padding: 0;
   border-radius: var(--radius);
   background: var(--color-surface);
   border: 2px solid var(--color-border);
@@ -47,36 +47,47 @@
   box-shadow: 0 20px 38px rgba(30, 42, 74, 0.13);
 }
 
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--tone-soft);
+}
+
+.mediaSoft {
+  display: grid;
+  place-items: center;
+}
+
+.mediaCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mediaContain {
+  width: 72%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.15rem 1.25rem 1.35rem;
+}
+
 .card h3 {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
 }
 
 .card p {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.98rem;
-}
-
-.icon {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 0.35rem;
-  border-radius: 1rem;
-  background: var(--tone-soft);
-  color: var(--tone);
-}
-
-.icon svg {
-  width: 1.6rem;
-  height: 1.6rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  font-size: 0.96rem;
+  line-height: 1.45;
 }
 
 .tone0 {

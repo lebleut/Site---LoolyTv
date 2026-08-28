@@ -37,27 +37,33 @@
     "items": {
       "catalog": {
         "title": "Catálogo Made for Kids curado",
-        "body": "Busca en listas que revisamos — no en la web abierta."
+        "body": "Busca en listas que revisamos — no en la web abierta.",
+        "imageAlt": "La mascota Looly da la bienvenida a un catálogo curado"
       },
       "library": {
         "title": "Biblioteca familiar sincronizada",
-        "body": "Guarda listas una vez; te siguen en móvil y Android TV."
+        "body": "Guarda listas una vez; te siguen en móvil y Android TV.",
+        "imageAlt": "Familia viendo juntos en el sofá"
       },
       "playall": {
         "title": "Reproducir todo y mezcla",
-        "body": "Un toque para mezclar la biblioteca con límite de duración opcional."
+        "body": "Un toque para mezclar la biblioteca con límite de duración opcional.",
+        "imageAlt": "Looly celebrando un momento listo para reproducir"
       },
       "topics": {
         "title": "Temas, edad e idioma",
-        "body": "Filtra rápido por tema, edad, idioma y más."
+        "body": "Filtra rápido por tema, edad, idioma y más.",
+        "imageAlt": "Looly ayudando a elegir los temas adecuados"
       },
       "devices": {
         "title": "Móvil + Android TV",
-        "body": "UI con mando para TV y experiencia cómoda en el teléfono."
+        "body": "UI con mando para TV y experiencia cómoda en el teléfono.",
+        "imageAlt": "Padre e hijo usando LoolyTv en casa"
       },
       "ads": {
         "title": "Sin anuncios en la app",
-        "body": "LoolyTv no muestra publicidad dentro de la aplicación."
+        "body": "LoolyTv no muestra publicidad dentro de la aplicación.",
+        "imageAlt": "Ambiente tranquilo de LoolyTv sin anuncios"
       }
     }
   },

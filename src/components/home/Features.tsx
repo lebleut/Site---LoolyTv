@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./Features.module.css";
@@ -13,44 +14,48 @@ const FEATURE_KEYS = [
   "ads",
 ] as const;
 
-const ICONS: Record<(typeof FEATURE_KEYS)[number], React.ReactNode> = {
-  catalog: (
-    <>
-      <rect x="3" y="3" width="7" height="7" rx="2" />
-      <rect x="14" y="3" width="7" height="7" rx="2" />
-      <rect x="3" y="14" width="7" height="7" rx="2" />
-      <rect x="14" y="14" width="7" height="7" rx="2" />
-    </>
-  ),
-  library: (
-    <>
-      <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z" />
-    </>
-  ),
-  playall: (
-    <>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M10.5 8.5 16 12l-5.5 3.5Z" />
-    </>
-  ),
-  topics: (
-    <>
-      <path d="M12 3l2.2 4.9 5.3.6-3.9 3.6 1 5.2-4.6-2.6-4.6 2.6 1-5.2L4.5 8.5l5.3-.6Z" />
-    </>
-  ),
-  devices: (
-    <>
-      <rect x="2" y="4" width="14" height="10" rx="2" />
-      <path d="M7 18h6" />
-      <rect x="17" y="10" width="5" height="10" rx="1.6" />
-    </>
-  ),
-  ads: (
-    <>
-      <path d="M12 21s-7-4.2-7-9.4V6.2l7-3.2 7 3.2v5.4C19 16.8 12 21 12 21Z" />
-      <path d="m9.2 11.8 2 2 3.6-3.8" />
-    </>
-  ),
+type FeatureKey = (typeof FEATURE_KEYS)[number];
+
+const FEATURE_IMAGES: Record<
+  FeatureKey,
+  { src: string; fit: "cover" | "contain"; width: number; height: number }
+> = {
+  catalog: {
+    src: "/brand/mascot.png",
+    fit: "contain",
+    width: 640,
+    height: 640,
+  },
+  library: {
+    src: "/brand/family-scene.jpg",
+    fit: "cover",
+    width: 1400,
+    height: 900,
+  },
+  playall: {
+    src: "/brand/mascot-celebrate.png",
+    fit: "contain",
+    width: 640,
+    height: 640,
+  },
+  topics: {
+    src: "/brand/mascot-hero.png",
+    fit: "contain",
+    width: 800,
+    height: 800,
+  },
+  devices: {
+    src: "/brand/parents.jpg",
+    fit: "cover",
+    width: 1200,
+    height: 900,
+  },
+  ads: {
+    src: "/brand/hero-bg.jpg",
+    fit: "cover",
+    width: 1200,
+    height: 800,
+  },
 };
 
 export function Features() {
@@ -151,22 +156,42 @@ export function Features() {
             tabIndex={0}
             aria-label={t("title")}
           >
-            {FEATURE_KEYS.map((key, index) => (
-              <li
-                key={key}
-                data-index={index}
-                ref={(node) => {
-                  cardRefs.current[index] = node;
-                }}
-                className={`${styles.card} ${styles[`tone${index % 5}`]}`}
-              >
-                <span className={styles.icon} aria-hidden="true">
-                  <svg viewBox="0 0 24 24">{ICONS[key]}</svg>
-                </span>
-                <h3>{t(`items.${key}.title`)}</h3>
-                <p>{t(`items.${key}.body`)}</p>
-              </li>
-            ))}
+            {FEATURE_KEYS.map((key, index) => {
+              const image = FEATURE_IMAGES[key];
+              return (
+                <li
+                  key={key}
+                  data-index={index}
+                  ref={(node) => {
+                    cardRefs.current[index] = node;
+                  }}
+                  className={`${styles.card} ${styles[`tone${index % 5}`]}`}
+                >
+                  <div
+                    className={`${styles.media} ${
+                      image.fit === "contain" ? styles.mediaSoft : ""
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={t(`items.${key}.imageAlt`)}
+                      width={image.width}
+                      height={image.height}
+                      sizes="(max-width: 720px) 84vw, (max-width: 1024px) 42vw, 28vw"
+                      className={
+                        image.fit === "contain"
+                          ? styles.mediaContain
+                          : styles.mediaCover
+                      }
+                    />
+                  </div>
+                  <div className={styles.copy}>
+                    <h3>{t(`items.${key}.title`)}</h3>
+                    <p>{t(`items.${key}.body`)}</p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           <button

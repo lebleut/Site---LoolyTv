@@ -49,8 +49,25 @@
   color: var(--color-accent);
 }
 
+.videoWrap {
+  margin: 1.15rem 0 0;
+  max-width: 34rem;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  background: #0f172a;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 .lead {
-  margin: 1.25rem 0 2rem;
+  margin: 1.15rem 0 2rem;
   max-width: 34rem;
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   color: var(--color-muted);
@@ -206,6 +223,10 @@
   }
 
   .lead {
+    margin-inline: auto;
+  }
+
+  .videoWrap {
     margin-inline: auto;
   }
 

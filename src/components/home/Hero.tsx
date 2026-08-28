@@ -30,6 +30,17 @@ export async function Hero() {
             <span className={styles.dot}>.</span>
           </h1>
 
+          <div className={styles.videoWrap}>
+            <video
+              className={styles.video}
+              src="/brand/calm-parent.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              aria-label={t("videoLabel")}
+            />
+          </div>
+
           <p className={styles.lead}>{t("lead")}</p>
 
           <div className={styles.ctaRow}>

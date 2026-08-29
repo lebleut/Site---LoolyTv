@@ -1,6 +1,6 @@
 # LoolyTv Data Deletion
 
-**Last updated:** August 26, 2026
+**Last updated:** August 29, 2026
 
 LoolyTv uses a **parent Google account**. You can delete your account and request deletion of other server-side data as described below.
 
@@ -11,6 +11,8 @@ Deleting your LoolyTv account removes from our servers:
 - Your parent profile (email / Google subject link, child nickname, birth year, language, country)
 - Synced library playlist IDs and app options
 - Active and revoked sessions for that account
+
+Account deletion does **not** remove **aggregated popular search queries** used for autocomplete. Those records are not tied to your account (they store only a normalized query string, country code, and counts).
 
 ### How
 

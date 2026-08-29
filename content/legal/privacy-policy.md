@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** August 28, 2026
+**Last updated:** August 29, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -60,16 +60,26 @@ When a parent submits a content suggestion or a content report, we may receive:
 - Country and language preferences
 - App version
 
-### 6. Search metrics (no raw child search text)
+### 6. Search metrics and autocomplete
 
-When the App searches our curated catalog, our servers may log:
+When a parent searches our curated catalog, our servers may:
 
-- Approximate query length (not the raw text typed by a child)
+**Analytics (hashed):**
+
+- Approximate query length
 - A non-reversible hash of the query for aggregate analytics
 - Selected topic, age filter, language filter, and result count
 - Timestamp
 
-We do **not** store the raw search text entered in the App.
+**Popular search aggregates (for autocomplete suggestions):**
+
+- A normalized copy of successful keyword queries (queries that returned enough catalog results)
+- Country code from the device locale (used to rank suggestions for that region)
+- Aggregate hit count and last result count
+
+These popular-query records are **not linked to a parent account or child profile**. They are used only to power search autocomplete (similar queries and catalog channel titles). We do not use them for advertising or profiling children.
+
+Exact YouTube IDs and URLs are not stored in the popular-query list.
 
 ### 7. User-generated content
 
@@ -98,12 +108,13 @@ On LoolyTv.com, parents or guardians may voluntarily submit:
 - **Pre-tester waitlist:** email address, optional name, language preference, and choices to join Google Play closed testing and/or receive a one-time notice when the app launches
 - **Contact form:** name, email, optional subject, and message text
 
-These forms are intended for adults (parents/guardians), not for children. We do not use this information for advertising. We store submissions so our team can invite testers, answer support questions, and send the launch notice only if you opted in. After a successful waitlist signup, we may send a short **confirmation / thank-you email** from **loolytv@salinnovation.com** (via our email delivery provider) acknowledging your registration.
+These forms are intended for adults (parents/guardians), not for children. We do not use this information for advertising. We store submissions so our team can invite testers, answer support questions, and send the launch notice only if you opted in.
 
 ## How we use information
 
 - Authenticate the parent and sync library membership and options across devices
 - Operate and improve the curated catalog
+- Power search autocomplete from aggregated popular queries
 - Moderate suggestions and reports
 - Prevent spam and abuse (rate limits)
 - Diagnose technical issues
@@ -116,14 +127,14 @@ These forms are intended for adults (parents/guardians), not for children. We do
 We do not sell personal information. We may share limited data with:
 
 - Infrastructure providers that host our API and database (under contract)
-- Our email delivery provider (to send waitlist confirmation and other transactional messages you requested)
 - Google for Sign-In, YouTube playback, and catalog metadata
 - Authorities when required by law
 
 ## Retention
 
 - Account profile, library playlist IDs, and options: kept while the account exists
-- Search metrics: purged after **90 days**
+- Hashed search metrics: purged after **90 days**
+- Popular search aggregates (autocomplete): kept while useful for suggestions; may be pruned when inactive
 - Resolved content reports: purged after **180 days**
 - Pending suggestions/reports: kept until reviewed, then subject to the same retention
 - Sessions: revoked sessions are invalidated; you may revoke all devices from the App

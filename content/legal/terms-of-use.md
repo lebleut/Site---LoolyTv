@@ -1,6 +1,6 @@
 # LoolyTv Terms of Use
 
-**Last updated:** August 26, 2026
+**Last updated:** August 29, 2026
 
 These Terms of Use (“Terms”) govern your use of the LoolyTv Android application, the LoolyTv.com website, and related services (“LoolyTv” or “the App”). By using the App or website, you agree to these Terms.
 
@@ -29,6 +29,8 @@ You agree not to:
 - Use the App to scrape, reverse engineer, or overload our services
 - Misrepresent content as Made for Kids when it is not
 - Share your parent account credentials in a way that undermines parental controls
+
+Catalog search may show autocomplete suggestions based on aggregated popular queries and public channel titles. Suggestions are not personalized to a child profile.
 
 ## 5. User-generated content (suggestions and reports)
 

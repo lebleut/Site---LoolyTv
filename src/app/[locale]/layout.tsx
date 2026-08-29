@@ -114,6 +114,17 @@ export default async function LocaleLayout({ children, params }: Props) {
   // references inside --font-display / --font-body resolve as invalid.
   return (
     <html lang={locale} dir={dir} className={fontVars}>
+      <head>
+      {/* Google tag (gtag.js) */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8KFN1XGK9"></script>
+      <script>
+        {`window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-F8KFN1XGK9');`}
+      </script>
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <a className="skip-link" href="#main">

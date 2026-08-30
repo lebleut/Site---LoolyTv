@@ -1,6 +1,6 @@
 # LoolyTv Terms of Use
 
-**Last updated:** August 29, 2026
+**Last updated:** August 30, 2026
 
 These Terms of Use (“Terms”) govern your use of the LoolyTv Android application, the LoolyTv.com website, and related services (“LoolyTv” or “the App”). By using the App or website, you agree to these Terms.
 
@@ -10,14 +10,15 @@ LoolyTv is a curated catalog of video playlists intended for children and famili
 
 ## 2. Age and parental responsibility
 
-The App is designed for children. A **parent or guardian** must sign in with a Google account, complete setup, supervise use, configure parental gate features, and decide which curated playlists are added to the library. Parents are responsible for suggestions and reports submitted from the device.
+The App is designed for children. A **parent or guardian** must create the account (Google Sign-In), complete setup, supervise use, and decide which curated playlists are added to the library. Additional devices may be linked with a pairing code. Devices linked as **child** cannot add or remove playlists and do not show the parental exit gate. Parents are responsible for suggestions and reports submitted from parent devices.
 
 ## 3. Accounts and sync
 
-- Access requires a parent Google Sign-In.
+- A parent Google Sign-In creates the account. Additional devices can be linked with a short-lived pairing code (no Google Sign-In required on the linked device).
+- Linked sessions may be **parent** or **child**. Child sessions are pull-only for the cloud library.
 - We sync across signed-in devices: the ordered list of library playlist IDs and app options (for example theme, language, captions, playback mix).
 - Playlist video lists, thumbnails, and watch progress remain on each device in this version.
-- You may sign out of one device or all devices. Deleting your account removes cloud profile and library membership data as described in the Privacy Policy and Data deletion page.
+- You may sign out of one device or all devices from Multi-devices / Options. Deleting your account removes cloud profile and library membership data as described in the Privacy Policy and Data deletion page.
 
 ## 4. Acceptable use
 

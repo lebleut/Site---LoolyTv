@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** August 29, 2026
+**Last updated:** August 30, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -28,7 +28,7 @@ To sign in, a parent authenticates with Google. We receive from Google (via ID t
 - Email address
 - Display name (when provided by Google)
 
-We store a session for the signed-in parent so the App can sync the family library across devices. You can sign out of this device or revoke all sessions from Options.
+We store a session for each signed-in device so the App can sync the family library. A parent may also link additional devices with a short-lived **pairing code** (and optional QR deep link) without repeating Google Sign-In on that device. Each linked session has a role of **parent** or **child**. Child sessions can play the library but cannot add or remove playlists or change cloud library membership. You can review devices, revoke individual sessions, or revoke all sessions from Multi-devices in Options. The App does **not** request camera permission for pairing; parents may optionally scan the QR with the phone’s system camera.
 
 ### 2. Family / child profile (parent-provided)
 

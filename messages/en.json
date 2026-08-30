@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "LoolyTv — Curated kids TV, coming soon",
-    "description": "LoolyTv is a curated Made-for-Kids video catalog for families on Android phone and TV. Join the pre-launch tester list."
+    "description": "LoolyTv is a curated Made-for-Kids video catalog for families on Android phone, tablet, and TV. Join the pre-launch tester list."
   },
   "nav": {
     "home": "Home",
@@ -17,7 +17,7 @@
   "hero": {
     "brand": "LoolyTv",
     "tagline": "Something fun is almost ready…",
-    "lead": "A calm, curated kids catalog for Android phone and TV — no open YouTube rabbit holes. Launch date? Still a secret.",
+    "lead": "Carefully chosen kids videos for Android phone, tablet, and TV. Calm, curated, no wild scrolling. Launch? Still a little secret.",
     "ctaWaitlist": "Join the pre-tester list",
     "ctaFeatures": "See what’s inside",
     "trust": "Made with care for the whole family",
@@ -26,7 +26,7 @@
     "playVideo": "Play preview video",
     "chipKids": "Made for Kids",
     "chipAds": "No ads",
-    "chipDevices": "Phone + TV"
+    "chipDevices": "Phone · Tablet · TV"
   },
   "features": {
     "eyebrow": "Inside Looly",
@@ -43,7 +43,7 @@
       },
       "library": {
         "title": "Family library that syncs",
-        "body": "Save playlists once; they follow you across phones and Android TV.",
+        "body": "Save playlists once; they follow you on phone, tablet, and TV.",
         "imageAlt": "Family watching together on the couch"
       },
       "playall": {
@@ -57,8 +57,8 @@
         "imageAlt": "Looly helping parents pick the right topics"
       },
       "devices": {
-        "title": "Phone + Android TV",
-        "body": "Remote-friendly TV UI and a cozy phone experience.",
+        "title": "Many screens, one family",
+        "body": "Link phone, tablet, and TV with a simple code — the same library everywhere, without starting over.",
         "imageAlt": "Parent and child using LoolyTv at home"
       },
       "ads": {
@@ -75,7 +75,7 @@
     "steps": {
       "install": {
         "title": "Install LoolyTv",
-        "body": "Get the app on your Android phone or TV, then sign in with a parent Google account."
+        "body": "Get the app on your Android phone, tablet, or TV, then sign in with a parent Google account."
       },
       "pick": {
         "title": "Pick playlists together",
@@ -97,6 +97,10 @@
       "google": {
         "title": "Parent Google sign-in",
         "body": "A parent account unlocks sync and family profile setup."
+      },
+      "multidevice": {
+        "title": "Every screen at home",
+        "body": "Add more devices with a short code — living-room TV, bedroom tablet, same kids space."
       },
       "gate": {
         "title": "Parental math gate",

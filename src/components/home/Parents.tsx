@@ -3,13 +3,26 @@ import { getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/Reveal";
 import styles from "./Parents.module.css";
 
-const PARENT_KEYS = ["google", "gate", "suggest", "privacy"] as const;
+const PARENT_KEYS = [
+  "google",
+  "multidevice",
+  "gate",
+  "suggest",
+  "privacy",
+] as const;
 
 const ICONS: Record<(typeof PARENT_KEYS)[number], React.ReactNode> = {
   google: (
     <>
       <circle cx="12" cy="8.5" r="3.8" />
       <path d="M4.5 20.5a7.5 7.5 0 0 1 15 0" />
+    </>
+  ),
+  multidevice: (
+    <>
+      <rect x="2.5" y="7" width="9" height="13" rx="1.6" />
+      <rect x="12.5" y="4" width="9" height="13" rx="1.6" />
+      <path d="M7 17.5h0.01M17 14.5h0.01" />
     </>
   ),
   gate: (

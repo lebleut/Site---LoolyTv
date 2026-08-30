@@ -100,7 +100,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         applicationCategory: "EntertainmentApplication",
         operatingSystem: "Android",
         description:
-          "Curated Made-for-Kids video catalog for families on Android phone and TV.",
+          "Curated Made-for-Kids video catalog for families on Android phone, tablet, and TV.",
         offers: {
           "@type": "Offer",
           price: "0",

@@ -1,6 +1,6 @@
 # LoolyTv Terms of Use
 
-**Last updated:** August 30, 2026
+**Last updated:** August 31, 2026
 
 These Terms of Use (“Terms”) govern your use of the LoolyTv Android application, the LoolyTv.com website, and related services (“LoolyTv” or “the App”). By using the App or website, you agree to these Terms.
 
@@ -14,7 +14,8 @@ The App is designed for children. A **parent or guardian** must create the accou
 
 ## 3. Accounts and sync
 
-- A parent Google Sign-In creates the account. Additional devices can be linked with a short-lived pairing code (no Google Sign-In required on the linked device).
+- A parent **Google Sign-In** creates the account. After that, a parent may optionally set a password and sign in later with **email and password**.
+- Additional devices can be linked with a short-lived pairing code (no Google Sign-In required on the linked device).
 - Linked sessions may be **parent** or **child**. Child sessions are pull-only for the cloud library.
 - We sync across signed-in devices: the ordered list of library playlist IDs and app options (for example theme, language, captions, playback mix).
 - Playlist video lists, thumbnails, and watch progress remain on each device in this version.
@@ -64,7 +65,7 @@ Videos remain subject to YouTube’s terms and the rights of their uploaders. Av
 
 ## 8. Payments
 
-The App does not sell subscriptions or in-app purchases at this time. A free parent Google account is required to sign in.
+The App does not sell subscriptions or in-app purchases at this time. A free parent Google account is required to **create** an account. After that, a parent may also sign in with email and password if they set one.
 
 ## 9. Disclaimer
 

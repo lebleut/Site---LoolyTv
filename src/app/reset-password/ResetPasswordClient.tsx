@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState, type CSSProperties } from "react";
 import { API_URL } from "@/lib/site";
 
 type Props = {
@@ -160,7 +160,7 @@ export function ResetPasswordClient({ token }: Props) {
   );
 }
 
-const inputStyle: React.CSSProperties = {
+const inputStyle: CSSProperties = {
   width: "100%",
   padding: "10px 12px",
   borderRadius: 8,

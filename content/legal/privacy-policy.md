@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** August 30, 2026
+**Last updated:** August 31, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -12,7 +12,8 @@ LoolyTv provides a curated catalog of YouTube content intended for children. Con
 
 LoolyTv targets children and complies with applicable children’s privacy laws, including the U.S. Children’s Online Privacy Protection Act (COPPA) and the EU General Data Protection Regulation (GDPR) where they apply.
 
-- A **parent or guardian** signs in with a **Google account** to use the App.
+- A **parent or guardian** signs in with a **Google account** to create the App account (required for first registration).
+- After Google sign-in, a parent may optionally create a **password** for the same account and later sign in with email and password.
 - We do **not** show advertising in the App.
 - We do **not** sell personal information.
 - We minimize data collected about children. We do not use permanent hardware identifiers (such as Android Advertising ID or the device ANDROID_ID).
@@ -22,11 +23,13 @@ LoolyTv targets children and complies with applicable children’s privacy laws,
 
 ### 1. Parent Google account
 
-To sign in, a parent authenticates with Google. We receive from Google (via ID token verification):
+To create an account, a parent authenticates with Google. We receive from Google (via ID token verification):
 
 - Google account subject identifier
 - Email address
 - Display name (when provided by Google)
+
+A parent who has already signed in with Google may set an optional account **password**. We store only a **one-way password hash** (not the password itself). Password reset emails contain a short-lived link and do not include the password. Email/password sign-in is an alternate way to open an existing Google-linked parent account; it does not create a new account without Google.
 
 We store a session for each signed-in device so the App can sync the family library. A parent may also link additional devices with a short-lived **pairing code** (and optional QR deep link) without repeating Google Sign-In on that device. Each linked session has a role of **parent** or **child**. Child sessions can play the library but cannot add or remove playlists or change cloud library membership. You can review devices, revoke individual sessions, or revoke all sessions from Multi-devices in Options. The App does **not** request camera permission for pairing; parents may optionally scan the QR with the phone’s system camera.
 
@@ -98,7 +101,7 @@ The App stores locally:
 ### 9. YouTube and third parties
 
 - Playback uses an embedded YouTube player. YouTube (Google) may process technical data according to Google’s policies.
-- Sign-in uses **Google Sign-In / Identity**. Google’s privacy policy also applies to authentication.
+- Sign-in uses **Google Sign-In / Identity** to create the account. Google’s privacy policy also applies to that authentication. Optional email/password sign-in uses credentials stored as hashed secrets on our servers.
 - We only serve videos that our backend has verified as Made for Kids when available.
 
 ### 10. Website waitlist and contact forms (parents / guardians)

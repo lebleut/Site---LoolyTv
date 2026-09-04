@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { markdownToHtml } from "@/lib/markdown";
@@ -23,9 +24,14 @@ export default function DataDeletionPage() {
         dangerouslySetInnerHTML={{ __html: markdownToHtml(md) }}
       />
       <section className={styles.formBox}>
-        <h2>Request deletion</h2>
-        <p>Paste the installation ID from LoolyTv Options → About.</p>
-        <DataDeletionForm />
+        <h2>Request deletion by installation ID</h2>
+        <p>
+          Paste the installation ID from LoolyTv Options → About (or open this
+          page from the app — the ID is filled in automatically).
+        </p>
+        <Suspense fallback={<p>Loading form…</p>}>
+          <DataDeletionForm />
+        </Suspense>
       </section>
     </>
   );

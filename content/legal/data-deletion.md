@@ -1,6 +1,6 @@
 # LoolyTv Data Deletion
 
-**Last updated:** August 31, 2026
+**Last updated:** September 4, 2026
 
 LoolyTv uses a **parent Google account** to create the family profile. Parents may also set an optional password for email sign-in. Additional devices may be linked with a pairing code. You can delete your account and request deletion of other server-side data as described below.
 
@@ -36,7 +36,9 @@ We may retain limited records when required for security, fraud prevention, or l
 
 #### Option A — In the App
 
-Open **Options → About → Request data deletion**. The App can include your installation ID automatically.
+Open **Options → About → Request data deletion**. The App opens this page with your installation ID already filled in.
+
+If you never submitted a content report from that device, the result will say there was nothing to delete — that means the request succeeded and no report records exist for that ID.
 
 #### Option B — Public form
 

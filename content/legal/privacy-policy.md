@@ -54,7 +54,7 @@ We store on our servers (linked to the parent account):
 
 ### 4. Installation identifier (random)
 
-When you first open the App, we generate a random installation ID stored on the device. This ID may still be used with content reports for rate-limiting. It is **not** derived from ANDROID_ID, advertising ID, IMEI, or other hardware identifiers.
+When you first open the App, we generate a random installation ID stored on the device. The App may send this ID with API requests so we can apply **per-device rate limits** and prevent abuse. The same ID is also used with content reports for rate-limiting. It is **not** derived from ANDROID_ID, advertising ID, IMEI, or other hardware identifiers. If a request does not include this ID, we may fall back to the signed-in account or the network IP address for the same purpose.
 
 ### 5. Device context (with suggestions and reports)
 
@@ -121,7 +121,7 @@ These forms are intended for adults (parents/guardians), not for children. We do
 - Operate and improve the curated catalog
 - Power search autocomplete from aggregated popular queries
 - Moderate suggestions and reports
-- Prevent spam and abuse (rate limits)
+- Prevent spam and abuse (rate limits based on the installation ID, signed-in account, and/or IP address)
 - Diagnose technical issues
 - Provide customer support and operate **internal admin tools** (restricted staff access only). Authorized staff may view parent email, parent display name, child name or nickname, account and library metadata, and whether a linked device is currently signed in, so we can identify a family, respond to parent requests, and keep the service secure
 - Manage pre-launch tester invitations and optional launch notifications requested on the website

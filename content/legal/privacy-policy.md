@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** August 31, 2026
+**Last updated:** September 5, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -17,7 +17,7 @@ LoolyTv targets children and complies with applicable children’s privacy laws,
 - We do **not** show advertising in the App.
 - We do **not** sell personal information.
 - We minimize data collected about children. We do not use permanent hardware identifiers (such as Android Advertising ID or the device ANDROID_ID).
-- Child profile fields (child’s first name or nickname and birth year) are provided by the parent during setup and are used only to personalize the family profile—not for advertising.
+- Child profile fields (child’s first name or nickname and birth year) are provided by the parent during setup. We use them to personalize the family profile and to operate support and service administration—not for advertising.
 
 ## Information we collect
 
@@ -32,6 +32,8 @@ To create an account, a parent authenticates with Google. We receive from Google
 A parent who has already signed in with Google may set an optional account **password**. We store only a **one-way password hash** (not the password itself). Password reset emails contain a short-lived link and do not include the password. Email/password sign-in is an alternate way to open an existing Google-linked parent account; it does not create a new account without Google.
 
 We store a session for each signed-in device so the App can sync the family library. A parent may also link additional devices with a short-lived **pairing code** (and optional QR deep link) without repeating Google Sign-In on that device. Each linked session has a role of **parent** or **child**. Child sessions can play the library but cannot add or remove playlists or change cloud library membership. You can review devices, revoke individual sessions, or revoke all sessions from Multi-devices in Options. The App does **not** request camera permission for pairing; parents may optionally scan the QR with the phone’s system camera.
+
+While a device is signed in, we may keep a short-lived **online presence** signal (session id, parent/child role, and last-seen time) so we can operate the service and help with support. This signal is not shown to other families or to children in the App, and it is not used for advertising.
 
 ### 2. Family / child profile (parent-provided)
 
@@ -121,9 +123,12 @@ These forms are intended for adults (parents/guardians), not for children. We do
 - Moderate suggestions and reports
 - Prevent spam and abuse (rate limits)
 - Diagnose technical issues
+- Provide customer support and operate **internal admin tools** (restricted staff access only). Authorized staff may view parent email, parent display name, child name or nickname, account and library metadata, and whether a linked device is currently signed in, so we can identify a family, respond to parent requests, and keep the service secure
 - Manage pre-launch tester invitations and optional launch notifications requested on the website
 - Respond to contact messages submitted on the website
 - Comply with legal obligations
+
+These identifiers are never shown to other families or to children inside the App. We do not use them for advertising or to profile children.
 
 ## Sharing
 
@@ -162,7 +167,7 @@ We will delete account and associated cloud records we can locate, except where 
 
 ## Security
 
-We use HTTPS for network traffic, API keys for app-to-server access, signed user sessions, and access controls for admin tools. No method of transmission or storage is 100% secure.
+We use HTTPS for network traffic, API keys for app-to-server access, signed user sessions, and restricted access controls for internal admin tools. Admin tools are not part of the App shown to children or other families. No method of transmission or storage is 100% secure.
 
 ## International users
 

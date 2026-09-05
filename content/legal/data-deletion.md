@@ -1,6 +1,6 @@
 # LoolyTv Data Deletion
 
-**Last updated:** September 4, 2026
+**Last updated:** September 5, 2026
 
 LoolyTv uses a **parent Google account** to create the family profile. Parents may also set an optional password for email sign-in. Additional devices may be linked with a pairing code. You can delete your account and request deletion of other server-side data as described below.
 
@@ -8,10 +8,12 @@ LoolyTv uses a **parent Google account** to create the family profile. Parents m
 
 Deleting your LoolyTv account removes from our servers:
 
-- Your parent profile (email / Google subject link, optional password hash, child nickname, birth year, language, country)
+- Your parent profile (email / Google subject link, optional password hash, parent display name, child nickname, birth year, language, country)
 - Synced library playlist IDs and app options
-- Active and revoked sessions for that account (including paired devices)
+- Active and revoked sessions for that account (including paired devices and short-lived online-presence records)
 - Pending pairing challenges, parent-upgrade requests, and password-reset tokens for that account
+
+These are the same account records used in our internal admin tools, so deleting the account also removes those identifiers from staff views.
 
 Account deletion does **not** remove **aggregated popular search queries** used for autocomplete. Those records are not tied to your account (they store only a normalized query string, country code, and counts).
 

@@ -1,6 +1,6 @@
 # LoolyTv Terms of Use
 
-**Last updated:** August 31, 2026
+**Last updated:** September 5, 2026
 
 These Terms of Use (“Terms”) govern your use of the LoolyTv Android application, the LoolyTv.com website, and related services (“LoolyTv” or “the App”). By using the App or website, you agree to these Terms.
 
@@ -20,6 +20,7 @@ The App is designed for children. A **parent or guardian** must create the accou
 - We sync across signed-in devices: the ordered list of library playlist IDs and app options (for example theme, language, captions, playback mix).
 - Playlist video lists, thumbnails, and watch progress remain on each device in this version.
 - You may sign out of one device or all devices from Multi-devices / Options. Deleting your account removes cloud profile and library membership data as described in the Privacy Policy and Data deletion page.
+- Authorized staff may access account identifiers (parent email and display name, child name or nickname, and whether a linked device is currently signed in) through internal admin tools to provide support, keep the service secure, and diagnose issues. This information is not shown to other families or to children in the App. See the Privacy Policy for details.
 
 ## 4. Acceptable use
 

@@ -1,6 +1,6 @@
 # LoolyTv Terms of Use
 
-**Last updated:** September 5, 2026
+**Last updated:** September 6, 2026
 
 These Terms of Use (“Terms”) govern your use of the LoolyTv Android application, the LoolyTv.com website, and related services (“LoolyTv” or “the App”). By using the App or website, you agree to these Terms.
 
@@ -63,6 +63,8 @@ We moderate catalog content, suggestions, and reports on an ongoing basis. Repor
 ## 7. YouTube content
 
 Videos remain subject to YouTube’s terms and the rights of their uploaders. Availability can change without notice. LoolyTv is not affiliated with YouTube except as a client of YouTube’s publicly available APIs and embedded player.
+
+The App and website may use **Google Analytics** to measure aggregate usage, as described in the Privacy Policy. Google’s terms and privacy policy apply to that service.
 
 ## 8. Payments
 

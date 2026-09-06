@@ -1,6 +1,6 @@
 # LoolyTv Data Deletion
 
-**Last updated:** September 5, 2026
+**Last updated:** September 6, 2026
 
 LoolyTv uses a **parent Google account** to create the family profile. Parents may also set an optional password for email sign-in. Additional devices may be linked with a pairing code. You can delete your account and request deletion of other server-side data as described below.
 
@@ -16,6 +16,8 @@ Deleting your LoolyTv account removes from our servers:
 These are the same account records used in our internal admin tools, so deleting the account also removes those identifiers from staff views.
 
 Account deletion does **not** remove **aggregated popular search queries** used for autocomplete. Those records are not tied to your account (they store only a normalized query string, country code, and counts).
+
+Account deletion also does **not** automatically delete **Google Analytics** events. Those events do not include your email or child name. See “Google Analytics” below.
 
 ### How
 
@@ -53,6 +55,12 @@ Email **loolytv@salinnovation.com** with:
 - Subject: Data deletion request
 - Your installation ID (from Options → About)
 - Approximate dates you used the App
+
+## Google Analytics
+
+The App may send aggregate usage events to Google Analytics (generic screen names and coarse technical data). We do not send your email or child name with those events.
+
+To request deletion of Analytics data, email **loolytv@salinnovation.com** with subject “Delete LoolyTv analytics data” and the approximate dates you used the App. We will delete or ask Google to delete associated measurement data where we can identify it.
 
 ## What stays on the device
 

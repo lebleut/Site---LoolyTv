@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** September 5, 2026
+**Last updated:** September 6, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -16,7 +16,7 @@ LoolyTv targets children and complies with applicable children’s privacy laws,
 - After Google sign-in, a parent may optionally create a **password** for the same account and later sign in with email and password.
 - We do **not** show advertising in the App.
 - We do **not** sell personal information.
-- We minimize data collected about children. We do not use permanent hardware identifiers (such as Android Advertising ID or the device ANDROID_ID).
+- We minimize data collected about children. We do not use permanent hardware identifiers (such as Android Advertising ID or the device ANDROID_ID). Google Analytics uses a random Firebase app-instance ID instead.
 - Child profile fields (child’s first name or nickname and birth year) are provided by the parent during setup. We use them to personalize the family profile and to operate support and service administration—not for advertising.
 
 ## Information we collect
@@ -106,7 +106,20 @@ The App stores locally:
 - Sign-in uses **Google Sign-In / Identity** to create the account. Google’s privacy policy also applies to that authentication. Optional email/password sign-in uses credentials stored as hashed secrets on our servers.
 - We only serve videos that our backend has verified as Made for Kids when available.
 
-### 10. Website waitlist and contact forms (parents / guardians)
+### 10. Google Analytics (app and website)
+
+The Android app uses **Google Analytics for Firebase** (Google Analytics 4) so we can see aggregate usage (for example app opens, sessions, and which screens are viewed). LoolyTv.com may also use Google Analytics for adult visitors of the website.
+
+We configure the Android SDK for a child-directed app:
+
+- We do **not** collect the Android Advertising ID
+- We do **not** collect the device ANDROID_ID
+- We do **not** enable advertising, remarketing, or ad personalization
+- We do **not** send parent email, Google account identifiers, child names, playlist titles, or video identifiers to Analytics
+
+Google receives a random Firebase app-instance ID, coarse technical data (app version, device category, OS version, country), and screen-view events with generic names (for example `library` or `player`). Google processes this data as an analytics provider under [Google’s privacy policy](https://policies.google.com/privacy). We use it only to operate and improve LoolyTv — not to advertise or to profile children.
+
+### 11. Website waitlist and contact forms (parents / guardians)
 
 On LoolyTv.com, parents or guardians may voluntarily submit:
 
@@ -123,6 +136,7 @@ These forms are intended for adults (parents/guardians), not for children. We do
 - Moderate suggestions and reports
 - Prevent spam and abuse (rate limits based on the installation ID, signed-in account, and/or IP address)
 - Diagnose technical issues
+- Measure aggregate app and website usage with Google Analytics
 - Provide customer support and operate **internal admin tools** (restricted staff access only). Authorized staff may view parent email, parent display name, child name or nickname, account and library metadata, and whether a linked device is currently signed in, so we can identify a family, respond to parent requests, and keep the service secure
 - Manage pre-launch tester invitations and optional launch notifications requested on the website
 - Respond to contact messages submitted on the website
@@ -135,7 +149,7 @@ These identifiers are never shown to other families or to children inside the Ap
 We do not sell personal information. We may share limited data with:
 
 - Infrastructure providers that host our API and database (under contract)
-- Google for Sign-In, YouTube playback, and catalog metadata
+- Google for Sign-In, YouTube playback, catalog metadata, and Google Analytics (as described above)
 - Authorities when required by law
 
 ## Retention
@@ -147,6 +161,7 @@ We do not sell personal information. We may share limited data with:
 - Pending suggestions/reports: kept until reviewed, then subject to the same retention
 - Sessions: revoked sessions are invalidated; you may revoke all devices from the App
 - Website waitlist and contact submissions: kept until you ask us to delete them or they are no longer needed for testing/support (typically purged within **24 months**)
+- Google Analytics events: retained according to the retention setting on our Google Analytics property (we aim for the shortest period that still lets us operate the service)
 - Server logs needed for security may be retained longer when required
 
 ## Your choices and data deletion
@@ -156,6 +171,7 @@ You can:
 - Sign out of this device, or sign out of **all devices**
 - Delete your LoolyTv **account** (removes cloud profile, library membership, sessions, and related account data)
 - Request deletion of report data tied to an installation ID (see Data deletion)
+- Request deletion of Google Analytics measurement data we can locate (see Data deletion)
 
 Paths:
 

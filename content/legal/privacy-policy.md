@@ -54,7 +54,7 @@ We store on our servers (linked to the parent account):
 
 ### 4. Installation identifier (random)
 
-When you first open the App, we generate a random installation ID stored on the device. The App may send this ID with API requests so we can apply **per-device rate limits** and prevent abuse. The same ID is also used with content reports for rate-limiting. It is **not** derived from ANDROID_ID, advertising ID, IMEI, or other hardware identifiers. If a request does not include this ID, we may fall back to the signed-in account or the network IP address for the same purpose.
+When you first open the App, we generate a random installation ID stored on the device. The App may send this ID with API requests so we can apply **per-device rate limits** and prevent abuse. The same ID is also used with content reports for rate-limiting, and we may store it on a signed-in session so signing in again from the same installation **refreshes that session** instead of creating another one. It is **not** derived from ANDROID_ID, advertising ID, IMEI, or other hardware identifiers. If a request does not include this ID, we may fall back to the signed-in account or the network IP address for the same purpose.
 
 ### 5. Device context (with suggestions and reports)
 

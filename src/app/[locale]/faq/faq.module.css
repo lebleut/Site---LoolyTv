@@ -1,0 +1,134 @@
+.wrap h1 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.head {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.list {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.item {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item[open] {
+  border-color: var(--color-accent);
+  box-shadow: 0 14px 32px rgba(30, 42, 74, 0.1);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: -3px;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+.mark {
+  flex-shrink: 0;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.7rem;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border: 2px solid var(--color-border);
+}
+
+.mark::before,
+.mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.7rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.mark::after {
+  transform: rotate(90deg);
+}
+
+.item[open] .mark {
+  background: var(--color-yellow-soft);
+  color: var(--color-text);
+}
+
+.item[open] .mark::after {
+  opacity: 0;
+}
+
+.answer {
+  margin: 0;
+  padding: 0 1.25rem 1.3rem;
+  color: var(--color-muted);
+  font-size: 1.02rem;
+  animation: faq-open 0.28s ease;
+}
+
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.contact {
+  margin: 2.25rem auto 0;
+  max-width: 46rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.contact a {
+  text-decoration: none;
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .summary {
+    padding: 1rem 1.05rem;
+  }
+
+  .question {
+    font-size: 1.02rem;
+  }
+}

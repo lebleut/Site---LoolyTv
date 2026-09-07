@@ -15,6 +15,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const onHome = pathname === "/";
+  const onFaq = pathname === "/faq";
+  const onContact = pathname === "/contact";
 
   return (
     <header className={styles.header}>
@@ -67,7 +69,20 @@ export function SiteHeader() {
                 </Link>
               ),
             )}
-            <Link href="/contact" onClick={close}>
+            <Link
+              href="/faq"
+              className={onFaq ? styles.current : undefined}
+              aria-current={onFaq ? "page" : undefined}
+              onClick={close}
+            >
+              {t("faq")}
+            </Link>
+            <Link
+              href="/contact"
+              className={onContact ? styles.current : undefined}
+              aria-current={onContact ? "page" : undefined}
+              onClick={close}
+            >
               {t("contact")}
             </Link>
           </div>

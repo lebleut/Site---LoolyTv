@@ -83,8 +83,13 @@
   color: var(--color-red-dark);
 }
 
-.links a:hover::after {
+.links a:hover::after,
+.links a.current::after {
   transform: scaleX(1);
+}
+
+.links a.current {
+  color: var(--color-red-dark);
 }
 
 .actions {
@@ -157,7 +162,7 @@
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
   .burger {
     display: inline-flex;
   }

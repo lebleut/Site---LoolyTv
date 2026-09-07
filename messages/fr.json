@@ -9,6 +9,7 @@
     "how": "Comment ça marche",
     "parents": "Parents",
     "waitlist": "Pré-test",
+    "faq": "FAQ",
     "contact": "Contact",
     "skip": "Aller au contenu",
     "menu": "Menu",
@@ -154,12 +155,50 @@
       "network": "Envoi impossible (erreur réseau ou serveur). Réessayez ou écrivez à loolytv@salinnovation.com."
     }
   },
+  "faqPage": {
+    "eyebrow": "FAQ",
+    "title": "Réponses simples sur LoolyTv",
+    "subtitle": "Vous découvrez l’appli ? Voici les questions que les parents se posent en premier.",
+    "contactPrompt": "Vous n’avez pas trouvé votre réponse ?",
+    "contactLink": "Contactez-nous",
+    "items": {
+      "what": {
+        "q": "C’est quoi LoolyTv ?",
+        "a": "LoolyTv est une appli de vidéos pour les enfants. Les parents choisissent des playlists dans un catalogue Made for Kids que notre équipe a examiné. Les enfants regardent uniquement ces vidéos — pas le web ouvert."
+      },
+      "purpose": {
+        "q": "À quoi ça sert ?",
+        "a": "À offrir un espace calme pour regarder, sans défilement sans fin ni vidéos surprises. Vous construisez une petite bibliothèque familiale ; les enfants appuient sur lecture et restent dedans."
+      },
+      "how": {
+        "q": "Comment on l’utilise ?",
+        "a": "Installez LoolyTv sur un téléphone, une tablette ou une TV Android, puis connectez-vous avec un compte Google parent. Parcourez le catalogue avec votre enfant et enregistrez des playlists dans la bibliothèque familiale. Puis appuyez sur Tout lire : l’appli mélange ce que vous avez choisi, et les enfants restent sur cette liste."
+      },
+      "whoChooses": {
+        "q": "Qui choisit les vidéos — moi ou mon enfant ?",
+        "a": "Vous. Les enfants jouent depuis la bibliothèque familiale que vous avez enregistrée. Ils ne peuvent ni chercher sur le web ouvert, ni tomber sur des vidéos que vous n’avez jamais choisies."
+      },
+      "vsYoutube": {
+        "q": "Quelle différence avec YouTube ou YouTube Kids ?",
+        "a": "Ces applis peuvent encore emmener les enfants vers des vidéos que vous n’avez jamais choisies. LoolyTv est un catalogue fermé : uniquement des playlists Made for Kids que nous examinons, plus celles que vous enregistrez."
+      },
+      "devices": {
+        "q": "Sur quels appareils ça marche ?",
+        "a": "Téléphone, tablette et TV Android. Vous pouvez lier d’autres écrans avec un court code : la même bibliothèque familiale vous suit dans la maison."
+      },
+      "ads": {
+        "q": "Y a-t-il des publicités ?",
+        "a": "Non. LoolyTv n’affiche pas de publicité dans l’appli."
+      }
+    }
+  },
   "footer": {
     "tagline": "TV kids curatée pour les familles — bientôt.",
     "producedBy": "Une production de",
     "privacy": "Confidentialité",
     "terms": "Conditions d’utilisation",
     "deletion": "Suppression des données",
+    "faq": "FAQ",
     "contact": "Contact",
     "rights": "© {year} LoolyTv. Tous droits réservés."
   },

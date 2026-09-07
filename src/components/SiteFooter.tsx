@@ -26,10 +26,11 @@ export async function SiteFooter() {
           <p className={styles.tag}>{t("tagline")}</p>
         </div>
 
-        <nav className={styles.links} aria-label="Legal">
+        <nav className={styles.links} aria-label="Footer">
           <Link href="/legal/privacy">{t("privacy")}</Link>
           <Link href="/legal/terms">{t("terms")}</Link>
           <Link href="/legal/data-deletion">{t("deletion")}</Link>
+          <LocaleLink href="/faq">{t("faq")}</LocaleLink>
           <LocaleLink href="/contact">{t("contact")}</LocaleLink>
         </nav>
 

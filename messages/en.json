@@ -9,6 +9,7 @@
     "how": "How it works",
     "parents": "For parents",
     "waitlist": "Pre-test",
+    "faq": "FAQ",
     "contact": "Contact",
     "skip": "Skip to content",
     "menu": "Menu",
@@ -154,12 +155,50 @@
       "network": "Could not send (network or server error). Please try again or email loolytv@salinnovation.com."
     }
   },
+  "faqPage": {
+    "eyebrow": "FAQ",
+    "title": "Simple answers about LoolyTv",
+    "subtitle": "New here? These are the questions parents ask when they first hear about the app.",
+    "contactPrompt": "Didn’t find your answer?",
+    "contactLink": "Contact us",
+    "items": {
+      "what": {
+        "q": "What is LoolyTv?",
+        "a": "LoolyTv is a kids video app for families. Parents pick playlists from a Made-for-Kids catalog our team reviews. Children then watch only those videos — not the open web."
+      },
+      "purpose": {
+        "q": "What is it for?",
+        "a": "It gives children a calm place to watch, without endless scrolling or surprise videos. You build a small family library; they press play and stay inside it."
+      },
+      "how": {
+        "q": "How do I use it?",
+        "a": "Install LoolyTv on an Android phone, tablet, or TV and sign in with a parent Google account. Browse the catalog with your child and save playlists to your family library. Then tap Play all: the app shuffles what you chose, and kids stay on that list."
+      },
+      "whoChooses": {
+        "q": "Who chooses the videos — me or my child?",
+        "a": "You do. Kids play from the family library you saved. They cannot search the open web or wander onto videos you never picked."
+      },
+      "vsYoutube": {
+        "q": "How is this different from YouTube or YouTube Kids?",
+        "a": "Those apps can still lead children toward videos you never chose. LoolyTv is a closed catalog: only Made-for-Kids playlists we review, plus the ones you save to your library."
+      },
+      "devices": {
+        "q": "Which devices can we use?",
+        "a": "Android phone, tablet, and TV. You can link extra screens with a short code so the same family library follows you around the house."
+      },
+      "ads": {
+        "q": "Are there ads in the app?",
+        "a": "No. LoolyTv does not show advertising inside the app."
+      }
+    }
+  },
   "footer": {
     "tagline": "Curated kids TV for families — coming soon.",
     "producedBy": "A production by",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "deletion": "Data deletion",
+    "faq": "FAQ",
     "contact": "Contact",
     "rights": "© {year} LoolyTv. All rights reserved."
   },

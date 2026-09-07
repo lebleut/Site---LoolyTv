@@ -9,6 +9,7 @@
     "how": "Cómo funciona",
     "parents": "Padres",
     "waitlist": "Pre-test",
+    "faq": "FAQ",
     "contact": "Contacto",
     "skip": "Saltar al contenido",
     "menu": "Menú",
@@ -154,12 +155,50 @@
       "network": "No se pudo enviar (error de red o del servidor). Inténtalo de nuevo o escribe a loolytv@salinnovation.com."
     }
   },
+  "faqPage": {
+    "eyebrow": "FAQ",
+    "title": "Respuestas simples sobre LoolyTv",
+    "subtitle": "¿Acabas de conocer la app? Estas son las preguntas que se hacen los padres al principio.",
+    "contactPrompt": "¿No encontraste tu respuesta?",
+    "contactLink": "Contáctanos",
+    "items": {
+      "what": {
+        "q": "¿Qué es LoolyTv?",
+        "a": "LoolyTv es una app de vídeos para niños. Los padres eligen listas de reproducción de un catálogo Made for Kids que nuestro equipo revisa. Los niños ven solo esos vídeos, no la web abierta."
+      },
+      "purpose": {
+        "q": "¿Para qué sirve?",
+        "a": "Para dar a los niños un lugar tranquilo donde ver, sin scroll interminable ni vídeos sorpresa. Tú armas una pequeña biblioteca familiar; ellos pulsan reproducir y se quedan dentro."
+      },
+      "how": {
+        "q": "¿Cómo se usa?",
+        "a": "Instala LoolyTv en un móvil, tablet o TV Android e inicia sesión con una cuenta de Google de un padre o madre. Recorre el catálogo con tu hijo y guarda listas en la biblioteca familiar. Luego pulsa Reproducir todo: la app mezcla lo que elegiste y los niños se quedan en esa lista."
+      },
+      "whoChooses": {
+        "q": "¿Quién elige los vídeos, yo o mi hijo?",
+        "a": "Tú. Los niños reproducen desde la biblioteca familiar que guardaste. No pueden buscar en la web abierta ni llegar a vídeos que nunca elegiste."
+      },
+      "vsYoutube": {
+        "q": "¿En qué se diferencia de YouTube o YouTube Kids?",
+        "a": "Esas apps aún pueden llevar a los niños a vídeos que nunca elegiste. LoolyTv es un catálogo cerrado: solo listas Made for Kids que revisamos, más las que guardas en tu biblioteca."
+      },
+      "devices": {
+        "q": "¿En qué dispositivos funciona?",
+        "a": "Móvil, tablet y TV Android. Puedes vincular más pantallas con un código corto para que la misma biblioteca familiar te siga por casa."
+      },
+      "ads": {
+        "q": "¿Hay anuncios en la app?",
+        "a": "No. LoolyTv no muestra publicidad dentro de la app."
+      }
+    }
+  },
   "footer": {
     "tagline": "TV infantil curada para familias — próximamente.",
     "producedBy": "Una producción de",
     "privacy": "Privacidad",
     "terms": "Términos de uso",
     "deletion": "Eliminación de datos",
+    "faq": "FAQ",
     "contact": "Contacto",
     "rights": "© {year} LoolyTv. Todos los derechos reservados."
   },

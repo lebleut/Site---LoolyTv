@@ -156,7 +156,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         onClick={(event) => event.stopPropagation()}
       >
         <div className={styles.dialogHead}>
-          {playlist?.thumbnail ? (
+          {!loading && playlist?.thumbnail ? (
             <div className={styles.dialogThumb}>
               <Image
                 src={playlist.thumbnail}
@@ -168,16 +168,14 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
             </div>
           ) : null}
 
-          <div className={styles.dialogTitle}>
-            <h2 id="demo-playlist-title">
-              {loading ? (
-                <span className={`${styles.skeletonBlock} ${styles.dialogSkeletonTitleInline}`} />
-              ) : (
-                playlist?.title
-              )}
-            </h2>
-            {!loading && meta ? <p>{meta}</p> : null}
-          </div>
+          {!loading ? (
+            <div className={styles.dialogTitle}>
+              <h2 id="demo-playlist-title">{playlist?.title}</h2>
+              {meta ? <p>{meta}</p> : null}
+            </div>
+          ) : (
+            <div className={styles.dialogTitle} aria-hidden="true" />
+          )}
 
           <button
             ref={closeRef}

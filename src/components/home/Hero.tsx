@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { HeroVideo } from "./HeroVideo";
 import styles from "./Hero.module.css";
 
@@ -45,6 +46,9 @@ export async function Hero() {
             <a className="btn btn-secondary" href="#features">
               {t("ctaFeatures")}
             </a>
+            <Link className="btn btn-secondary" href="/demo">
+              {t("ctaDemo")}
+            </Link>
           </div>
 
           <p className={styles.trust}>

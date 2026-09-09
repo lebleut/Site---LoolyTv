@@ -65,7 +65,7 @@ export default async function FaqPage({ params }: Props) {
               <details
                 className={styles.item}
                 name="faq"
-                defaultOpen={index === 0}
+                open={index === 0}
                 id={`faq-${key}`}
               >
                 <summary className={styles.summary}>

@@ -8,6 +8,7 @@ import { DemoApiError, fetchDemoPlaylist, fetchDemoPlaylistVideos } from "@/lib/
 import { formatDuration } from "@/lib/demo-format";
 import { trackEvent } from "@/lib/analytics";
 import { PreviewPlayer } from "./PreviewPlayer";
+import { PlaylistDialogSkeleton } from "./PlaylistDialogSkeleton";
 import styles from "./demo.module.css";
 
 type Props = {
@@ -168,8 +169,14 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
           ) : null}
 
           <div className={styles.dialogTitle}>
-            <h2 id="demo-playlist-title">{playlist?.title ?? t("loadingPlaylist")}</h2>
-            {meta ? <p>{meta}</p> : null}
+            <h2 id="demo-playlist-title">
+              {loading ? (
+                <span className={`${styles.skeletonBlock} ${styles.dialogSkeletonTitleInline}`} />
+              ) : (
+                playlist?.title
+              )}
+            </h2>
+            {!loading && meta ? <p>{meta}</p> : null}
           </div>
 
           <button
@@ -183,7 +190,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
           </button>
         </div>
 
-        {loading ? <p className={styles.status}>{t("loadingPlaylist")}</p> : null}
+        {loading ? <PlaylistDialogSkeleton /> : null}
         {error ? <p className={`${styles.status} ${styles.statusError}`}>{error}</p> : null}
 
         <div ref={playerAnchorRef}>

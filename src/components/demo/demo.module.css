@@ -174,11 +174,21 @@
   }
 }
 
-.arrow:hover {
+.arrow:hover:not(:disabled) {
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: #fff;
   transform: scale(1.05);
+}
+
+.arrow:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  background: var(--color-surface-alt);
+  border-color: var(--color-border);
+  color: var(--color-muted);
+  box-shadow: none;
+  transform: none;
 }
 
 .arrow svg {
@@ -722,6 +732,10 @@
   .card:hover,
   .card:focus-visible,
   .universeCardArt:hover {
+    transform: none;
+  }
+
+  .arrow:hover:not(:disabled) {
     transform: none;
   }
 }

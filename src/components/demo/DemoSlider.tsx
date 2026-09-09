@@ -11,50 +11,50 @@ type Props = {
 };
 
 type ScrollEdges = {
-  canPrev: boolean;
-  canNext: boolean;
+  canScrollLeft: boolean;
+  canScrollRight: boolean;
 };
 
-const EDGE_TOLERANCE_PX = 2;
+/** Covers inline padding of the track plus sub-pixel rounding. */
+const EDGE_TOLERANCE_PX = 6;
 
-function normalizedScrollLeft(track: HTMLUListElement): number {
-  const maxScroll = track.scrollWidth - track.clientWidth;
-  if (maxScroll <= 0) return 0;
+const DRAG_THRESHOLD_PX = 6;
 
-  const isRtl = getComputedStyle(track).direction === "rtl";
-  if (!isRtl) return track.scrollLeft;
-
-  // Blink/WebKit use negative scrollLeft in RTL; Firefox uses inverted positive values.
-  if (track.scrollLeft <= 0) {
-    return Math.abs(track.scrollLeft);
-  }
-
-  return maxScroll - track.scrollLeft;
-}
-
+/**
+ * Edges are measured from real child geometry rather than `scrollLeft`, whose
+ * sign and range differ between engines in RTL. Left/right here are always
+ * physical, so the arrows behave identically in every locale.
+ */
 function readScrollEdges(track: HTMLUListElement): ScrollEdges {
-  const maxScroll = track.scrollWidth - track.clientWidth;
-  if (maxScroll <= EDGE_TOLERANCE_PX) {
-    return { canPrev: false, canNext: false };
+  const children = Array.from(track.children) as HTMLElement[];
+  if (children.length === 0) {
+    return { canScrollLeft: false, canScrollRight: false };
   }
 
-  const offset = normalizedScrollLeft(track);
+  const trackRect = track.getBoundingClientRect();
+  let leftMost = Number.POSITIVE_INFINITY;
+  let rightMost = Number.NEGATIVE_INFINITY;
+
+  for (const child of children) {
+    const rect = child.getBoundingClientRect();
+    leftMost = Math.min(leftMost, rect.left);
+    rightMost = Math.max(rightMost, rect.right);
+  }
 
   return {
-    canPrev: offset > EDGE_TOLERANCE_PX,
-    canNext: offset < maxScroll - EDGE_TOLERANCE_PX,
+    canScrollLeft: leftMost < trackRect.left - EDGE_TOLERANCE_PX,
+    canScrollRight: rightMost > trackRect.right + EDGE_TOLERANCE_PX,
   };
 }
 
 export function DemoSlider({ title, ariaLabel, children }: Props) {
   const t = useTranslations("demo");
   const trackRef = useRef<HTMLUListElement>(null);
-  const dragStateRef = useRef<{ active: boolean; startX: number; scrollLeft: number }>({
-    active: false,
-    startX: 0,
-    scrollLeft: 0,
+  const dragRef = useRef({ pointerId: -1, startX: 0, scrollLeft: 0, moved: false });
+  const [edges, setEdges] = useState<ScrollEdges>({
+    canScrollLeft: false,
+    canScrollRight: false,
   });
-  const [edges, setEdges] = useState<ScrollEdges>({ canPrev: false, canNext: false });
 
   const updateScrollEdges = useCallback(() => {
     const track = trackRef.current;
@@ -88,60 +88,84 @@ export function DemoSlider({ title, ariaLabel, children }: Props) {
     const track = trackRef.current;
     if (!track) return;
 
-    const isInteractiveTarget = (target: EventTarget | null) =>
-      target instanceof Element && Boolean(target.closest("button, a, input, select, textarea"));
-
     const onPointerDown = (event: PointerEvent) => {
-      if (event.button !== 0 || isInteractiveTarget(event.target)) return;
-      if (event.pointerType === "touch") return;
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
 
-      dragStateRef.current = {
-        active: true,
+      dragRef.current = {
+        pointerId: event.pointerId,
         startX: event.clientX,
         scrollLeft: track.scrollLeft,
+        moved: false,
       };
-      track.setPointerCapture(event.pointerId);
-      track.classList.add(styles.dragging);
     };
 
     const onPointerMove = (event: PointerEvent) => {
-      if (!dragStateRef.current.active) return;
+      const drag = dragRef.current;
+      if (drag.pointerId !== event.pointerId) return;
+
+      const delta = event.clientX - drag.startX;
+      if (!drag.moved) {
+        if (Math.abs(delta) < DRAG_THRESHOLD_PX) return;
+        drag.moved = true;
+        track.classList.add(styles.dragging);
+        track.setPointerCapture(event.pointerId);
+      }
+
       event.preventDefault();
-      track.scrollLeft =
-        dragStateRef.current.scrollLeft - (event.clientX - dragStateRef.current.startX);
+      track.scrollLeft = drag.scrollLeft - delta;
     };
 
     const endDrag = (event: PointerEvent) => {
-      if (!dragStateRef.current.active) return;
-      dragStateRef.current.active = false;
-      track.classList.remove(styles.dragging);
-      if (track.hasPointerCapture(event.pointerId)) {
-        track.releasePointerCapture(event.pointerId);
+      const drag = dragRef.current;
+      if (drag.pointerId !== event.pointerId) return;
+
+      if (drag.moved) {
+        track.classList.remove(styles.dragging);
+        if (track.hasPointerCapture(event.pointerId)) {
+          track.releasePointerCapture(event.pointerId);
+        }
+        updateScrollEdges();
       }
-      updateScrollEdges();
+
+      drag.pointerId = -1;
+    };
+
+    // A drag that ends over a card must not trigger that card's click.
+    const onClickCapture = (event: MouseEvent) => {
+      if (!dragRef.current.moved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragRef.current.moved = false;
     };
 
     track.addEventListener("pointerdown", onPointerDown);
     track.addEventListener("pointermove", onPointerMove);
     track.addEventListener("pointerup", endDrag);
     track.addEventListener("pointercancel", endDrag);
+    track.addEventListener("click", onClickCapture, true);
 
     return () => {
       track.removeEventListener("pointerdown", onPointerDown);
       track.removeEventListener("pointermove", onPointerMove);
       track.removeEventListener("pointerup", endDrag);
       track.removeEventListener("pointercancel", endDrag);
+      track.removeEventListener("click", onClickCapture, true);
     };
-  }, [children, updateScrollEdges]);
+  }, [updateScrollEdges]);
 
-  const scrollByPage = useCallback((direction: 1 | -1) => {
+  /** `left` is a physical axis, so the same sign works in LTR and RTL. */
+  const scrollByPage = useCallback((towards: "left" | "right") => {
     const track = trackRef.current;
     if (!track) return;
 
     const card = track.querySelector<HTMLElement>("li");
-    const cardWidth = card?.offsetWidth ?? track.clientWidth * 0.75;
     const gap = 16;
-    track.scrollBy({ left: direction * (cardWidth + gap), behavior: "smooth" });
+    const step = (card?.offsetWidth ?? track.clientWidth * 0.75) + gap;
+
+    track.scrollBy({
+      left: towards === "left" ? -step : step,
+      behavior: "smooth",
+    });
   }, []);
 
   return (
@@ -153,10 +177,10 @@ export function DemoSlider({ title, ariaLabel, children }: Props) {
       <div className={styles.slider}>
         <button
           type="button"
-          className={`${styles.arrow} ${styles.prev}`}
-          aria-label={t("slider.prev")}
-          disabled={!edges.canPrev}
-          onClick={() => scrollByPage(-1)}
+          className={`${styles.arrow} ${styles.arrowLeft}`}
+          aria-label={t("slider.scrollLeft")}
+          disabled={!edges.canScrollLeft}
+          onClick={() => scrollByPage("left")}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m15 5-7 7 7 7" />
@@ -169,10 +193,10 @@ export function DemoSlider({ title, ariaLabel, children }: Props) {
 
         <button
           type="button"
-          className={`${styles.arrow} ${styles.next}`}
-          aria-label={t("slider.next")}
-          disabled={!edges.canNext}
-          onClick={() => scrollByPage(1)}
+          className={`${styles.arrow} ${styles.arrowRight}`}
+          aria-label={t("slider.scrollRight")}
+          disabled={!edges.canScrollRight}
+          onClick={() => scrollByPage("right")}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m9 5 7 7-7 7" />

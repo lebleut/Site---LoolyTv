@@ -116,6 +116,7 @@
   margin: 0;
   padding: 0.35rem 0.15rem 0.85rem;
   flex: 1;
+  order: 1;
   min-width: 0;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -215,8 +216,25 @@
   stroke-linejoin: round;
 }
 
-:global([dir="rtl"]) .arrow svg {
-  transform: scaleX(-1);
+/*
+ * Arrows are physical (left button scrolls left) in every locale, so in RTL the
+ * flex order is reversed to keep each button on its own side. The glyphs are
+ * therefore never mirrored.
+ */
+.arrowLeft {
+  order: 0;
+}
+
+.arrowRight {
+  order: 2;
+}
+
+:global([dir="rtl"]) .arrowLeft {
+  order: 2;
+}
+
+:global([dir="rtl"]) .arrowRight {
+  order: 0;
 }
 
 .grid {

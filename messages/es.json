@@ -241,8 +241,8 @@
       "avgDuration": "Duración media"
     },
     "slider": {
-      "prev": "Elementos anteriores",
-      "next": "Elementos siguientes"
+      "scrollLeft": "Desplazar a la izquierda",
+      "scrollRight": "Desplazar a la derecha"
     },
     "sections": {
       "recommendations": "Recomendado para ti",

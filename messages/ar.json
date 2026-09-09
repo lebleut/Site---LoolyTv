@@ -241,8 +241,8 @@
       "avgDuration": "متوسط المدة"
     },
     "slider": {
-      "prev": "العناصر السابقة",
-      "next": "العناصر التالية"
+      "scrollLeft": "التمرير إلى اليسار",
+      "scrollRight": "التمرير إلى اليمين"
     },
     "sections": {
       "recommendations": "موصى به لك",

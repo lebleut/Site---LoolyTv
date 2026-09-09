@@ -241,8 +241,8 @@
       "avgDuration": "Average duration"
     },
     "slider": {
-      "prev": "Previous items",
-      "next": "Next items"
+      "scrollLeft": "Scroll left",
+      "scrollRight": "Scroll right"
     },
     "sections": {
       "recommendations": "Recommended for you",

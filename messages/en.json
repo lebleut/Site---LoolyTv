@@ -239,6 +239,10 @@
       "videos": "Most videos",
       "avgDuration": "Average duration"
     },
+    "slider": {
+      "prev": "Previous items",
+      "next": "Next items"
+    },
     "sections": {
       "recommendations": "Recommended for you",
       "universes": "Universes & channels",

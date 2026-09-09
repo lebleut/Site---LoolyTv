@@ -239,6 +239,10 @@
       "videos": "Más vídeos",
       "avgDuration": "Duración media"
     },
+    "slider": {
+      "prev": "Elementos anteriores",
+      "next": "Elementos siguientes"
+    },
     "sections": {
       "recommendations": "Recomendado para ti",
       "universes": "Universos y canales",

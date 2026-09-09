@@ -19,7 +19,7 @@ export function PlaylistCard({ playlist, meta, onOpen }: Props) {
   return (
     <button
       type="button"
-      className={styles.card}
+      className={`${styles.card} ${styles.playlistCard}`}
       onClick={() => onOpen(playlist)}
       aria-label={playlist.title}
     >
@@ -29,12 +29,13 @@ export function PlaylistCard({ playlist, meta, onOpen }: Props) {
           alt=""
           width={640}
           height={360}
-          sizes="(max-width: 720px) 45vw, 14rem"
+          sizes="(max-width: 720px) 72vw, (max-width: 1024px) 32vw, 16rem"
+          className={styles.cardMediaImg}
           unoptimized
         />
       </div>
       <div className={styles.cardBody}>
-        <h3>{playlist.title}</h3>
+        <h3 className={styles.cardTitle}>{playlist.title}</h3>
         <p className={styles.cardMeta}>{subtitle}</p>
       </div>
     </button>

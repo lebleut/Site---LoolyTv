@@ -239,6 +239,10 @@
       "videos": "الأكثر فيديوهات",
       "avgDuration": "متوسط المدة"
     },
+    "slider": {
+      "prev": "العناصر السابقة",
+      "next": "العناصر التالية"
+    },
     "sections": {
       "recommendations": "موصى به لك",
       "universes": "عوالم وقنوات",

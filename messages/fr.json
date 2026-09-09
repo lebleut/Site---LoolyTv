@@ -239,6 +239,10 @@
       "videos": "Plus de vidéos",
       "avgDuration": "Durée moyenne"
     },
+    "slider": {
+      "prev": "Éléments précédents",
+      "next": "Éléments suivants"
+    },
     "sections": {
       "recommendations": "Recommandé pour vous",
       "universes": "Univers & chaînes",

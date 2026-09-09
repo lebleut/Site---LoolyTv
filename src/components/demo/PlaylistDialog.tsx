@@ -16,6 +16,8 @@ type Props = {
   onClose: () => void;
 };
 
+const WEB_PREVIEW_VIDEO_LIMIT = 10;
+
 function isPlayableVideo(video: AppVideo): boolean {
   if (video.embedBlocked) return false;
   if (video.madeForKids === false) return false;
@@ -26,6 +28,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
   const t = useTranslations("demo");
   const closeRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const playerAnchorRef = useRef<HTMLDivElement>(null);
   const [playlist, setPlaylist] = useState<AppPlaylist | null>(null);
   const [videos, setVideos] = useState<AppVideo[]>([]);
   const [activeVideo, setActiveVideo] = useState<AppVideo | null>(null);
@@ -45,7 +48,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         const query = new URLSearchParams({ country }).toString();
         const [playlistData, videosData] = await Promise.all([
           fetchDemoPlaylist(playlistId, query, { signal: controller.signal }),
-          fetchDemoPlaylistVideos(playlistId, `${query}&maxResults=50`, {
+          fetchDemoPlaylistVideos(playlistId, `${query}&maxResults=${WEB_PREVIEW_VIDEO_LIMIT}`, {
             signal: controller.signal,
           }),
         ]);
@@ -125,6 +128,22 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         .join(" · ")
     : "";
 
+  const visibleVideos = videos.slice(0, WEB_PREVIEW_VIDEO_LIMIT);
+  const totalVideos = playlist?.videoCount ?? videos.length;
+  const hasHiddenVideos = totalVideos > visibleVideos.length;
+
+  const selectVideo = (video: AppVideo) => {
+    setActiveVideo(video);
+
+    requestAnimationFrame(() => {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      playerAnchorRef.current?.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  };
+
   return (
     <div className={styles.overlay} role="presentation" onClick={onClose}>
       <div
@@ -167,21 +186,23 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         {loading ? <p className={styles.status}>{t("loadingPlaylist")}</p> : null}
         {error ? <p className={`${styles.status} ${styles.statusError}`}>{error}</p> : null}
 
-        {activeVideo ? (
-          <PreviewPlayer video={activeVideo} playlistId={playlistId} />
-        ) : null}
+        <div ref={playerAnchorRef}>
+          {activeVideo ? (
+            <PreviewPlayer video={activeVideo} playlistId={playlistId} />
+          ) : null}
+        </div>
 
         {!loading && !error ? (
           <ul className={styles.videoList}>
-            {videos.length === 0 ? (
+            {visibleVideos.length === 0 ? (
               <li className={styles.empty}>{t("noVideos")}</li>
             ) : (
-              videos.map((video) => (
+              visibleVideos.map((video) => (
                 <li key={video.id}>
                   <button
                     type="button"
                     className={styles.videoItem}
-                    onClick={() => setActiveVideo(video)}
+                    onClick={() => selectVideo(video)}
                   >
                     <div className={styles.videoThumb}>
                       {video.thumbnail ? (
@@ -202,6 +223,14 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
                 </li>
               ))
             )}
+            {hasHiddenVideos ? (
+              <li className={styles.previewNote}>
+                {t("playlistPreviewLimit", {
+                  shown: visibleVideos.length,
+                  total: totalVideos,
+                })}
+              </li>
+            ) : null}
           </ul>
         ) : null}
       </div>

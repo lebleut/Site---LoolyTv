@@ -220,6 +220,7 @@
     "loadingPlaylist": "Cargando lista…",
     "close": "Cerrar",
     "noVideos": "No hay vídeos previsualizables en esta lista para tu región.",
+    "playlistPreviewLimit": "Mostrando {shown} de {total} vídeos — vista previa web solamente. Únete a la lista de pre-test para la lista completa en la app.",
     "filters": {
       "age": "Franja de edad",
       "mainTopic": "Tema principal",

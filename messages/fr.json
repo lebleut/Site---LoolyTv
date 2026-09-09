@@ -220,6 +220,7 @@
     "loadingPlaylist": "Chargement de la playlist…",
     "close": "Fermer",
     "noVideos": "Aucune vidéo prévisualisable dans cette playlist pour votre région.",
+    "playlistPreviewLimit": "Affichage de {shown} vidéos sur {total} — aperçu web uniquement. Rejoignez la liste pré-test pour la playlist complète dans l’app.",
     "filters": {
       "age": "Tranche d’âge",
       "mainTopic": "Thème principal",

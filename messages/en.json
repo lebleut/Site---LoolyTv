@@ -220,6 +220,7 @@
     "loadingPlaylist": "Loading playlist…",
     "close": "Close",
     "noVideos": "No previewable videos in this playlist for your region.",
+    "playlistPreviewLimit": "Showing {shown} of {total} videos — web preview only. Join the pre-tester list for the full playlist in the app.",
     "filters": {
       "age": "Age band",
       "mainTopic": "Main topic",

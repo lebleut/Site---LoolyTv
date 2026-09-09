@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
@@ -28,9 +27,11 @@ import {
   demoLangForLocale,
 } from "@/lib/demo-locale";
 import { trackEvent } from "@/lib/analytics";
+import { DemoSlider } from "./DemoSlider";
 import { HorizontalRow } from "./HorizontalRow";
 import { PlaylistCard } from "./PlaylistCard";
 import { PlaylistDialog } from "./PlaylistDialog";
+import { UniverseCard } from "./UniverseCard";
 import { DemoCta } from "./DemoCta";
 import styles from "./demo.module.css";
 
@@ -391,38 +392,13 @@ export function DemoApp() {
             ))}
 
             {universes.length > 0 ? (
-              <section className={styles.section} aria-label={t("sections.universes")}>
-                <div className={styles.sectionHead}>
-                  <h2>{t("sections.universes")}</h2>
-                </div>
-                <ul className={styles.rowTrack}>
-                  {universes.map((item) => (
-                    <li key={`${item.kind}-${item.id}`} className={styles.universeCard}>
-                      <div className={styles.card}>
-                        <div className={styles.cardMedia}>
-                          {item.thumbnail ? (
-                            <Image
-                              src={item.thumbnail}
-                              alt=""
-                              width={640}
-                              height={360}
-                              unoptimized
-                            />
-                          ) : null}
-                        </div>
-                        <div className={styles.cardBody}>
-                          <h3>{item.kind === "universe" ? item.name : item.title}</h3>
-                          <p className={styles.cardMeta}>
-                            {item.kind === "universe"
-                              ? t("meta.channels", { count: item.channelCount })
-                              : t("sections.channel")}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+              <DemoSlider title={t("sections.universes")}>
+                {universes.map((item) => (
+                  <li key={`${item.kind}-${item.id}`} className={styles.universeSliderItem}>
+                    <UniverseCard item={item} />
+                  </li>
+                ))}
+              </DemoSlider>
             ) : null}
           </>
         )}

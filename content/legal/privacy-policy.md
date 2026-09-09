@@ -1,6 +1,6 @@
 # LoolyTv Privacy Policy
 
-**Last updated:** September 6, 2026
+**Last updated:** September 9, 2026
 
 This Privacy Policy describes how LoolyTv (“we”, “us”, or “the App”) collects, uses, and shares information when you use the LoolyTv Android application, the LoolyTv.com website, and related services. LoolyTv is a curated kids video catalog app designed for children and families.
 
@@ -151,6 +151,17 @@ We do not sell personal information. We may share limited data with:
 - Infrastructure providers that host our API and database (under contract)
 - Google for Sign-In, YouTube playback, catalog metadata, and Google Analytics (as described above)
 - Authorities when required by law
+
+## Website catalog preview (parents)
+
+LoolyTv.com may offer a **parent-facing catalog preview** where you can browse curated playlists and optionally play a single video preview in an embedded YouTube player. This preview:
+
+- Does **not** require a LoolyTv account
+- Is intended for **parents and guardians**, not as a standalone kids product on the web
+- Uses a random **session identifier** stored in your browser session (not a persistent cookie) so our API can apply fair rate limits
+- Loads YouTube’s embed player **only after you click play** (via `youtube-nocookie.com`)
+
+When you play a preview, **Google/YouTube** may collect information according to [Google’s Privacy Policy](https://policies.google.com/privacy). We do not use the web preview to build child profiles or to show advertising.
 
 ## Retention
 

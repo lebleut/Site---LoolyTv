@@ -9,6 +9,7 @@
     "how": "How it works",
     "parents": "For parents",
     "waitlist": "Pre-test",
+    "demo": "Try the catalog",
     "faq": "FAQ",
     "contact": "Contact",
     "skip": "Skip to content",
@@ -21,6 +22,7 @@
     "lead": "Carefully chosen kids videos for Android phone, tablet, and TV. Calm, curated, no wild scrolling. Launch? Still a little secret.",
     "ctaWaitlist": "Join the pre-tester list",
     "ctaFeatures": "See what’s inside",
+    "ctaDemo": "Browse the catalog",
     "trust": "Made with care for the whole family",
     "mascotAlt": "Looly, the rocking horse who welcomes little viewers",
     "videoLabel": "LoolyTv preview for parents",
@@ -201,6 +203,67 @@
     "faq": "FAQ",
     "contact": "Contact",
     "rights": "© {year} LoolyTv. All rights reserved."
+  },
+  "demo": {
+    "eyebrow": "Web preview",
+    "title": "Try the LoolyTv catalog",
+    "subtitle": "Browse our curated Made-for-Kids playlists and preview a video — the same catalog parents use in the app.",
+    "metaDescription": "Browse the LoolyTv curated kids catalog on the web and preview a video before joining the pre-tester list.",
+    "parentNote": "This preview is for parents and guardians. The full calm, bounded viewing experience for children is in the Android app.",
+    "searchLabel": "Search playlists",
+    "searchPlaceholder": "Search playlists, channels, topics…",
+    "searching": "Searching…",
+    "resultsCount": "{count} playlists found",
+    "emptySearch": "No playlists match your search. Try another topic or keyword.",
+    "loadMore": "Load more",
+    "loadingMore": "Loading…",
+    "loadingPlaylist": "Loading playlist…",
+    "close": "Close",
+    "noVideos": "No previewable videos in this playlist for your region.",
+    "filters": {
+      "age": "Age band",
+      "mainTopic": "Main topic",
+      "subtopic": "Subtopic",
+      "sort": "Sort by",
+      "allTopics": "All topics",
+      "allSubtopics": "All subtopics"
+    },
+    "ageBands": {
+      "AGE_2_4": "Ages 2–4",
+      "AGE_5_8": "Ages 5–8",
+      "AGE_9_12": "Ages 9–12"
+    },
+    "sort": {
+      "relevance": "Relevance",
+      "views": "Most viewed",
+      "videos": "Most videos",
+      "avgDuration": "Average duration"
+    },
+    "sections": {
+      "recommendations": "Recommended for you",
+      "universes": "Universes & channels",
+      "channel": "Channel"
+    },
+    "meta": {
+      "videos": "{count} videos",
+      "avgDuration": "avg {duration}",
+      "channels": "{count} channels"
+    },
+    "player": {
+      "endMessage": "In the app, LoolyTv keeps playback inside your family library — no endless suggestions.",
+      "endCta": "Join the pre-tester list"
+    },
+    "cta": {
+      "title": "Ready for the full experience?",
+      "body": "Join the pre-tester list to get LoolyTv on your Android phone, tablet, or TV.",
+      "button": "Join the pre-tester list"
+    },
+    "errors": {
+      "loadHome": "Could not load the catalog. Please try again.",
+      "search": "Search failed. Please try again.",
+      "loadPlaylist": "Could not load this playlist.",
+      "rateLimit": "Too many requests. Please wait a moment and try again."
+    }
   },
   "legal": {
     "nav": "Legal",

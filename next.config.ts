@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/**" },
+      { protocol: "https", hostname: "yt3.ggpht.com", pathname: "/**" },
+      { protocol: "https", hostname: "yt3.googleusercontent.com", pathname: "/**" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/**" },
+    ],
   },
 };
 

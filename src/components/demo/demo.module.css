@@ -121,6 +121,20 @@
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+
+.rowTrack.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.rowTrack :is(button, a) {
+  user-select: auto;
+  cursor: pointer;
 }
 
 .rowTrack::-webkit-scrollbar {

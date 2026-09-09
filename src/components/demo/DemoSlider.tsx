@@ -49,6 +49,11 @@ function readScrollEdges(track: HTMLUListElement): ScrollEdges {
 export function DemoSlider({ title, ariaLabel, children }: Props) {
   const t = useTranslations("demo");
   const trackRef = useRef<HTMLUListElement>(null);
+  const dragStateRef = useRef<{ active: boolean; startX: number; scrollLeft: number }>({
+    active: false,
+    startX: 0,
+    scrollLeft: 0,
+  });
   const [edges, setEdges] = useState<ScrollEdges>({ canPrev: false, canNext: false });
 
   const updateScrollEdges = useCallback(() => {
@@ -76,6 +81,56 @@ export function DemoSlider({ title, ariaLabel, children }: Props) {
       track.removeEventListener("scroll", updateScrollEdges);
       window.removeEventListener("resize", updateScrollEdges);
       observer.disconnect();
+    };
+  }, [children, updateScrollEdges]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const isInteractiveTarget = (target: EventTarget | null) =>
+      target instanceof Element && Boolean(target.closest("button, a, input, select, textarea"));
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0 || isInteractiveTarget(event.target)) return;
+      if (event.pointerType === "touch") return;
+
+      dragStateRef.current = {
+        active: true,
+        startX: event.clientX,
+        scrollLeft: track.scrollLeft,
+      };
+      track.setPointerCapture(event.pointerId);
+      track.classList.add(styles.dragging);
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!dragStateRef.current.active) return;
+      event.preventDefault();
+      track.scrollLeft =
+        dragStateRef.current.scrollLeft - (event.clientX - dragStateRef.current.startX);
+    };
+
+    const endDrag = (event: PointerEvent) => {
+      if (!dragStateRef.current.active) return;
+      dragStateRef.current.active = false;
+      track.classList.remove(styles.dragging);
+      if (track.hasPointerCapture(event.pointerId)) {
+        track.releasePointerCapture(event.pointerId);
+      }
+      updateScrollEdges();
+    };
+
+    track.addEventListener("pointerdown", onPointerDown);
+    track.addEventListener("pointermove", onPointerMove);
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+
+    return () => {
+      track.removeEventListener("pointerdown", onPointerDown);
+      track.removeEventListener("pointermove", onPointerMove);
+      track.removeEventListener("pointerup", endDrag);
+      track.removeEventListener("pointercancel", endDrag);
     };
   }, [children, updateScrollEdges]);
 

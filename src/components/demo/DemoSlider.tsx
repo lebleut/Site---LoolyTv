@@ -17,28 +17,32 @@ type ScrollEdges = {
 
 const EDGE_TOLERANCE_PX = 2;
 
+function normalizedScrollLeft(track: HTMLUListElement): number {
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  if (maxScroll <= 0) return 0;
+
+  const isRtl = getComputedStyle(track).direction === "rtl";
+  if (!isRtl) return track.scrollLeft;
+
+  // Blink/WebKit use negative scrollLeft in RTL; Firefox uses inverted positive values.
+  if (track.scrollLeft <= 0) {
+    return Math.abs(track.scrollLeft);
+  }
+
+  return maxScroll - track.scrollLeft;
+}
+
 function readScrollEdges(track: HTMLUListElement): ScrollEdges {
-  const first = track.firstElementChild as HTMLElement | null;
-  const last = track.lastElementChild as HTMLElement | null;
-  if (!first || !last) {
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  if (maxScroll <= EDGE_TOLERANCE_PX) {
     return { canPrev: false, canNext: false };
   }
 
-  const trackRect = track.getBoundingClientRect();
-  const firstRect = first.getBoundingClientRect();
-  const lastRect = last.getBoundingClientRect();
-  const isRtl = getComputedStyle(track).direction === "rtl";
-
-  if (isRtl) {
-    return {
-      canPrev: lastRect.right > trackRect.right + EDGE_TOLERANCE_PX,
-      canNext: firstRect.left < trackRect.left - EDGE_TOLERANCE_PX,
-    };
-  }
+  const offset = normalizedScrollLeft(track);
 
   return {
-    canPrev: firstRect.left < trackRect.left - EDGE_TOLERANCE_PX,
-    canNext: lastRect.right > trackRect.right + EDGE_TOLERANCE_PX,
+    canPrev: offset > EDGE_TOLERANCE_PX,
+    canNext: offset < maxScroll - EDGE_TOLERANCE_PX,
   };
 }
 

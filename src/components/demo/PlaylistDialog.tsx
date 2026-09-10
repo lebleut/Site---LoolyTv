@@ -29,6 +29,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
   const t = useTranslations("demo");
   const closeRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogHeadRef = useRef<HTMLDivElement>(null);
   const playerAnchorRef = useRef<HTMLDivElement>(null);
   const [playlist, setPlaylist] = useState<AppPlaylist | null>(null);
   const [videos, setVideos] = useState<AppVideo[]>([]);
@@ -135,15 +136,44 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
 
   const selectVideo = (video: AppVideo) => {
     setActiveVideo(video);
-
-    requestAnimationFrame(() => {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      playerAnchorRef.current?.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
-    });
   };
+
+  useEffect(() => {
+    if (!activeVideo) return;
+
+    const dialog = dialogRef.current;
+    const head = dialogHeadRef.current;
+    const anchor = playerAnchorRef.current;
+    if (!dialog || !anchor) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const scrollPlayerIntoView = () => {
+      const headHeight = head?.offsetHeight ?? 0;
+      const top =
+        anchor.getBoundingClientRect().top -
+        dialog.getBoundingClientRect().top +
+        dialog.scrollTop -
+        headHeight -
+        8;
+
+      dialog.scrollTo({
+        top: Math.max(0, top),
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+    };
+
+    // Wait for the player to mount/layout under the sticky header.
+    let innerFrame = 0;
+    const outerFrame = window.requestAnimationFrame(() => {
+      innerFrame = window.requestAnimationFrame(scrollPlayerIntoView);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(outerFrame);
+      window.cancelAnimationFrame(innerFrame);
+    };
+  }, [activeVideo]);
 
   return (
     <div className={styles.overlay} role="presentation" onClick={onClose}>
@@ -155,7 +185,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         aria-labelledby="demo-playlist-title"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className={styles.dialogHead}>
+        <div ref={dialogHeadRef} className={styles.dialogHead}>
           {!loading && playlist?.thumbnail ? (
             <div className={styles.dialogThumb}>
               <Image

@@ -23,6 +23,16 @@ export const DEMO_AGE_BANDS: AgeBand[] = ["AGE_2_4", "AGE_5_8", "AGE_9_12"];
 /** Empty string = all ages (no ageBand / ageBands filter). */
 export const DEFAULT_DEMO_AGE_BAND = "";
 
+export const DEMO_CONTENT_LANGS = ["en", "fr", "ar", "es"] as const;
+export type DemoContentLang = (typeof DEMO_CONTENT_LANGS)[number];
+
+/** Empty string = all languages (no hard lang filter on search). */
+export const DEFAULT_DEMO_CONTENT_LANG = "";
+
 export function isDemoAgeBand(value: string): value is AgeBand {
   return (DEMO_AGE_BANDS as readonly string[]).includes(value);
+}
+
+export function isDemoContentLang(value: string): value is DemoContentLang {
+  return (DEMO_CONTENT_LANGS as readonly string[]).includes(value);
 }

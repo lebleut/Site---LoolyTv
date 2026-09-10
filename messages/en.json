@@ -226,9 +226,17 @@
       "mainTopic": "Main topic",
       "subtopic": "Subtopic",
       "sort": "Sort by",
+      "language": "Language",
       "allAges": "All ages",
+      "allLanguages": "All languages",
       "allTopics": "All topics",
       "allSubtopics": "All subtopics"
+    },
+    "languages": {
+      "en": "English",
+      "fr": "French",
+      "ar": "Arabic",
+      "es": "Spanish"
     },
     "ageBands": {
       "AGE_2_4": "Ages 2–4",

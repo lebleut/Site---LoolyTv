@@ -22,10 +22,13 @@ import {
 } from "@/lib/demo-api";
 import {
   DEFAULT_DEMO_AGE_BAND,
+  DEFAULT_DEMO_CONTENT_LANG,
   DEMO_AGE_BANDS,
+  DEMO_CONTENT_LANGS,
   demoCountryForLocale,
   demoLangForLocale,
   isDemoAgeBand,
+  isDemoContentLang,
 } from "@/lib/demo-locale";
 import { trackEvent } from "@/lib/analytics";
 import { DemoSlider } from "./DemoSlider";
@@ -42,13 +45,24 @@ const MIN_SEARCH_LENGTH = 2;
 function buildBaseQuery(
   locale: string,
   ageBand: string,
-  options?: { forSearch?: boolean },
+  options?: { forSearch?: boolean; contentLang?: string },
 ) {
+  const uiLang = demoLangForLocale(locale);
   const params = new URLSearchParams({
     country: demoCountryForLocale(locale),
-    lang: demoLangForLocale(locale),
-    prefLang: demoLangForLocale(locale),
+    prefLang: uiLang,
   });
+
+  if (options?.forSearch) {
+    // Hard language filter only when the user picks one; default is all languages.
+    if (options.contentLang) {
+      params.set("lang", options.contentLang);
+    }
+  } else {
+    // Browse home uses UI lang for topic labels / ranking preference.
+    params.set("lang", uiLang);
+  }
+
   if (ageBand) {
     if (options?.forSearch) {
       params.set("ageBands", ageBand);
@@ -70,6 +84,10 @@ export function DemoApp() {
   const topicParam = searchParams.get("topic") ?? "";
   const ageRaw = searchParams.get("age") ?? DEFAULT_DEMO_AGE_BAND;
   const ageParam = isDemoAgeBand(ageRaw) ? ageRaw : DEFAULT_DEMO_AGE_BAND;
+  const languageRaw = searchParams.get("language") ?? DEFAULT_DEMO_CONTENT_LANG;
+  const languageParam = isDemoContentLang(languageRaw)
+    ? languageRaw
+    : DEFAULT_DEMO_CONTENT_LANG;
   const sortParam = (searchParams.get("sort") as PlaylistSort | null) ?? "relevance";
   const pageParam = Math.max(1, Number(searchParams.get("page") ?? "1") || 1);
   const playlistParam = searchParams.get("playlist") ?? "";
@@ -188,7 +206,10 @@ export function DemoApp() {
       setLoadingSearch(true);
       setError(null);
 
-      const params = buildBaseQuery(locale, ageParam, { forSearch: true });
+      const params = buildBaseQuery(locale, ageParam, {
+        forSearch: true,
+        contentLang: languageParam,
+      });
       params.set("q", qParam.trim());
       params.set("sort", sortParam);
       params.set("page", String(pageParam));
@@ -223,7 +244,17 @@ export function DemoApp() {
 
     runSearch();
     return () => controller.abort();
-  }, [ageParam, isSearching, locale, pageParam, qParam, sortParam, t, topicParam]);
+  }, [
+    ageParam,
+    isSearching,
+    languageParam,
+    locale,
+    pageParam,
+    qParam,
+    sortParam,
+    t,
+    topicParam,
+  ]);
 
   const onQueryChange = (value: string) => {
     setQueryInput(value);
@@ -322,19 +353,37 @@ export function DemoApp() {
             ) : null}
 
             {isSearching ? (
-              <div className={styles.filterGroup}>
-                <label htmlFor="demo-sort">{t("filters.sort")}</label>
-                <select
-                  id="demo-sort"
-                  value={sortParam}
-                  onChange={(event) => onFilterChange("sort", event.target.value)}
-                >
-                  <option value="relevance">{t("sort.relevance")}</option>
-                  <option value="views">{t("sort.views")}</option>
-                  <option value="videos">{t("sort.videos")}</option>
-                  <option value="avgDuration">{t("sort.avgDuration")}</option>
-                </select>
-              </div>
+              <>
+                <div className={styles.filterGroup}>
+                  <label htmlFor="demo-language">{t("filters.language")}</label>
+                  <select
+                    id="demo-language"
+                    value={languageParam}
+                    onChange={(event) => onFilterChange("language", event.target.value)}
+                  >
+                    <option value="">{t("filters.allLanguages")}</option>
+                    {DEMO_CONTENT_LANGS.map((lang) => (
+                      <option key={lang} value={lang}>
+                        {t(`languages.${lang}`)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className={styles.filterGroup}>
+                  <label htmlFor="demo-sort">{t("filters.sort")}</label>
+                  <select
+                    id="demo-sort"
+                    value={sortParam}
+                    onChange={(event) => onFilterChange("sort", event.target.value)}
+                  >
+                    <option value="relevance">{t("sort.relevance")}</option>
+                    <option value="views">{t("sort.views")}</option>
+                    <option value="videos">{t("sort.videos")}</option>
+                    <option value="avgDuration">{t("sort.avgDuration")}</option>
+                  </select>
+                </div>
+              </>
             ) : null}
           </div>
 

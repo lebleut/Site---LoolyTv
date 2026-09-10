@@ -20,6 +20,17 @@ export type AppPlaylist = {
   nonMadeForKidsCount?: number;
   madeForKidsCount?: number;
   blockedVideoCount?: number;
+  playableCount?: number;
+  nonEmbeddableCount?: number;
+  unavailableCount?: number;
+  countryBlockedCount?: number;
+  unplayableReason?:
+    | "empty"
+    | "all_non_embeddable"
+    | "all_country_blocked"
+    | "all_unavailable"
+    | "mixed_unplayable"
+    | null;
 };
 
 export type AppVideo = {

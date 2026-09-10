@@ -442,10 +442,20 @@
 }
 
 .dialogHead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   gap: 1rem;
   padding: 1.25rem 1.25rem 0.75rem;
   align-items: flex-start;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.playerAnchor {
+  /* Keep the player below the sticky playlist header after scrollIntoView. */
+  scroll-margin-top: 5.5rem;
 }
 
 .dialogThumb {

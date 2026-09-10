@@ -191,7 +191,7 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
         {loading ? <PlaylistDialogSkeleton /> : null}
         {error ? <p className={`${styles.status} ${styles.statusError}`}>{error}</p> : null}
 
-        <div ref={playerAnchorRef}>
+        <div ref={playerAnchorRef} className={styles.playerAnchor}>
           {activeVideo ? (
             <PreviewPlayer video={activeVideo} playlistId={playlistId} />
           ) : null}

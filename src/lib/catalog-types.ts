@@ -88,7 +88,7 @@ export type ExploreHomeResponse = {
   recommendations: AppPlaylist[];
   mostRequested: AppPlaylist[];
   topicRows: ExploreHomeTopicRow[];
-  ageBand: AgeBand;
+  ageBand: AgeBand | null;
   country: string;
   lang: string;
 };

@@ -20,4 +20,9 @@ export function demoLangForLocale(locale: string): string {
 
 export const DEMO_AGE_BANDS: AgeBand[] = ["AGE_2_4", "AGE_5_8", "AGE_9_12"];
 
-export const DEFAULT_DEMO_AGE_BAND: AgeBand = "AGE_5_8";
+/** Empty string = all ages (no ageBand / ageBands filter). */
+export const DEFAULT_DEMO_AGE_BAND = "";
+
+export function isDemoAgeBand(value: string): value is AgeBand {
+  return (DEMO_AGE_BANDS as readonly string[]).includes(value);
+}

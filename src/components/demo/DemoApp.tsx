@@ -25,6 +25,7 @@ import {
   DEMO_AGE_BANDS,
   demoCountryForLocale,
   demoLangForLocale,
+  isDemoAgeBand,
 } from "@/lib/demo-locale";
 import { trackEvent } from "@/lib/analytics";
 import { DemoSlider } from "./DemoSlider";
@@ -38,13 +39,24 @@ import styles from "./demo.module.css";
 const SEARCH_DEBOUNCE_MS = 350;
 const MIN_SEARCH_LENGTH = 2;
 
-function buildBaseQuery(locale: string, ageBand: string) {
-  return new URLSearchParams({
+function buildBaseQuery(
+  locale: string,
+  ageBand: string,
+  options?: { forSearch?: boolean },
+) {
+  const params = new URLSearchParams({
     country: demoCountryForLocale(locale),
     lang: demoLangForLocale(locale),
     prefLang: demoLangForLocale(locale),
-    ageBand,
   });
+  if (ageBand) {
+    if (options?.forSearch) {
+      params.set("ageBands", ageBand);
+    } else {
+      params.set("ageBand", ageBand);
+    }
+  }
+  return params;
 }
 
 export function DemoApp() {
@@ -56,7 +68,8 @@ export function DemoApp() {
 
   const qParam = searchParams.get("q") ?? "";
   const topicParam = searchParams.get("topic") ?? "";
-  const ageParam = searchParams.get("age") ?? DEFAULT_DEMO_AGE_BAND;
+  const ageRaw = searchParams.get("age") ?? DEFAULT_DEMO_AGE_BAND;
+  const ageParam = isDemoAgeBand(ageRaw) ? ageRaw : DEFAULT_DEMO_AGE_BAND;
   const sortParam = (searchParams.get("sort") as PlaylistSort | null) ?? "relevance";
   const pageParam = Math.max(1, Number(searchParams.get("page") ?? "1") || 1);
   const playlistParam = searchParams.get("playlist") ?? "";
@@ -175,7 +188,7 @@ export function DemoApp() {
       setLoadingSearch(true);
       setError(null);
 
-      const params = buildBaseQuery(locale, ageParam);
+      const params = buildBaseQuery(locale, ageParam, { forSearch: true });
       params.set("q", qParam.trim());
       params.set("sort", sortParam);
       params.set("page", String(pageParam));
@@ -265,6 +278,7 @@ export function DemoApp() {
                 value={ageParam}
                 onChange={(event) => onFilterChange("age", event.target.value)}
               >
+                <option value="">{t("filters.allAges")}</option>
                 {DEMO_AGE_BANDS.map((band) => (
                   <option key={band} value={band}>
                     {t(`ageBands.${band}`)}

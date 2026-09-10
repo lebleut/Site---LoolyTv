@@ -24,14 +24,17 @@ import {
   DEFAULT_DEMO_AGE_BAND,
   DEFAULT_DEMO_CONTENT_LANG,
   DEMO_AGE_BANDS,
-  DEMO_CONTENT_LANGS,
   demoCountryForLocale,
   demoLangForLocale,
   isDemoAgeBand,
   isDemoContentLang,
 } from "@/lib/demo-locale";
+import { topicIconForSlug, withTopicIcon } from "@/lib/demo-topic-icons";
 import { trackEvent } from "@/lib/analytics";
+import type { AppLocale } from "@/i18n/routing";
+import { Flag } from "@/components/Flags";
 import { DemoSlider } from "./DemoSlider";
+import { DemoLanguageFilter } from "./DemoLanguageFilter";
 import { HorizontalRow } from "./HorizontalRow";
 import { PlaylistCard } from "./PlaylistCard";
 import { PlaylistDialog } from "./PlaylistDialog";
@@ -113,13 +116,30 @@ export function DemoApp() {
     () => (topics?.tree ?? []).filter((topic) => topic.isParent !== false),
     [topics],
   );
-  const childTopics = useMemo(() => {
-    if (!topicParam) return [];
-    const parent = parentTopics.find(
-      (topic) => topic.slug === topicParam || topic.children?.some((child) => child.slug === topicParam),
+  const selectedParentTopic = useMemo(() => {
+    if (!topicParam) return null;
+    return (
+      parentTopics.find(
+        (topic) =>
+          topic.slug === topicParam ||
+          topic.children?.some((child) => child.slug === topicParam),
+      ) ?? null
     );
-    return parent?.children ?? [];
   }, [parentTopics, topicParam]);
+  const childTopics = selectedParentTopic?.children ?? [];
+  const selectedChildTopic = useMemo(() => {
+    if (!topicParam || !selectedParentTopic) return null;
+    if (selectedParentTopic.slug === topicParam) return null;
+    return selectedParentTopic.children?.find((child) => child.slug === topicParam) ?? null;
+  }, [selectedParentTopic, topicParam]);
+
+  const hasActiveFilters = Boolean(
+    ageParam ||
+      topicParam ||
+      languageParam ||
+      qParam.trim() ||
+      (isSearching && sortParam !== "relevance"),
+  );
 
   const replaceParams = useCallback(
     (updates: Record<string, string | null>) => {
@@ -276,6 +296,19 @@ export function DemoApp() {
     replaceParams(updates);
   };
 
+  const resetFilters = () => {
+    trackEvent("demo_filter_apply", { filter: "reset", value: "all" });
+    setQueryInput("");
+    replaceParams({
+      q: null,
+      age: null,
+      topic: null,
+      language: null,
+      sort: null,
+      page: null,
+    });
+  };
+
   return (
     <div className={styles.wrap}>
       <div className="container">
@@ -322,13 +355,13 @@ export function DemoApp() {
               <label htmlFor="demo-topic">{t("filters.mainTopic")}</label>
               <select
                 id="demo-topic"
-                value={parentTopics.some((topic) => topic.slug === topicParam) ? topicParam : ""}
+                value={selectedParentTopic?.slug ?? ""}
                 onChange={(event) => onFilterChange("topic", event.target.value)}
               >
                 <option value="">{t("filters.allTopics")}</option>
                 {parentTopics.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
-                    {topic.label}
+                    {withTopicIcon(topic.label, topicIconForSlug(topic.slug))}
                   </option>
                 ))}
               </select>
@@ -339,13 +372,21 @@ export function DemoApp() {
                 <label htmlFor="demo-subtopic">{t("filters.subtopic")}</label>
                 <select
                   id="demo-subtopic"
-                  value={childTopics.some((topic) => topic.slug === topicParam) ? topicParam : ""}
-                  onChange={(event) => onFilterChange("topic", event.target.value)}
+                  value={selectedChildTopic?.slug ?? ""}
+                  onChange={(event) =>
+                    onFilterChange(
+                      "topic",
+                      event.target.value || selectedParentTopic?.slug || "",
+                    )
+                  }
                 >
                   <option value="">{t("filters.allSubtopics")}</option>
                   {childTopics.map((topic) => (
                     <option key={topic.slug} value={topic.slug}>
-                      {topic.label}
+                      {withTopicIcon(
+                        topic.label,
+                        topicIconForSlug(topic.slug, selectedParentTopic?.slug),
+                      )}
                     </option>
                   ))}
                 </select>
@@ -356,18 +397,10 @@ export function DemoApp() {
               <>
                 <div className={styles.filterGroup}>
                   <label htmlFor="demo-language">{t("filters.language")}</label>
-                  <select
-                    id="demo-language"
+                  <DemoLanguageFilter
                     value={languageParam}
-                    onChange={(event) => onFilterChange("language", event.target.value)}
-                  >
-                    <option value="">{t("filters.allLanguages")}</option>
-                    {DEMO_CONTENT_LANGS.map((lang) => (
-                      <option key={lang} value={lang}>
-                        {t(`languages.${lang}`)}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(next) => onFilterChange("language", next)}
+                  />
                 </div>
 
                 <div className={styles.filterGroup}>
@@ -386,6 +419,118 @@ export function DemoApp() {
               </>
             ) : null}
           </div>
+
+          {hasActiveFilters ? (
+            <div className={styles.filterTags} aria-label={t("filters.activeFilters")}>
+              {qParam.trim() ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${qParam.trim()}`}
+                  onClick={() => {
+                    setQueryInput("");
+                    onFilterChange("q", "");
+                  }}
+                >
+                  <span className={styles.filterTagText}>
+                    {t("filters.searchTag", { query: qParam.trim() })}
+                  </span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              {ageParam ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${t(`ageBands.${ageParam}`)}`}
+                  onClick={() => onFilterChange("age", "")}
+                >
+                  <span className={styles.filterTagText}>{t(`ageBands.${ageParam}`)}</span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              {selectedParentTopic ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${selectedParentTopic.label}`}
+                  onClick={() => onFilterChange("topic", "")}
+                >
+                  <span className={styles.filterTagIcon} aria-hidden="true">
+                    {topicIconForSlug(selectedParentTopic.slug)}
+                  </span>
+                  <span className={styles.filterTagText}>{selectedParentTopic.label}</span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              {selectedChildTopic ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${selectedChildTopic.label}`}
+                  onClick={() => onFilterChange("topic", selectedParentTopic?.slug ?? "")}
+                >
+                  <span className={styles.filterTagIcon} aria-hidden="true">
+                    {topicIconForSlug(selectedChildTopic.slug, selectedParentTopic?.slug)}
+                  </span>
+                  <span className={styles.filterTagText}>{selectedChildTopic.label}</span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              {languageParam ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${t(`languages.${languageParam}`)}`}
+                  onClick={() => onFilterChange("language", "")}
+                >
+                  <span className={styles.filterTagFlag} aria-hidden="true">
+                    <Flag locale={languageParam as AppLocale} />
+                  </span>
+                  <span className={styles.filterTagText}>
+                    {t(`languages.${languageParam}`)}
+                  </span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              {isSearching && sortParam !== "relevance" ? (
+                <button
+                  type="button"
+                  className={styles.filterTag}
+                  aria-label={`${t("filters.removeFilter")}: ${t(`sort.${sortParam}`)}`}
+                  onClick={() => onFilterChange("sort", "relevance")}
+                >
+                  <span className={styles.filterTagText}>{t(`sort.${sortParam}`)}</span>
+                  <span className={styles.filterTagClose} aria-hidden="true">
+                    ×
+                  </span>
+                </button>
+              ) : null}
+
+              <button
+                type="button"
+                className={styles.resetFilters}
+                onClick={resetFilters}
+              >
+                {t("filters.reset")}
+              </button>
+            </div>
+          ) : null}
 
           <div className={styles.status} aria-live="polite">
             {loadingSearch ? t("searching") : null}

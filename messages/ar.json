@@ -230,7 +230,11 @@
       "allAges": "كل الأعمار",
       "allLanguages": "كل اللغات",
       "allTopics": "كل المواضيع",
-      "allSubtopics": "كل المواضيع الفرعية"
+      "allSubtopics": "كل المواضيع الفرعية",
+      "activeFilters": "الفلاتر النشطة",
+      "removeFilter": "إزالة الفلتر",
+      "reset": "إعادة ضبط الفلاتر",
+      "searchTag": "بحث: {query}"
     },
     "languages": {
       "en": "الإنجليزية",

@@ -230,7 +230,11 @@
       "allAges": "Tous les âges",
       "allLanguages": "Toutes les langues",
       "allTopics": "Tous les thèmes",
-      "allSubtopics": "Tous les sous-thèmes"
+      "allSubtopics": "Tous les sous-thèmes",
+      "activeFilters": "Filtres actifs",
+      "removeFilter": "Retirer le filtre",
+      "reset": "Réinitialiser les filtres",
+      "searchTag": "Recherche : {query}"
     },
     "languages": {
       "en": "Anglais",

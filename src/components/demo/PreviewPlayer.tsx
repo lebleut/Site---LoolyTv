@@ -18,7 +18,7 @@ type YtPlayer = {
 
 type YtNamespace = {
   Player: new (
-    elementId: string,
+    element: string | HTMLElement,
     config: {
       videoId: string;
       playerVars: Record<string, number | string>;
@@ -70,9 +70,19 @@ function loadYouTubeApi(): Promise<void> {
   return ytApiPromise;
 }
 
+function destroyPlayer(player: YtPlayer | null) {
+  if (!player) return;
+  try {
+    player.destroy();
+  } catch {
+    // YouTube may already have detached the iframe during a fast remount.
+  }
+}
+
 export function PreviewPlayer({ video, playlistId }: Props) {
   const t = useTranslations("demo");
   const frameId = useId().replace(/:/g, "");
+  const hostRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YtPlayer | null>(null);
   const [playing, setPlaying] = useState(false);
   const [ended, setEnded] = useState(false);
@@ -89,20 +99,32 @@ export function PreviewPlayer({ video, playlistId }: Props) {
   useEffect(() => {
     setPlaying(false);
     setEnded(false);
-    playerRef.current?.destroy();
+    destroyPlayer(playerRef.current);
     playerRef.current = null;
+    if (hostRef.current) hostRef.current.innerHTML = "";
   }, [video.youtubeId]);
 
   useEffect(() => {
     if (!playing || ended) return;
 
+    const host = hostRef.current;
+    if (!host) return;
+
     let cancelled = false;
 
-    loadYouTubeApi().then(() => {
-      if (cancelled || !window.YT?.Player) return;
+    // YT.Player replaces this node with an iframe. Keep it outside React's
+    // rendered tree so React never tries to removeChild the replaced node.
+    const mount = document.createElement("div");
+    mount.id = frameId;
+    mount.className = styles.playerFrame;
+    mount.title = video.title;
+    host.replaceChildren(mount);
 
-      playerRef.current?.destroy();
-      playerRef.current = new window.YT.Player(frameId, {
+    loadYouTubeApi().then(() => {
+      if (cancelled || !window.YT?.Player || !host.contains(mount)) return;
+
+      destroyPlayer(playerRef.current);
+      playerRef.current = new window.YT.Player(mount, {
         videoId: video.youtubeId,
         playerVars: {
           rel: 0,
@@ -123,10 +145,11 @@ export function PreviewPlayer({ video, playlistId }: Props) {
 
     return () => {
       cancelled = true;
-      playerRef.current?.destroy();
+      destroyPlayer(playerRef.current);
       playerRef.current = null;
+      host.replaceChildren();
     };
-  }, [playing, ended, frameId, handleEnded, video.youtubeId]);
+  }, [playing, ended, frameId, handleEnded, video.youtubeId, video.title]);
 
   const startPlayback = () => {
     trackEvent("demo_video_play", {
@@ -146,7 +169,7 @@ export function PreviewPlayer({ video, playlistId }: Props) {
             <strong>{video.title}</strong>
           </button>
         ) : (
-          <div id={frameId} className={styles.playerFrame} title={video.title} />
+          <div ref={hostRef} className={styles.playerFrameHost} />
         )}
       </div>
 

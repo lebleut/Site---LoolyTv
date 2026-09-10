@@ -223,7 +223,11 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
 
         <div ref={playerAnchorRef} className={styles.playerAnchor}>
           {activeVideo ? (
-            <PreviewPlayer video={activeVideo} playlistId={playlistId} />
+            <PreviewPlayer
+              key={activeVideo.youtubeId}
+              video={activeVideo}
+              playlistId={playlistId}
+            />
           ) : null}
         </div>
 

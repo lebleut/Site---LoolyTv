@@ -875,6 +875,14 @@
   font-size: 0.95rem;
 }
 
+.playerFrameHost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.playerFrameHost :global(iframe),
 .playerFrame {
   width: 100%;
   height: 100%;

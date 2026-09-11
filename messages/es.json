@@ -132,6 +132,7 @@
     "submitting": "Enviando…",
     "success": "¡Estás en la lista! Te escribiremos cuando abra el test.",
     "error": "Algo falló. Inténtalo de nuevo o escríbenos.",
+    "captchaError": "La verificación de seguridad falló. Inténtalo de nuevo.",
     "privacyNote": "Usamos tu correo solo para pre-test y el aviso de lanzamiento elegido. Ver Política de privacidad."
   },
   "contactPage": {
@@ -154,7 +155,8 @@
       "messageTooShort": "Tu mensaje es demasiado corto (al menos 3 caracteres).",
       "consentRequired": "Por favor, confirma que eres padre/madre o tutor.",
       "invalidPayload": "Algunos campos no son válidos. Revisa el formulario e inténtalo de nuevo.",
-      "network": "No se pudo enviar (error de red o del servidor). Inténtalo de nuevo o escribe a loolytv@salinnovation.com."
+      "network": "No se pudo enviar (error de red o del servidor). Inténtalo de nuevo o escribe a loolytv@salinnovation.com.",
+      "captcha": "La verificación de seguridad falló. Inténtalo de nuevo."
     }
   },
   "faqPage": {

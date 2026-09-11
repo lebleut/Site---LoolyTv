@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { API_URL } from "@/lib/site";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import styles from "./Forms.module.css";
 
 export function WaitlistForm() {
@@ -27,7 +27,8 @@ export function WaitlistForm() {
     setBusy(true);
     setStatus("idle");
     try {
-      const res = await fetch(`${API_URL}/v1/public/waitlist`, {
+      const captchaToken = await getRecaptchaToken("waitlist");
+      const res = await fetch("/api/public/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,15 +39,31 @@ export function WaitlistForm() {
           wantsLaunchNotify: data.get("wantsLaunchNotify") === "on",
           consent: data.get("consent") === "on",
           website: String(data.get("website") || ""),
+          captchaToken,
         }),
       });
-      if (!res.ok) throw new Error("fail");
+      if (!res.ok) {
+        if (res.status === 403 || res.status === 400) {
+          const payload = (await res.json().catch(() => null)) as {
+            reason?: string;
+          } | null;
+          if (payload?.reason) {
+            setStatus("err");
+            setMessage(t("captchaError"));
+            return;
+          }
+        }
+        throw new Error("fail");
+      }
       setStatus("ok");
       setMessage(t("success"));
       form.reset();
-    } catch {
+    } catch (err) {
+      const code = err instanceof Error ? err.message : "";
       setStatus("err");
-      setMessage(t("error"));
+      setMessage(
+        code.startsWith("recaptcha_") ? t("captchaError") : t("error"),
+      );
     } finally {
       setBusy(false);
     }

@@ -15,6 +15,10 @@ Copy `.env.example` to `.env.local` (and set the same vars in the Vercel project
 
 - `NEXT_PUBLIC_SITE_URL` — canonical site origin (`https://loolytv.com`)
 - `NEXT_PUBLIC_API_URL` — Nest API origin (waitlist, contact, data-deletion), e.g. `https://api.loolytv.com`
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` — Google reCAPTCHA **v3** site key (browser)
+- `RECAPTCHA_SECRET_KEY` — Google reCAPTCHA **v3** secret (server only; never expose to the client)
+
+Forms (`waitlist`, `contact`, `data-deletion`) obtain a v3 token in the browser, then POST to Next.js `/api/public/*` routes which verify the token with Google before proxying to the Nest API.
 
 ## Locales
 

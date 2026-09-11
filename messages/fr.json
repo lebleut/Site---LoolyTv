@@ -132,6 +132,7 @@
     "submitting": "Envoi…",
     "success": "Vous êtes inscrit·e ! On vous écrit quand le test ouvre.",
     "error": "Une erreur est survenue. Réessayez ou écrivez-nous.",
+    "captchaError": "Échec du contrôle de sécurité. Réessayez.",
     "privacyNote": "Votre e-mail sert uniquement au pré-test et à l’avis de lancement choisi. Voir la Politique de confidentialité."
   },
   "contactPage": {
@@ -154,7 +155,8 @@
       "messageTooShort": "Votre message est trop court (au moins 3 caractères).",
       "consentRequired": "Veuillez confirmer que vous êtes parent ou tuteur.",
       "invalidPayload": "Certains champs sont invalides. Vérifiez le formulaire et réessayez.",
-      "network": "Envoi impossible (erreur réseau ou serveur). Réessayez ou écrivez à loolytv@salinnovation.com."
+      "network": "Envoi impossible (erreur réseau ou serveur). Réessayez ou écrivez à loolytv@salinnovation.com.",
+      "captcha": "Échec du contrôle de sécurité. Réessayez."
     }
   },
   "faqPage": {

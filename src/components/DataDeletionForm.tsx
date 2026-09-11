@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { API_URL } from "@/lib/site";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 export function DataDeletionForm() {
   const searchParams = useSearchParams();
@@ -20,19 +20,33 @@ export function DataDeletionForm() {
     setBusy(true);
     setResult("Submitting…");
     try {
-      const res = await fetch(`${API_URL}/legal/data-deletion/request`, {
+      const captchaToken = await getRecaptchaToken("data_deletion");
+      const res = await fetch("/api/public/data-deletion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ installId: installId.trim() }),
+        body: JSON.stringify({ installId: installId.trim(), captchaToken }),
       });
-      const data = (await res.json()) as { message?: string; ok?: boolean };
+      const data = (await res.json()) as {
+        message?: string;
+        ok?: boolean;
+        reason?: string;
+      };
       if (!res.ok) {
-        setResult(data.message || "Request failed.");
+        setResult(
+          data.reason
+            ? "Captcha verification failed. Please try again."
+            : data.message || "Request failed.",
+        );
         return;
       }
       setResult(data.message || "Request completed.");
-    } catch {
-      setResult("Network error.");
+    } catch (err) {
+      const code = err instanceof Error ? err.message : "";
+      setResult(
+        code.startsWith("recaptcha_")
+          ? "Captcha verification failed. Please try again."
+          : "Network error.",
+      );
     } finally {
       setBusy(false);
     }

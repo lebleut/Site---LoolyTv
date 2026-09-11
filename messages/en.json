@@ -132,6 +132,7 @@
     "submitting": "Sending…",
     "success": "You’re on the list! We’ll reach out when testing opens.",
     "error": "Something went wrong. Please try again or email us.",
+    "captchaError": "Security check failed. Please try again.",
     "privacyNote": "We only use your email for pre-testing and the launch notice you choose. See our Privacy Policy."
   },
   "contactPage": {
@@ -154,7 +155,8 @@
       "messageTooShort": "Your message is too short (at least 3 characters).",
       "consentRequired": "Please confirm you are a parent or guardian.",
       "invalidPayload": "Some fields are invalid. Please check the form and try again.",
-      "network": "Could not send (network or server error). Please try again or email loolytv@salinnovation.com."
+      "network": "Could not send (network or server error). Please try again or email loolytv@salinnovation.com.",
+      "captcha": "Security check failed. Please try again."
     }
   },
   "faqPage": {

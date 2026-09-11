@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { API_URL } from "@/lib/site";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import styles from "./Forms.module.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,7 +63,8 @@ export function ContactForm() {
     setStatus("idle");
     setMessage("");
     try {
-      const res = await fetch(`${API_URL}/v1/public/contact`, {
+      const captchaToken = await getRecaptchaToken("contact");
+      const res = await fetch("/api/public/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -74,14 +75,22 @@ export function ContactForm() {
           locale,
           consent: data.get("consent") === "on",
           website: String(data.get("website") || ""),
+          captchaToken,
         }),
       });
 
       if (!res.ok) {
         const payload = (await res.json().catch(() => null)) as {
           message?: string | string[];
+          reason?: string;
           errors?: Partial<Record<FieldKey, string>>;
         } | null;
+
+        if (payload?.reason) {
+          setStatus("err");
+          setMessage(t("errors.captcha"));
+          return;
+        }
 
         const apiField = payload?.errors
           ? (Object.keys(payload.errors) as FieldKey[]).find(
@@ -110,9 +119,12 @@ export function ContactForm() {
       setMessage(t("success"));
       setFieldError({});
       form.reset();
-    } catch {
+    } catch (err) {
+      const code = err instanceof Error ? err.message : "";
       setStatus("err");
-      setMessage(t("errors.network"));
+      setMessage(
+        code.startsWith("recaptcha_") ? t("errors.captcha") : t("errors.network"),
+      );
     } finally {
       setBusy(false);
     }

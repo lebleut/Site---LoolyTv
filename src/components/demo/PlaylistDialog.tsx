@@ -256,7 +256,12 @@ export function PlaylistDialog({ playlistId, country, onClose }: Props) {
                     </div>
                     <div className={styles.videoCopy}>
                       <strong>{video.title}</strong>
-                      <span>{formatDuration(video.duration)}</span>
+                      <span className={styles.videoMeta}>
+                        {video.isShort ? (
+                          <em className={styles.shortTag}>{t("videoTagShort")}</em>
+                        ) : null}
+                        {formatDuration(video.duration)}
+                      </span>
                     </div>
                   </button>
                 </li>

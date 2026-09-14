@@ -42,6 +42,7 @@ export type AppVideo = {
   channelTitle?: string | null;
   playlistTitle?: string | null;
   madeForKids?: boolean;
+  isShort?: boolean;
   embedBlocked?: boolean;
   position?: number;
 };

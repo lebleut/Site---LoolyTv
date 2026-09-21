@@ -31,7 +31,7 @@ export default function LegalLayout({
       <body>
         <div className={styles.shell}>
           <nav className={styles.nav} aria-label="Legal">
-            <Link href="/en">Back to LoolyTv</Link>
+            <Link href="/">Back to LoolyTv</Link>
             <span aria-hidden>·</span>
             <Link href="/legal/privacy">Privacy</Link>
             <Link href="/legal/terms">Terms</Link>

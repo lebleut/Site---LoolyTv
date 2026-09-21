@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ContactForm } from "@/components/ContactForm";
-import { SITE_URL } from "@/lib/site";
-import { routing } from "@/i18n/routing";
+import { languageAlternates, localizedUrl } from "@/lib/locale-url";
 import styles from "./contact.module.css";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -13,10 +12,8 @@ export async function generateMetadata({ params }: Props) {
     title: `${t("title")} · LoolyTv`,
     description: t("subtitle"),
     alternates: {
-      canonical: `${SITE_URL}/${locale}/contact`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${SITE_URL}/${l}/contact`]),
-      ),
+      canonical: localizedUrl(locale, "/contact"),
+      languages: languageAlternates("/contact"),
     },
   };
 }

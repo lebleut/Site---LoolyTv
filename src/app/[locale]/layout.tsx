@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
+import { languageAlternates, localizedUrl } from "@/lib/locale-url";
 import "../globals.css";
 
 const baloo = Baloo_2({
@@ -38,21 +39,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [l, `${SITE_URL}/${l}`]),
-  );
+  const pageUrl = localizedUrl(locale);
 
   return {
     metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: { ...languages, "x-default": `${SITE_URL}/en` },
+      canonical: pageUrl,
+      languages: languageAlternates(),
     },
     openGraph: {
       type: "website",
-      url: `${SITE_URL}/${locale}`,
+      url: pageUrl,
       title: t("title"),
       description: t("description"),
       siteName: "LoolyTv",

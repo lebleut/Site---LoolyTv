@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { SITE_URL } from "@/lib/site";
-import { routing } from "@/i18n/routing";
+import { languageAlternates, localizedUrl } from "@/lib/locale-url";
 import { Reveal } from "@/components/Reveal";
 import styles from "./faq.module.css";
 
@@ -24,10 +23,8 @@ export async function generateMetadata({ params }: Props) {
     title: `${t("title")} · LoolyTv`,
     description: t("subtitle"),
     alternates: {
-      canonical: `${SITE_URL}/${locale}/faq`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${SITE_URL}/${l}/faq`]),
-      ),
+      canonical: localizedUrl(locale, "/faq"),
+      languages: languageAlternates("/faq"),
     },
   };
 }

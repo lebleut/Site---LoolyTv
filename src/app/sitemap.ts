@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
+import { localizedUrl } from "@/lib/locale-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -8,25 +9,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const localized = locales.flatMap((locale) => [
     {
-      url: `${SITE_URL}/${locale}`,
+      url: localizedUrl(locale),
       lastModified,
       changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
-      url: `${SITE_URL}/${locale}/faq`,
+      url: localizedUrl(locale, "/faq"),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/${locale}/contact`,
+      url: localizedUrl(locale, "/contact"),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/${locale}/demo`,
+      url: localizedUrl(locale, "/demo"),
       lastModified,
       changeFrequency: "weekly" as const,
       priority: 0.85,

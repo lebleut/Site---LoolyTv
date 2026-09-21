@@ -1,8 +1,7 @@
 import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { DemoApp } from "@/components/demo/DemoApp";
-import { SITE_URL } from "@/lib/site";
-import { routing } from "@/i18n/routing";
+import { languageAlternates, localizedUrl } from "@/lib/locale-url";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -14,10 +13,8 @@ export async function generateMetadata({ params }: Props) {
     title: `${t("title")} · LoolyTv`,
     description: t("metaDescription"),
     alternates: {
-      canonical: `${SITE_URL}/${locale}/demo`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${SITE_URL}/${l}/demo`]),
-      ),
+      canonical: localizedUrl(locale, "/demo"),
+      languages: languageAlternates("/demo"),
     },
   };
 }

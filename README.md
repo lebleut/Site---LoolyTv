@@ -22,6 +22,6 @@ Forms (`waitlist`, `contact`, `data-deletion`) obtain a v3 token in the browser,
 
 ## Locales
 
-`en` (default), `fr`, `ar` (RTL), `es` under `/[locale]`.
+`en` (default) at `/`; `fr`, `ar` (RTL), `es` under `/[locale]`. `/en` redirects to `/`.
 
 Legal pages (English) live at `/legal/*`.

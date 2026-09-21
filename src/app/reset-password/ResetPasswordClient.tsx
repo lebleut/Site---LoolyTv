@@ -1,7 +1,7 @@
 "use client";
 
-import { FormEvent, useMemo, useState, type CSSProperties } from "react";
-import { API_URL } from "@/lib/site";
+import { FormEvent, useMemo, useRef, useState, type CSSProperties } from "react";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 type Props = {
   token: string;
@@ -18,10 +18,15 @@ export function ResetPasswordClient({ token }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [done, setDone] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError("");
+    if (honeypotRef.current?.value) {
+      setDone(true);
+      return;
+    }
     if (password.length < 10) {
       setError("Password must be at least 10 characters and include a letter and a digit.");
       return;
@@ -32,18 +37,40 @@ export function ResetPasswordClient({ token }: Props) {
     }
     setBusy(true);
     try {
-      const res = await fetch(`${API_URL}/v1/public/password/reset`, {
+      const captchaToken = await getRecaptchaToken("password_reset");
+      const res = await fetch("/api/public/password-reset", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, password }),
+        body: JSON.stringify({
+          token,
+          password,
+          website: honeypotRef.current?.value ?? "",
+          captchaToken,
+        }),
       });
       if (!res.ok) {
+        if (res.status === 403 || res.status === 400) {
+          const payload = (await res.json().catch(() => null)) as {
+            reason?: string;
+          } | null;
+          if (payload?.reason) {
+            setError("Security check failed. Please refresh and try again.");
+            return;
+          }
+        }
         const text = await res.text();
         throw new Error(text || `HTTP ${res.status}`);
       }
       setDone(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Reset failed");
+      const code = err instanceof Error ? err.message : "";
+      setError(
+        code.startsWith("recaptcha_")
+          ? "Security check failed. Please refresh and try again."
+          : err instanceof Error
+            ? err.message
+            : "Reset failed",
+      );
     } finally {
       setBusy(false);
     }
@@ -120,6 +147,7 @@ export function ResetPasswordClient({ token }: Props) {
               </label>
               {/* honeypot */}
               <input
+                ref={honeypotRef}
                 name="website"
                 tabIndex={-1}
                 autoComplete="off"

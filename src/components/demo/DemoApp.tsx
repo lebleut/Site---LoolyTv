@@ -24,7 +24,6 @@ import {
   DEFAULT_DEMO_AGE_BAND,
   DEFAULT_DEMO_CONTENT_LANG,
   DEMO_AGE_BANDS,
-  demoCountryForLocale,
   demoLangForLocale,
   isDemoAgeBand,
   isDemoContentLang,
@@ -38,6 +37,7 @@ import { DemoLanguageFilter } from "./DemoLanguageFilter";
 import { HorizontalRow } from "./HorizontalRow";
 import { PlaylistCard } from "./PlaylistCard";
 import { PlaylistDialog } from "./PlaylistDialog";
+import { PreviewPlayer } from "./PreviewPlayer";
 import { UniverseCard } from "./UniverseCard";
 import { DemoCta } from "./DemoCta";
 import styles from "./demo.module.css";
@@ -52,7 +52,6 @@ function buildBaseQuery(
 ) {
   const uiLang = demoLangForLocale(locale);
   const params = new URLSearchParams({
-    country: demoCountryForLocale(locale),
     prefLang: uiLang,
   });
 
@@ -105,6 +104,11 @@ export function DemoApp() {
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [resultsAnnouncement, setResultsAnnouncement] = useState("");
+  const [previewVideo, setPreviewVideo] = useState<{
+    id: string;
+    title: string;
+    thumbnail?: string | null;
+  } | null>(null);
 
   const searchAbortRef = useRef<AbortController | null>(null);
   const debounceRef = useRef<number | null>(null);
@@ -595,7 +599,9 @@ export function DemoApp() {
                 key={row.slug}
                 title={row.title}
                 playlists={row.playlists}
+                items={row.items}
                 onOpenPlaylist={openPlaylist}
+                onOpenVideo={setPreviewVideo}
               />
             ))}
 
@@ -614,10 +620,28 @@ export function DemoApp() {
         <DemoCta />
       </div>
 
-      {playlistParam ? (
+      {previewVideo ? (
+        <div className={styles.overlay} role="dialog" aria-modal="true">
+          <div className={styles.dialog}>
+            <button type="button" className="btn btn-secondary" onClick={() => setPreviewVideo(null)}>
+              {t("close")}
+            </button>
+            <PreviewPlayer
+              playlistId={previewVideo.id}
+              video={{
+                id: previewVideo.id,
+                youtubeId: previewVideo.id,
+                title: previewVideo.title,
+                duration: 0,
+                thumbnail: previewVideo.thumbnail,
+              }}
+            />
+          </div>
+        </div>
+      ) : null}
         <PlaylistDialog
           playlistId={playlistParam}
-          country={demoCountryForLocale(locale)}
+          country=""
           onClose={closePlaylist}
         />
       ) : null}

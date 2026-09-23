@@ -639,6 +639,7 @@ export function DemoApp() {
           </div>
         </div>
       ) : null}
+      {playlistParam ? (
         <PlaylistDialog
           playlistId={playlistParam}
           country=""

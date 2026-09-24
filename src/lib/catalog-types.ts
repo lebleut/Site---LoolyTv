@@ -78,10 +78,18 @@ export type ExploreUniverseItem =
       subscriberCount?: number | null;
     };
 
+export type ExploreRailItem =
+  | { kind: "playlist"; playlist: AppPlaylist }
+  | { kind: "channel"; id: string; title: string; thumbnail?: string | null }
+  | { kind: "universe"; id: string; slug: string; title: string; thumbnail?: string | null }
+  | { kind: "video"; id: string; title: string; thumbnail?: string | null };
+
 export type ExploreHomeTopicRow = {
   slug: string;
   title: string;
+  kind?: "topic" | "section";
   playlists: AppPlaylist[];
+  items?: ExploreRailItem[];
 };
 
 export type ExploreHomeResponse = {

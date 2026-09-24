@@ -29,12 +29,39 @@ function readInstallId(request: NextRequest): string | undefined {
   return value || undefined;
 }
 
+const LANGUAGE_COUNTRY: Record<string, string> = {
+  en: "US",
+  fr: "FR",
+  ar: "SA",
+  es: "ES",
+};
+
+/** Browser/OS locale region. A client country query is never trusted. */
+export function countryFromAcceptLanguage(header: string | null): string {
+  const tags = (header ?? "")
+    .split(",")
+    .map((part) => part.split(";")[0]?.trim())
+    .filter((tag): tag is string => !!tag);
+  for (const tag of tags) {
+    const region = tag.split("-")[1];
+    if (region && /^[A-Za-z]{2}$/.test(region)) return region.toUpperCase();
+  }
+  for (const tag of tags) {
+    const language = tag.split("-")[0]?.toLowerCase() ?? "";
+    if (LANGUAGE_COUNTRY[language]) return LANGUAGE_COUNTRY[language];
+  }
+  return "US";
+}
+
 export async function proxyCatalogGet(
   request: NextRequest,
   apiPath: string,
   options: ProxyOptions,
 ): Promise<NextResponse> {
   const params = pickQueryParams(request, options.allowedParams);
+  if (options.allowedParams.includes("country")) {
+    params.set("country", countryFromAcceptLanguage(request.headers.get("accept-language")));
+  }
   const query = params.toString();
   const path = query ? `${apiPath}?${query}` : apiPath;
 

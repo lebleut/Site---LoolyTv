@@ -7,6 +7,8 @@ import styles from "./demo.module.css";
 type Props = {
   title: string;
   ariaLabel?: string;
+  actionLabel?: string;
+  onAction?: () => void;
   children: ReactNode;
 };
 
@@ -47,7 +49,7 @@ function readScrollEdges(track: HTMLUListElement): ScrollEdges {
   };
 }
 
-export function DemoSlider({ title, ariaLabel, children }: Props) {
+export function DemoSlider({ title, ariaLabel, actionLabel, onAction, children }: Props) {
   const t = useTranslations("demo");
   const trackRef = useRef<HTMLUListElement>(null);
   const dragRef = useRef({ pointerId: -1, startX: 0, scrollLeft: 0, moved: false });
@@ -172,6 +174,11 @@ export function DemoSlider({ title, ariaLabel, children }: Props) {
     <section className={styles.section} aria-label={ariaLabel ?? title}>
       <div className={styles.sectionHead}>
         <h2>{title}</h2>
+        {actionLabel && onAction ? (
+          <button type="button" className={styles.sectionAction} onClick={onAction}>
+            {actionLabel}
+          </button>
+        ) : null}
       </div>
 
       <div className={styles.slider}>

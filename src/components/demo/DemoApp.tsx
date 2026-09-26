@@ -17,6 +17,7 @@ import {
   DemoApiError,
   fetchDemoHome,
   fetchDemoSearch,
+  fetchDemoTopicEntries,
   fetchDemoTopics,
   fetchDemoUniverses,
 } from "@/lib/demo-api";
@@ -97,6 +98,7 @@ export function DemoApp() {
   const [queryInput, setQueryInput] = useState(qParam);
   const [home, setHome] = useState<ExploreHomeResponse | null>(null);
   const [universes, setUniverses] = useState<ExploreUniverseItem[]>([]);
+  const [topicEntries, setTopicEntries] = useState<ExploreUniverseItem[]>([]);
   const [topics, setTopics] = useState<CatalogTopicsResponse | null>(null);
   const [searchResults, setSearchResults] = useState<AppPlaylist[]>([]);
   const [searchTotal, setSearchTotal] = useState(0);
@@ -187,6 +189,8 @@ export function DemoApp() {
       setError(null);
 
       const base = buildBaseQuery(locale, ageParam);
+      // Bust Next/CDN cache and get a fresh random explore layout each visit.
+      base.set("requestId", crypto.randomUUID());
 
       try {
         const [homeData, universeData, topicsData] = await Promise.all([
@@ -213,6 +217,29 @@ export function DemoApp() {
     loadBrowseData();
     return () => controller.abort();
   }, [ageParam, locale, t]);
+
+  useEffect(() => {
+    if (!topicParam.trim()) {
+      setTopicEntries([]);
+      return;
+    }
+    const controller = new AbortController();
+    async function loadTopicEntries() {
+      const params = buildBaseQuery(locale, ageParam);
+      params.set("topic", topicParam);
+      params.set("limit", "24");
+      try {
+        const data = (await fetchDemoTopicEntries(params.toString(), {
+          signal: controller.signal,
+        })) as ExploreBrowsePage;
+        setTopicEntries(data.items ?? []);
+      } catch {
+        if (!controller.signal.aborted) setTopicEntries([]);
+      }
+    }
+    loadTopicEntries();
+    return () => controller.abort();
+  }, [ageParam, locale, topicParam]);
 
   useEffect(() => {
     if (!isSearching) {
@@ -547,6 +574,16 @@ export function DemoApp() {
 
         {isSearching ? (
           <>
+            {topicEntries.length > 0 ? (
+              <DemoSlider title={t("sections.linkedCatalog")}>
+                {topicEntries.map((item) => (
+                  <li key={`${item.kind}-${item.id}`} className={styles.universeSliderItem}>
+                    <UniverseCard item={item} />
+                  </li>
+                ))}
+              </DemoSlider>
+            ) : null}
+
             {loadingSearch && searchResults.length === 0 ? (
               <div className={styles.skeletonGrid} aria-hidden="true">
                 {Array.from({ length: 6 }).map((_, index) => (
@@ -600,6 +637,8 @@ export function DemoApp() {
                 title={row.title}
                 playlists={row.playlists}
                 items={row.items}
+                actionLabel={t("viewAll")}
+                onAction={() => onFilterChange("topic", row.slug)}
                 onOpenPlaylist={openPlaylist}
                 onOpenVideo={setPreviewVideo}
               />

@@ -10,6 +10,8 @@ type Props = {
   title: string;
   playlists?: AppPlaylist[];
   items?: ExploreRailItem[];
+  actionLabel?: string;
+  onAction?: () => void;
   onOpenPlaylist: (playlist: AppPlaylist) => void;
   onOpenVideo?: (video: { id: string; title: string; thumbnail?: string | null }) => void;
 };
@@ -18,6 +20,8 @@ export function HorizontalRow({
   title,
   playlists = [],
   items,
+  actionLabel,
+  onAction,
   onOpenPlaylist,
   onOpenVideo,
 }: Props) {
@@ -28,7 +32,7 @@ export function HorizontalRow({
   if (rail.length === 0) return null;
 
   return (
-    <DemoSlider title={title}>
+    <DemoSlider title={title} actionLabel={actionLabel} onAction={onAction}>
       {rail.map((item) => {
         if (item.kind === "playlist") {
           return (

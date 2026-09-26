@@ -263,8 +263,10 @@
     "sections": {
       "recommendations": "Recomendado para ti",
       "universes": "Universos y canales",
+      "linkedCatalog": "Universos y canales de este tema",
       "channel": "Canal"
     },
+    "viewAll": "Ver todo",
     "meta": {
       "videos": "{count} vídeos",
       "avgDuration": "media {duration}",

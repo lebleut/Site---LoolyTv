@@ -47,6 +47,10 @@ export function fetchDemoUniverses(query: string, options?: DemoFetchOptions) {
   return demoFetch(`/api/demo/universes?${query}`, options);
 }
 
+export function fetchDemoTopicEntries(query: string, options?: DemoFetchOptions) {
+  return demoFetch(`/api/demo/topic-entries?${query}`, options);
+}
+
 export function fetchDemoUniverse(id: string, query: string, options?: DemoFetchOptions) {
   return demoFetch(`/api/demo/universes/${encodeURIComponent(id)}?${query}`, options);
 }

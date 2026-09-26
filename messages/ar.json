@@ -263,8 +263,10 @@
     "sections": {
       "recommendations": "موصى به لك",
       "universes": "عوالم وقنوات",
+      "linkedCatalog": "عوالم وقنوات هذا الموضوع",
       "channel": "قناة"
     },
+    "viewAll": "عرض الكل",
     "meta": {
       "videos": "{count} فيديو",
       "avgDuration": "متوسط {duration}",

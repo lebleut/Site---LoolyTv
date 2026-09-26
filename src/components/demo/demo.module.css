@@ -314,6 +314,22 @@
   font-size: 1.35rem;
 }
 
+.sectionAction {
+  border: 0;
+  background: transparent;
+  color: var(--color-accent, #5b4fcf);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.sectionAction:hover {
+  opacity: 0.85;
+}
+
 .slider {
   position: relative;
   display: flex;

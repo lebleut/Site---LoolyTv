@@ -263,8 +263,10 @@
     "sections": {
       "recommendations": "Recommandé pour vous",
       "universes": "Univers & chaînes",
+      "linkedCatalog": "Univers & chaînes de ce thème",
       "channel": "Chaîne"
     },
+    "viewAll": "Tout voir",
     "meta": {
       "videos": "{count} vidéos",
       "avgDuration": "moy. {duration}",

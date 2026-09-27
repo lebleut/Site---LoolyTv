@@ -3,7 +3,15 @@ import { proxyCatalogGet } from "@/lib/demo-bff";
 
 export async function GET(request: NextRequest) {
   return proxyCatalogGet(request, "/v1/explore/topic-entries", {
-    allowedParams: ["topic", "limit", "country", "prefLang", "lang", "ageBand"],
+    allowedParams: [
+      "topic",
+      "limit",
+      "country",
+      "prefLang",
+      "lang",
+      "favoriteLanguages",
+      "ageBand",
+    ],
     revalidate: 60,
   });
 }

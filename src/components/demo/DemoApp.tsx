@@ -23,18 +23,13 @@ import {
 } from "@/lib/demo-api";
 import {
   DEFAULT_DEMO_AGE_BAND,
-  DEFAULT_DEMO_CONTENT_LANG,
   DEMO_AGE_BANDS,
   demoLangForLocale,
   isDemoAgeBand,
-  isDemoContentLang,
 } from "@/lib/demo-locale";
 import { topicIconForSlug, withTopicIcon } from "@/lib/demo-topic-icons";
 import { trackEvent } from "@/lib/analytics";
-import type { AppLocale } from "@/i18n/routing";
-import { Flag } from "@/components/Flags";
 import { DemoSlider } from "./DemoSlider";
-import { DemoLanguageFilter } from "./DemoLanguageFilter";
 import { HorizontalRow } from "./HorizontalRow";
 import { PlaylistCard } from "./PlaylistCard";
 import { PlaylistDialog } from "./PlaylistDialog";
@@ -49,21 +44,19 @@ const MIN_SEARCH_LENGTH = 2;
 function buildBaseQuery(
   locale: string,
   ageBand: string,
-  options?: { forSearch?: boolean; contentLang?: string },
+  options?: { forSearch?: boolean },
 ) {
   const uiLang = demoLangForLocale(locale);
   const params = new URLSearchParams({
     prefLang: uiLang,
+    lang: uiLang,
+    // Site locale is the sole favorite language (hard filter + Redis duel).
+    favoriteLanguages: uiLang,
   });
 
-  if (options?.forSearch) {
-    // Hard language filter only when the user picks one; default is all languages.
-    if (options.contentLang) {
-      params.set("lang", options.contentLang);
-    }
-  } else {
-    // Browse home uses UI lang for topic labels / ranking preference.
-    params.set("lang", uiLang);
+  if (!options?.forSearch) {
+    // Single shared Redis layout per ageBand × site language.
+    params.set("variant", "0");
   }
 
   if (ageBand) {
@@ -87,10 +80,6 @@ export function DemoApp() {
   const topicParam = searchParams.get("topic") ?? "";
   const ageRaw = searchParams.get("age") ?? DEFAULT_DEMO_AGE_BAND;
   const ageParam = isDemoAgeBand(ageRaw) ? ageRaw : DEFAULT_DEMO_AGE_BAND;
-  const languageRaw = searchParams.get("language") ?? DEFAULT_DEMO_CONTENT_LANG;
-  const languageParam = isDemoContentLang(languageRaw)
-    ? languageRaw
-    : DEFAULT_DEMO_CONTENT_LANG;
   const sortParam = (searchParams.get("sort") as PlaylistSort | null) ?? "relevance";
   const pageParam = Math.max(1, Number(searchParams.get("page") ?? "1") || 1);
   const playlistParam = searchParams.get("playlist") ?? "";
@@ -142,7 +131,6 @@ export function DemoApp() {
   const hasActiveFilters = Boolean(
     ageParam ||
       topicParam ||
-      languageParam ||
       qParam.trim() ||
       (isSearching && sortParam !== "relevance"),
   );
@@ -189,8 +177,7 @@ export function DemoApp() {
       setError(null);
 
       const base = buildBaseQuery(locale, ageParam);
-      // Bust Next/CDN cache and get a fresh random explore layout each visit.
-      base.set("requestId", crypto.randomUUID());
+      // Shared Redis layout: ageBand × site language × variant=0 (no requestId bust).
 
       try {
         const [homeData, universeData, topicsData] = await Promise.all([
@@ -259,7 +246,6 @@ export function DemoApp() {
 
       const params = buildBaseQuery(locale, ageParam, {
         forSearch: true,
-        contentLang: languageParam,
       });
       params.set("q", qParam.trim());
       params.set("sort", sortParam);
@@ -298,7 +284,6 @@ export function DemoApp() {
   }, [
     ageParam,
     isSearching,
-    languageParam,
     locale,
     pageParam,
     qParam,
@@ -425,29 +410,19 @@ export function DemoApp() {
             ) : null}
 
             {isSearching ? (
-              <>
-                <div className={styles.filterGroup}>
-                  <label htmlFor="demo-language">{t("filters.language")}</label>
-                  <DemoLanguageFilter
-                    value={languageParam}
-                    onChange={(next) => onFilterChange("language", next)}
-                  />
-                </div>
-
-                <div className={styles.filterGroup}>
-                  <label htmlFor="demo-sort">{t("filters.sort")}</label>
-                  <select
-                    id="demo-sort"
-                    value={sortParam}
-                    onChange={(event) => onFilterChange("sort", event.target.value)}
-                  >
-                    <option value="relevance">{t("sort.relevance")}</option>
-                    <option value="views">{t("sort.views")}</option>
-                    <option value="videos">{t("sort.videos")}</option>
-                    <option value="avgDuration">{t("sort.avgDuration")}</option>
-                  </select>
-                </div>
-              </>
+              <div className={styles.filterGroup}>
+                <label htmlFor="demo-sort">{t("filters.sort")}</label>
+                <select
+                  id="demo-sort"
+                  value={sortParam}
+                  onChange={(event) => onFilterChange("sort", event.target.value)}
+                >
+                  <option value="relevance">{t("sort.relevance")}</option>
+                  <option value="views">{t("sort.views")}</option>
+                  <option value="videos">{t("sort.videos")}</option>
+                  <option value="avgDuration">{t("sort.avgDuration")}</option>
+                </select>
+              </div>
             ) : null}
           </div>
 
@@ -514,25 +489,6 @@ export function DemoApp() {
                     {topicIconForSlug(selectedChildTopic.slug, selectedParentTopic?.slug)}
                   </span>
                   <span className={styles.filterTagText}>{selectedChildTopic.label}</span>
-                  <span className={styles.filterTagClose} aria-hidden="true">
-                    ×
-                  </span>
-                </button>
-              ) : null}
-
-              {languageParam ? (
-                <button
-                  type="button"
-                  className={styles.filterTag}
-                  aria-label={`${t("filters.removeFilter")}: ${t(`languages.${languageParam}`)}`}
-                  onClick={() => onFilterChange("language", "")}
-                >
-                  <span className={styles.filterTagFlag} aria-hidden="true">
-                    <Flag locale={languageParam as AppLocale} />
-                  </span>
-                  <span className={styles.filterTagText}>
-                    {t(`languages.${languageParam}`)}
-                  </span>
                   <span className={styles.filterTagClose} aria-hidden="true">
                     ×
                   </span>

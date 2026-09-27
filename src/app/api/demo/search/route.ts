@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
       "ageBands",
       "lang",
       "prefLang",
+      "favoriteLanguages",
       "country",
       "sort",
       "page",

@@ -6,13 +6,29 @@ export async function GET(request: NextRequest) {
 
   if (kind === "orphan-channels") {
     return proxyCatalogGet(request, "/v1/explore/orphan-channels", {
-      allowedParams: ["limit", "offset", "country", "prefLang", "lang", "ageBand"],
+      allowedParams: [
+        "limit",
+        "offset",
+        "country",
+        "prefLang",
+        "lang",
+        "favoriteLanguages",
+        "ageBand",
+      ],
       revalidate: 600,
     });
   }
 
   return proxyCatalogGet(request, "/v1/explore/universes", {
-    allowedParams: ["limit", "offset", "country", "prefLang", "lang", "ageBand"],
+    allowedParams: [
+      "limit",
+      "offset",
+      "country",
+      "prefLang",
+      "lang",
+      "favoriteLanguages",
+      "ageBand",
+    ],
     revalidate: 600,
   });
 }

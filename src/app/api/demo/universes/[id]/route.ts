@@ -6,7 +6,13 @@ type Props = { params: Promise<{ id: string }> };
 export async function GET(request: NextRequest, { params }: Props) {
   const { id } = await params;
   return proxyCatalogGet(request, `/v1/universes/${encodeURIComponent(id)}`, {
-    allowedParams: ["playlistLimit", "country", "prefLang", "lang"],
+    allowedParams: [
+      "playlistLimit",
+      "country",
+      "prefLang",
+      "lang",
+      "favoriteLanguages",
+    ],
     revalidate: 300,
   });
 }

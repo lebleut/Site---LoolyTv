@@ -69,6 +69,9 @@ export type ExploreUniverseItem =
       name: string;
       thumbnail: string | null;
       channelCount: number;
+      topics?: string[];
+      languages?: string[];
+      hasUniversalLanguage?: boolean;
     }
   | {
       kind: "channel";
@@ -76,6 +79,9 @@ export type ExploreUniverseItem =
       title: string;
       thumbnail: string | null;
       subscriberCount?: number | null;
+      topics?: string[];
+      languages?: string[];
+      hasUniversalLanguage?: boolean;
     };
 
 export type ExploreRailItem =

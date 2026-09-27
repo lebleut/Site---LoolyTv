@@ -106,6 +106,7 @@ export type ExploreBrowsePage = {
   items: ExploreUniverseItem[];
   total: number;
   hasMore: boolean;
+  childTopics?: string[];
 };
 
 export type UniverseDetailResponse = {

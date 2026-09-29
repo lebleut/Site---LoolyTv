@@ -2,6 +2,7 @@ import { Hero } from "./home/Hero";
 import { Features } from "./home/Features";
 import { HowItWorks } from "./home/HowItWorks";
 import { Parents } from "./home/Parents";
+import { Curation } from "./home/Curation";
 import { Waitlist } from "./home/Waitlist";
 
 export async function HomeSections() {
@@ -10,6 +11,7 @@ export async function HomeSections() {
       <Hero />
       <HowItWorks />
       <Parents />
+      <Curation />
       <Features />
       <Waitlist />
     </>

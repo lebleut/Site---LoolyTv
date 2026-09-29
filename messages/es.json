@@ -119,6 +119,30 @@
       }
     }
   },
+  "curation": {
+    "eyebrow": "Cómo elegimos",
+    "title": "Elegido con cuidado para tu hijo",
+    "lead": "Solo añadimos canales y listas que encajan con niños curiosos y tranquilos — no todo Internet.",
+    "pillars": {
+      "educational": {
+        "title": "Educativo",
+        "body": "Contenido que ayuda a aprender, descubrir y crecer."
+      },
+      "calm": {
+        "title": "Tranquilo",
+        "body": "Un ritmo suave — no caótico ni demasiado estimulante."
+      },
+      "noEmptyLoops": {
+        "title": "Sin bucles vacíos",
+        "body": "Evitamos repeticiones sin sentido y compilaciones de relleno."
+      },
+      "familySafe": {
+        "title": "Seguro en familia",
+        "body": "Made for Kids, revisado por nuestro equipo, con un tono amable."
+      }
+    },
+    "note": "A veces nos equivocamos. También contamos con la ayuda de los padres — por eso la app permite reportar una lista o canal que no encaje."
+  },
   "waitlist": {
     "eyebrow": "El lanzamiento se acerca",
     "title": "Sé de los primeros 100 pre-testers",
@@ -193,6 +217,14 @@
       "ads": {
         "q": "¿Hay anuncios en la app?",
         "a": "No. LoolyTv no muestra publicidad dentro de la app."
+      },
+      "howWeChoose": {
+        "q": "¿Cómo elegís canales y listas?",
+        "a": "Buscamos contenido educativo para el niño, tranquilo y no distractor, y sin repetición vacía. Todo lo que añadimos es Made for Kids y lo revisa nuestro equipo — pero cada familia tiene sus gustos."
+      },
+      "reportContent": {
+        "q": "¿Y si algo no debería estar en el catálogo?",
+        "a": "No somos perfectos. Si una lista o canal no encaja, los padres pueden reportarlo desde la app. Vuestros comentarios nos ayudan a mantener un catálogo sano para todos."
       }
     }
   },
@@ -212,6 +244,7 @@
     "subtitle": "Explora nuestras listas Made for Kids curadas y previsualiza un vídeo — el mismo catálogo que usan los padres en la app.",
     "metaDescription": "Explora el catálogo infantil curado de LoolyTv en la web y previsualiza un vídeo antes de unirte a la lista de pre-testers.",
     "parentNote": "Esta vista previa es para padres y tutores. La experiencia tranquila y acotada para niños está en la app de Android.",
+    "curationNote": "Elegimos listas para ver con calma y aprender — y escuchamos cuando los padres reportan algo que no encaja.",
     "searchLabel": "Buscar listas",
     "searchPlaceholder": "Buscar listas, canales, temas…",
     "searching": "Buscando…",

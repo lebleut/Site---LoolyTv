@@ -119,6 +119,30 @@
       }
     }
   },
+  "curation": {
+    "eyebrow": "How we choose",
+    "title": "Chosen with care for your child",
+    "lead": "We only add channels and playlists that feel right for calm, curious kids — not everything on the internet.",
+    "pillars": {
+      "educational": {
+        "title": "Educational",
+        "body": "Content that helps children learn, discover, and grow."
+      },
+      "calm": {
+        "title": "Calm",
+        "body": "A gentle pace — not chaotic or overstimulating."
+      },
+      "noEmptyLoops": {
+        "title": "No empty loops",
+        "body": "We skip mindless repetition and filler compilations."
+      },
+      "familySafe": {
+        "title": "Family-safe",
+        "body": "Made for Kids, reviewed by our team, with a kind tone."
+      }
+    },
+    "note": "We can get it wrong sometimes. We also count on parents’ help — that’s why the app lets you report a playlist or channel that doesn’t feel right."
+  },
   "waitlist": {
     "eyebrow": "Launch is close",
     "title": "Be among the first 100 pre-testers",
@@ -193,6 +217,14 @@
       "ads": {
         "q": "Are there ads in the app?",
         "a": "No. LoolyTv does not show advertising inside the app."
+      },
+      "howWeChoose": {
+        "q": "How do you choose channels and playlists?",
+        "a": "We look for content that is educational for children, calm rather than distracting, and free of empty repetition. Everything we add is Made for Kids and reviewed by our team — but tastes differ from family to family."
+      },
+      "reportContent": {
+        "q": "What if something shouldn’t be in the catalog?",
+        "a": "We’re not perfect. If a playlist or channel doesn’t feel right, parents can report it from the app. Your feedback helps us keep the catalog healthy for everyone."
       }
     }
   },
@@ -212,6 +244,7 @@
     "subtitle": "Browse our curated Made-for-Kids playlists and preview a video — the same catalog parents use in the app.",
     "metaDescription": "Browse the LoolyTv curated kids catalog on the web and preview a video before joining the pre-tester list.",
     "parentNote": "This preview is for parents and guardians. The full calm, bounded viewing experience for children is in the Android app.",
+    "curationNote": "We pick playlists for calm, educational watching — and we listen when parents report something that doesn’t fit.",
     "searchLabel": "Search playlists",
     "searchPlaceholder": "Search playlists, channels, topics…",
     "searching": "Searching…",

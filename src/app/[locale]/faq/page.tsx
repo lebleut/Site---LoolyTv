@@ -10,6 +10,8 @@ const FAQ_KEYS = [
   "how",
   "whoChooses",
   "vsYoutube",
+  "howWeChoose",
+  "reportContent",
   "devices",
   "ads",
 ] as const;

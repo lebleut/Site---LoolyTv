@@ -332,6 +332,7 @@ export function DemoApp() {
           <p className="eyebrow">{t("eyebrow")}</p>
           <h1>{t("title")}</h1>
           <p>{t("subtitle")}</p>
+          <p>{t("curationNote")}</p>
           <p>{t("parentNote")}</p>
         </div>
 

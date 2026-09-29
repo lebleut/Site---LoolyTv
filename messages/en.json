@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "LoolyTv — Curated kids TV, coming soon",
-    "description": "LoolyTv is a curated Made-for-Kids video catalog for families on Android phone, tablet, and TV. Join the pre-launch tester list."
+    "description": "LoolyTv is a curated Made-for-Kids video catalog for families on Android phone, tablet, and Android TV. Join the pre-launch tester list."
   },
   "nav": {
     "home": "Home",
@@ -19,7 +19,7 @@
   "hero": {
     "brand": "LoolyTv",
     "tagline": "Something fun is almost ready…",
-    "lead": "Carefully chosen kids videos for Android phone, tablet, and TV. Calm, curated, no wild scrolling. Launch? Still a little secret.",
+    "lead": "Carefully chosen kids videos for Android phone, tablet, and Android TV. Calm, curated, no wild scrolling. Launch? Still a little secret.",
     "ctaWaitlist": "Join the pre-tester list",
     "ctaFeatures": "See what’s inside",
     "ctaDemo": "Browse the catalog",
@@ -29,7 +29,7 @@
     "playVideo": "Play preview video",
     "chipKids": "Made for Kids",
     "chipAds": "No ads",
-    "chipDevices": "Phone · Tablet · TV"
+    "chipDevices": "Phone · Tablet · Android TV"
   },
   "features": {
     "eyebrow": "Inside Looly",
@@ -46,7 +46,7 @@
       },
       "library": {
         "title": "Family library that syncs",
-        "body": "Save playlists once; they follow you on phone, tablet, and TV.",
+        "body": "Save playlists once; they follow you on phone, tablet, and Android TV.",
         "imageAlt": "Family watching together on the couch"
       },
       "playall": {
@@ -60,8 +60,8 @@
         "imageAlt": "Looly helping parents pick the right topics"
       },
       "devices": {
-        "title": "Many screens, one family",
-        "body": "Link phone, tablet, and TV with a simple code — the same library everywhere, without starting over.",
+        "title": "Phone, tablet & Android TV",
+        "body": "Install from Google Play on Android TV or Google TV for a remote-friendly big-screen experience — then link every screen with a simple code.",
         "imageAlt": "Parent and child using LoolyTv at home"
       },
       "ads": {
@@ -78,7 +78,7 @@
     "steps": {
       "install": {
         "title": "Install LoolyTv",
-        "body": "Get the app on your Android phone, tablet, or TV, then sign in with a parent Google account."
+        "body": "Get the app on your Android phone, tablet, or Android TV (Google Play on the TV), then sign in with a parent Google account."
       },
       "pick": {
         "title": "Pick playlists together",
@@ -103,7 +103,7 @@
       },
       "multidevice": {
         "title": "Every screen at home",
-        "body": "Add more devices with a short code — living-room TV, bedroom tablet, same kids space."
+        "body": "Add more devices with a short code — Android TV in the living room, tablet in the bedroom, same kids space."
       },
       "gate": {
         "title": "Parental math gate",
@@ -200,7 +200,7 @@
       },
       "how": {
         "q": "How do I use it?",
-        "a": "Install LoolyTv on an Android phone, tablet, or TV and sign in with a parent Google account. Browse the catalog with your child and save playlists to your family library. Then tap Play all: the app shuffles what you chose, and kids stay on that list."
+        "a": "Install LoolyTv on an Android phone, tablet, or Android TV and sign in with a parent Google account. Browse the catalog with your child and save playlists to your family library. Then tap Play all: the app shuffles what you chose, and kids stay on that list."
       },
       "whoChooses": {
         "q": "Who chooses the videos — me or my child?",
@@ -212,7 +212,11 @@
       },
       "devices": {
         "q": "Which devices can we use?",
-        "a": "Android phone, tablet, and TV. You can link extra screens with a short code so the same family library follows you around the house."
+        "a": "Android phone, tablet, and Android TV (including Google TV). Install from Google Play on each device. You can link extra screens with a short code so the same family library follows you around the house."
+      },
+      "androidTv": {
+        "q": "Can we install LoolyTv on the living-room TV?",
+        "a": "Yes. On Android TV and Google TV, open Google Play, search for LoolyTv, and install it like any other app. You get a TV-friendly interface with your remote — the same family library as on phone and tablet."
       },
       "ads": {
         "q": "Are there ads in the app?",
@@ -243,7 +247,7 @@
     "title": "Try the LoolyTv catalog",
     "subtitle": "Browse our curated Made-for-Kids playlists and preview a video — the same catalog parents use in the app.",
     "metaDescription": "Browse the LoolyTv curated kids catalog on the web and preview a video before joining the pre-tester list.",
-    "parentNote": "This preview is for parents and guardians. The full calm, bounded viewing experience for children is in the Android app.",
+    "parentNote": "This preview is for parents and guardians. The full calm, bounded viewing experience for children is in the Android app — on phone, tablet, and Android TV.",
     "curationNote": "We pick playlists for calm, educational watching — and we listen when parents report something that doesn’t fit.",
     "searchLabel": "Search playlists",
     "searchPlaceholder": "Search playlists, channels, topics…",
@@ -311,7 +315,7 @@
     },
     "cta": {
       "title": "Ready for the full experience?",
-      "body": "Join the pre-tester list to get LoolyTv on your Android phone, tablet, or TV.",
+      "body": "Join the pre-tester list to get LoolyTv on your Android phone, tablet, or Android TV.",
       "button": "Join the pre-tester list"
     },
     "errors": {

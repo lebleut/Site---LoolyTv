@@ -13,6 +13,7 @@ const FAQ_KEYS = [
   "howWeChoose",
   "reportContent",
   "devices",
+  "androidTv",
   "ads",
 ] as const;
 
